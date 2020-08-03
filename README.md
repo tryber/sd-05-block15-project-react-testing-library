@@ -4,6 +4,17 @@ Você já usa o GitHub diariamente para desenvolver os exercícios, certo? Agora
 
 Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu projeto a partir deste repositório, utilizando uma branch específica e um _Pull Request_ para colocar seus códigos.
 
+---
+
+### Entrega
+
+  - Projeto individual.
+
+  - Será um dia de projeto.
+  
+  - O projeto tem até a seguinte data: `22/07/2020 - 14:00h`. Para ser entregue a avaliação final.
+
+
 ## O que deverá ser desenvolvido
 
 Nesse projeto você escreverá testes para uma aplicação React.
