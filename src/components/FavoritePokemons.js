@@ -41,7 +41,7 @@ class FavoritePokemons extends React.Component {
 
     return (
       <div>
-        <h2> Favorite pokémons </h2>
+        <h2 data-testid="favorites"> Favorite pokémons </h2>
         {isEmpty ? notFound() : this.renderFavoritePokemons()}
       </div>
     );
