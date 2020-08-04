@@ -5,7 +5,7 @@ import { createMemoryHistory } from 'history';
 import App from '../App';
 import NotFound from '../components/NotFound';
 
-function renderWithRouter(ui, { route = '/', history = createMemoryHistory({ initialEntries: [route] }) } = {}) {
+export default function renderWithRouter(ui, { route = '/', history = createMemoryHistory({ initialEntries: [route] }) } = {}) {
   return {
     ...render(<Router history={history}>{ui}</Router>),
     history,
