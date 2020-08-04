@@ -12,7 +12,6 @@ describe('teste do arquivo about', () => {
 
     const paragraph1 = getByText(/This application simulates a Pokédex/);
     expect(paragraph1).toBeInTheDocument();
-
     const paragraph2 = getByText(/One can filter Pokémons by type/);
     expect(paragraph2).toBeInTheDocument();
 
