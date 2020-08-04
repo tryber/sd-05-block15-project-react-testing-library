@@ -71,7 +71,7 @@ class Pokedex extends React.Component {
 
     return (
       <div className="pokedex">
-        <h2>{`Encountered pokÃ©mons`}</h2>
+        <h2>{`Encountered pokémons`}</h2>
         <Pokemon
           pokemon={pokemon}
           isFavorite={isPokemonFavoriteById[pokemon.id]}
@@ -83,7 +83,7 @@ class Pokedex extends React.Component {
           onClick={() => this.nextPokemon(filteredPokemons.length)}
           disabled={filteredPokemons.length <= 1}
         >
-          {`PrÃ³ximo pokÃ©mon`}
+          {`Próximo pokémon`}
         </Button>
       </div>
     );
