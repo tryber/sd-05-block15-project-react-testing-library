@@ -1,23 +1,8 @@
 import React from 'react';
-import { MemoryRouter, Router } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
+import { MemoryRouter } from 'react-router-dom';
 import { render, cleanup, fireEvent } from '@testing-library/react';
 import App from '../App';
-
-// jest.mock('react-router-dom', () => {
-//   const originalModule = jest.requireActual('react-router-dom');
-//   return {
-//     ...originalModule,
-//     BrowserRouter: (children) => (<div>{children}</div>),
-//   };
-// });
-
-function renderWithRouter(ui, { route = '/', history = createMemoryHistory({ initialEntries: [route] }) } = {}) {
-  return {
-    ...render(<Router history={history}>{ui}</Router>),
-    history,
-  };
-}
+import renderWithRouter from '../tests/renderWithRouter';
 
 test('renders a reading with the text `Pokédex`', () => {
   const { getByText } = render(
