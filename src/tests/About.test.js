@@ -7,7 +7,7 @@ test('inf. of Pokedex', () => {
   const { getByText, getAllByTestId, getByRole } = render(
     <MemoryRouter>
       <About />
-    </MemoryRouter>
+    </MemoryRouter>,
   );
   expect(getByText('About Pokédex')).toBeInTheDocument();
   const paragraph = getAllByTestId('paragraph');
