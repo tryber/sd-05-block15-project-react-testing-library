@@ -1,7 +1,15 @@
 import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, Router } from 'react-router-dom';
+// import { createMemoryHistory } from 'history';
 import { render, fireEvent } from '@testing-library/react';
 import App from '../App';
+
+// const renderWithRouter = (component) => {
+//   const history = createMemoryHistory();
+//   return {
+//     ...render(<Router history={history}>{component}</Router>), history,
+//   };
+// };
 
 test('renders a reading with the text `Pokédex`', () => {
   const { getByText } = render(
@@ -86,5 +94,17 @@ describe('Ao clicar no link', () => {
 
     fireEvent.click(getByText('Favorite Pokémons'));
     expect(getByText('Favorite pokémons')).toBeInTheDocument();
+  });
+
+  it('ao não achar uma página, retorna page not found', () => {
+    // const { getByText, history } = renderWithRouter(<App />);
+    // history.push('/batatinha');
+
+    const { getByText } = render(
+      <MemoryRouter initialEntries={['buddybagetperu']}>
+        <App />
+      </MemoryRouter>,
+    );
+    expect(getByText('Page requested not found')).toBeInTheDocument();
   });
 });
