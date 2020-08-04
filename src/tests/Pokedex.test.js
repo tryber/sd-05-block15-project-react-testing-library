@@ -26,7 +26,7 @@ test('renderiza um botão com o texto All', () => {
 });
 
 test('testa a função apertando o botão All', () => {
-  jest.spyOn(Pokedex.prototype, 'filterPokemons')
+  jest.spyOn(Pokedex.prototype, 'filterPokemons');
   const { getByText } = render(
     <MemoryRouter>
       <App />
@@ -38,7 +38,7 @@ test('testa a função apertando o botão All', () => {
 });
 
 test('testa a função apertando o botão All', () => {
-  jest.spyOn(Pokedex.prototype, 'filterPokemons')
+  jest.spyOn(Pokedex.prototype, 'filterPokemons');
   const { getByText } = render(
     <MemoryRouter>
       <App />
