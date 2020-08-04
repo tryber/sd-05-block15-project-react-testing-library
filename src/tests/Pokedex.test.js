@@ -55,3 +55,8 @@ test('O botão de Próximo pokémon deve ser desabilitado se a lista filtrada de
   fireEvent.click(getByText('Poison'));
   expect(getByText(/próximo pokémon/i)).toBeDisabled();
 });
+
+test('killing the h2 beast', () => {
+  const { getByText } = render(<MemoryRouter><App /></MemoryRouter>);
+  expect(getByText(/Encountered pokémons/i)).toBeInTheDocument();
+})
