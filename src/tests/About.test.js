@@ -1,18 +1,6 @@
 import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
-import { render, fireEvent } from '@testing-library/react';
 import About from '../components/About';
 import renderWithRouter from '../services/renderWithRouter';
-
-/* test('renders a reading with the text `Pokédex`', () => {
-  const { getByText } = render(
-    <MemoryRouter>
-      <App />
-    </MemoryRouter>,
-  );
-  const heading = getByText(/Pokédex/i);
-  expect(heading).toBeInTheDocument();
-}); */
 
 test('Verificando se existe um h2 com o texto About Pokédex', () => {
   const { getByRole } = renderWithRouter(<About />);
