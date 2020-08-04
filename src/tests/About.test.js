@@ -9,7 +9,7 @@ describe('test all |About', () => {
     expect(h2).toHaveTextContent('About Pokédex');
   });
 
-  test('verify if has 2 buttons', () => {
+  test('verify if has 2 paragh', () => {
     const { container } = renderWithRouter(<About />);
     const p = container.querySelectorAll('p');
     expect(p.length).toBe(2);
