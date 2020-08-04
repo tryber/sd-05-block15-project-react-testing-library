@@ -19,10 +19,10 @@ jest.mock('react-router-dom', () => {
   return {
     ...originalModule,
     BrowserRouter: ({ children }) => (<div>{children}</div>),
-  }
-})
+  };
+});
 
-function renderWithRouter(ui, { route = '/', history = createMemoryHistory({ initialEntries: [route] }) } = {},) {
+function renderWithRouter(ui, { route = '/' history = createMemoryHistory({ initialEntries: [route] }) } = {}, ) {
   return {
     ...render(<Router history={history}>{ui}</Router>),
     history,
@@ -67,7 +67,7 @@ describe('routes', () => {
     expect(Home).toBeInTheDocument();
   });
 
-    test('navigating from home to Favorite Pokémons and back', () => {
+  test('navigating from home to Favorite Pokémons and back', () => {
     const { getByText, history } = renderWithRouter(<App />);
 
     const Titulo = getByText(/Pokédex/i);
@@ -76,11 +76,11 @@ describe('routes', () => {
     fireEvent.click(getByText(/Favorite Pokémons/i));
     const FavPath = history.location.pathname;
     expect(FavPath).toBe('/favorites');
-    
+
     fireEvent.click(getByText(/Home/i));
     const HomePath = history.location.pathname;
     expect(HomePath).toBe('/');
     const Home = getByText(/Pokédex/i);
     expect(Home).toBeInTheDocument();
-  })
+  });
 });
