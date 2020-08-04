@@ -10,5 +10,8 @@ it('tests the content of About page', () => {
   expect(aboutTag).toBeInTheDocument();
   expect(aboutTag.tagName).toBe('H3');
   expect(container.querySelectorAll('p').length).toBe(2);
-  expect(container.querySelector('img')).toHaveAttribute('src', 'https://cdn.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png');
+  expect(container.querySelector('img')).toHaveAttribute(
+    'src',
+    'https://cdn.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png',
+  );
 });
