@@ -4,16 +4,17 @@ import { render, cleanup, fireEvent } from '@testing-library/react';
 import App from '../App';
 
 const resetHistory = (path = '/') => {
-  const { getByText, getByTestId } = render(
+  const { getByText } = render(
     <MemoryRouter initialEntries={[path]}>
       <App />
     </MemoryRouter>,
   );
-  return { getByText, getByTestId };
+  return { getByText };
 };
 
 describe('Routes', () => {
   afterEach(cleanup);
+
   test('renders a reading with the text `Pokédex`', () => {
     const { getByText } = resetHistory();
     const heading = getByText(/Pokédex/i);
@@ -28,6 +29,7 @@ describe('Routes', () => {
       getByText(/about/i),
       getByText(/favorite pokémons/i),
     ];
+
     links.forEach((link) => {
       expect(link).toBeInTheDocument();
     });
@@ -54,10 +56,10 @@ describe('Routes', () => {
   });
 
   test('Links favorite', () => {
-    const { getByText, getByTestId } = resetHistory();
+    const { getByText } = resetHistory();
     fireEvent.click(getByText(/Favorite Pokémons/i));
 
-    const favorite = getByTestId('favorites');
+    const favorite = getByText(/No favorite pokemon found/i);
     expect(favorite).toBeInTheDocument();
   });
 });
