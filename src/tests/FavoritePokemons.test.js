@@ -33,5 +33,4 @@ describe('Routes', () => {
     const content = getByText(/Average weight:6.9kg/i);
     expect(content).toBeInTheDocument();
   });
-
 });
