@@ -1,6 +1,6 @@
 import React from 'react';
-import About from '../components/About';
 import { cleanup } from '@testing-library/react';
+import About from '../components/About';
 import renderWithRouter from './renderWithRouter';
 
 describe('testes na pagina About', () => {
