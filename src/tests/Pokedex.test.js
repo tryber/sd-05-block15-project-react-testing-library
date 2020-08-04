@@ -11,6 +11,7 @@ test('Ao apertar o botão de próximo, a página deve exibir o próximo pokémon
   const btnNext = getByTestId('next-pokemon');
   expect(btnNext).toBeInTheDocument();
   // cliques sucessivos, volta no começo, mostra apenas um por vez
+  // pagina carrega jà com critério de 'all'
   const pokemonsNames = ['Charmander', 'Caterpie', 'Ekans', 'Alakazam', 'Mew', 'Rapidash', 'Snorlax', 'Dragonair', 'Pikachu'];
   for (let i = 0; i < pokemonsNames.length; i += 1) {
     fireEvent.click(getByText(/próximo pokémon/i));
@@ -22,6 +23,7 @@ test('Ao apertar o botão de próximo, a página deve exibir o próximo pokémon
 test('A Pokédex deve conter botões de filtro', () => {
   const { getAllByTestId, getByText } = render(<MemoryRouter><App /></MemoryRouter>);
   // botao de filtro
+  // Pokédex deve gerar, dinamicamente, botão de filtro/tipo
   const btnFilter = getAllByTestId('pokemon-type-button');
   expect(btnFilter.length).toBe(7);
   // cliques sucessivos com filtro, exemplo de um tipo
@@ -46,4 +48,10 @@ test('A Pokédex deve conter um botão para resetar o filtro', () => {
     expect(getByText(pokemonsNames[i])).toBeInTheDocument();
     expect(getAllByText(/Average weight/i)).toHaveLength(1);
   }
+});
+
+test('O botão de Próximo pokémon deve ser desabilitado se a lista filtrada de pokémons tiver um só pokémon', () => {
+  const { getByText } = render(<MemoryRouter><App /></MemoryRouter>);
+  fireEvent.click(getByText('Poison'));
+  expect(getByText(/próximo pokémon/i)).toBeDisabled();
 });
