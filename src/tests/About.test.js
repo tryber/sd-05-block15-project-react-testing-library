@@ -2,9 +2,9 @@ import React from 'react';
 import { cleanup, fireEvent, render } from '@testing-library/react';
 import App from '../App';
 import About from '../components/About';
-​
+
 afterEach(cleanup);
-​
+
 test('A página deve conter um heading h2 com o texto About Pokédex', () => {
   const { queryByText, container, getByText, queryByRole, getByAltText } = render(<About />);
   const aboutPokedexTag = queryByText('About Pokédex');
