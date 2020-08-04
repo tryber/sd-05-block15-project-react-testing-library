@@ -1,6 +1,5 @@
 import React from 'react';
-import { cleanup, fireEvent, render } from '@testing-library/react';
-import App from '../App';
+import { cleanup, render } from '@testing-library/react';
 import About from '../components/About';
 
 afterEach(cleanup);
@@ -29,7 +28,7 @@ test('A página deve conter um heading h2 com o texto About Pokédex', () => {
   expect(getByAltText('Pokédex')).toHaveAttribute('src', 'https://cdn.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png');
 
   expect(getByAltText('Pokédex').tagName).toMatch(/img/i);
-})
+});
 
 // A página "About" deve exibir informações sobre a Pokédex
 
@@ -37,4 +36,5 @@ test('A página deve conter um heading h2 com o texto About Pokédex', () => {
 
 // A página deve conter dois parágrafos com texto sobre a Pokédex; OK
 
-// A página deve conter a seguinte imagem de uma Pokédex: https://cdn.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png. OK
+// A página deve conter a seguinte imagem de uma Pokédex:
+// https://cdn.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png. OK
