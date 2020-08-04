@@ -19,7 +19,7 @@ test('renders a reading H2 with the text `Page requested not found`', () => {
 });
 
 test('renders specific image`', () => {
-  const { queryByRole, container } = render(
+  const { container } = render(
     <MemoryRouter>
       <NotFound />
     </MemoryRouter>,
