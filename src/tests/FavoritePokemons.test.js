@@ -10,12 +10,12 @@ describe('Testes do arquivo FavoritePokemons.js', () => {
     const { getByText } = render(
       <MemoryRouter>
         <FavoritePokemons />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     const msg = getByText(/No favorite pokemon found/);
     expect(msg).toBeInTheDocument();
-  })
+  });
 
   test('A página deve exibir todos os cards de pokémons favoritados', () => {
     const { getByText, getByLabelText, getAllByText } = render(
