@@ -6,7 +6,7 @@ describe('teste do componente NotFound', () => {
   afterEach(cleanup);
 
   test('Página contém texto Page not found', () => {
-    const { getByText} = render(<NotFound />);
+    const { getByText } = render(<NotFound />);
     const message = getByText(/Page requested not found/);
     expect(message).toBeInTheDocument();
   });
