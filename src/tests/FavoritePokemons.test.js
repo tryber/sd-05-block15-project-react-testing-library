@@ -1,8 +1,8 @@
 import React from 'react';
 import { cleanup, fireEvent, render } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import FavoritePokemons from '../components/FavoritePokemons';
 import App from '../App';
-import { MemoryRouter } from 'react-router-dom';
 
 afterEach(cleanup);
 
@@ -26,7 +26,7 @@ test('A página não deve exibir nenhum card de pokémon não favoritado', () =>
 test('A página deve exibir todos os cards de pokémons favoritados', () => {
   const { getByText, getByLabelText, getAllByText } = render(<MemoryRouter><App /></MemoryRouter>);
   localStorage.clear();
-  fireEvent.click(getByText(/bug/i))
+  fireEvent.click(getByText(/bug/i));
   fireEvent.click(getByText(/more details/i));
   fireEvent.click(getByLabelText(/pokémon favoritado/i));
   fireEvent.click(getByText(/home/i));
