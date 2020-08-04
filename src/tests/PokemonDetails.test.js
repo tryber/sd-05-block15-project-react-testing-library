@@ -27,5 +27,6 @@ describe('Deve conter mais informações sobre apenas o pokémon selecionado', (
     );
     const moreDetails = queryByText(/More details/);
     expect(moreDetails).not.toBeInTheDocument();
+    
   });
 });
