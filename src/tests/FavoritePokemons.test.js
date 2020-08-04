@@ -7,7 +7,7 @@ test('', () => {
   const { getByText } = render(
     <MemoryRouter>
       <FavoritePokemons />
-    </MemoryRouter>
+    </MemoryRouter>,
   );
   expect(getByText('No favorite pokemon found')).toBeInTheDocument();
 });
