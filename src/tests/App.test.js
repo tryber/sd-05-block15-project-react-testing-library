@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router } from 'react-router-dom';
 import { render, cleanup, fireEvent } from '@testing-library/react';
-import { createMemoryHistory, createBrowserHistory } from 'history';
+import { createMemoryHistory } from 'history';
 import App from '../App';
 
 jest.mock('react-router-dom', () => {
@@ -14,24 +14,13 @@ jest.mock('react-router-dom', () => {
 
 function renderWithRouter(
   ui,
-  { route = '/', history = createMemoryHistory({ initialEntries: [route], }) } = {}
+  { route = '/', history = createMemoryHistory({ initialEntries: [route] }) } = {},
 ) {
   return {
     ...render(<Router history={history}>{ui}</Router>),
     history,
   };
 }
-
-/* const renderPath = (path) => {
-  const history = createBrowserHistory();
-  history.push(path);
-  const { ...resources } = render(
-    <Router history={history}>
-      <App />
-    </Router>
-  );
-  return { ...resources };
-}; */
 
 describe('renderiza o título da página e a barra de navegação', () => {
   afterEach(cleanup);
@@ -83,8 +72,4 @@ describe('ao clicar na barra de navegaçõ a url da página deve ser modificada'
     fireEvent.click(favorites);
     expect(app.history.location.pathname).toBe('/favorites');
   });
-
-  /* skip test('ao carregar uma path inexistente é mostrada a página not found', () => {
-    expect(location.pathname).toBe('/notFound');
-  }); */
 });

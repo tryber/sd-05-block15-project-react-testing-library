@@ -1,6 +1,5 @@
 import React from 'react';
-import { Router } from 'react-router-dom';
-import { render, cleanup, fireEvent } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 import About from '../components/About';
 
 describe('teste do arquivo about', () => {
@@ -16,14 +15,8 @@ describe('teste do arquivo about', () => {
 
     const paragraph2 = getByText(/One can filter Pokémons by type/);
     expect(paragraph2).toBeInTheDocument();
-    
+
     const image = getByRole('img');
-    expect(image.src).toBe(
-      'https://cdn.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png'
-    );
-    
-    
+    expect(image.src).toBe('https://cdn.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png');
   });
-
-
 });
