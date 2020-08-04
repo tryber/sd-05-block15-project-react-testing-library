@@ -45,9 +45,9 @@ describe('teste do arquivo about', () => {
     const name = pokemonName.innerHTML;
     const moreDetails = getByText(/More details/);
     fireEvent.click(moreDetails);
-    
+
     const checkedBox = getByRole('checkbox');
-    fireEvent.change(checkedBox, { target: { checked: false }});
+    fireEvent.change(checkedBox, { target: { checked: false } });
     console.log(checkedBox.checked);
 
     const favorites = getByText(/Favorite Pokémons/i);
