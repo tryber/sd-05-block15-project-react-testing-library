@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, render, getByText, getAllByText } from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import App from '../App';
 
@@ -13,8 +13,7 @@ describe('Testes do arquivo Pokedex.js', () => {
     );
     const botao = getByText(/Próximo pokémon/);
     expect(botao).toBeInTheDocument();
-  });
-  
+  });  
   test('A Pokédex deve exibir apenas um pokémon por vez', () => {
     const { getAllByText } = render(
       <MemoryRouter>
@@ -24,7 +23,6 @@ describe('Testes do arquivo Pokedex.js', () => {
     const pokemon = getAllByText(/More details/);
     expect(pokemon.length).toBe(1);
   });
-
   test('A Pokédex deve conter botões de filtro', () => {
     const { getByText } = render(
       <MemoryRouter>
@@ -34,7 +32,6 @@ describe('Testes do arquivo Pokedex.js', () => {
     const filtro = getByText(/Psychic/);
     expect(filtro).toBeInTheDocument();
   });
-
   test('A Pokédex deve conter um botão para resetar o filtro', () => {
     const { getByText } = render(
       <MemoryRouter>
