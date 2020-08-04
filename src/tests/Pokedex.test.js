@@ -59,4 +59,4 @@ test('O botão de Próximo pokémon deve ser desabilitado se a lista filtrada de
 test('killing the h2 beast', () => {
   const { getByText } = render(<MemoryRouter><App /></MemoryRouter>);
   expect(getByText(/Encountered pokémons/i)).toBeInTheDocument();
-})
+});
