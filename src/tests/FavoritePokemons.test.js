@@ -34,4 +34,4 @@ describe('Testes do arquivo FavoritePokemons.js', () => {
     fireEvent.click(getByText(/Favorite Pokémons/i));
     expect(getAllByText(/More details/i).length).toBe(2);
   });
-})
+});
