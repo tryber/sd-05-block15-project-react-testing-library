@@ -1,5 +1,5 @@
 import React from 'react';
-import { MemoryRouter, Router, BrowserRouter } from 'react-router-dom';
+import { MemoryRouter, Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { render, cleanup, fireEvent } from '@testing-library/react';
 import App from '../App';
@@ -8,19 +8,19 @@ jest.mock('react-router-dom', () => {
   const originalModule = jest.requireActual('react-router-dom');
   return {
     ...originalModule,
-    BrowserRouter: ({ children }) => (<div>{children}</div>),
+    BrowserRouter: ({ ...children }) => (<div>{children}</div>),
   };
-})
+});
 
-  test('shows the Pokédex when the route is `/`', () => {
-    const { getByText } = render(
-      <MemoryRouter initialEntries={['/']}>
-        <App />
-      </MemoryRouter>,
-    );
-    
-    expect(getByText('Encountered pokémons')).toBeInTheDocument();
-  });
+test('shows the Pokédex when the route is `/`', () => {
+  const { getByText } = render(
+    <MemoryRouter initialEntries={['/']}>
+      <App />
+    </MemoryRouter>,
+  );
+
+  expect(getByText('Encountered pokémons')).toBeInTheDocument();
+});
 
 describe('routes', () => {
   afterEach(cleanup);
@@ -31,7 +31,7 @@ describe('routes', () => {
     const { getByText } = render(
       <Router history={history}>
         <App />
-      </Router>
+      </Router>,
     );
 
     const homePage = getByText(/Encountered pokémons/i);
@@ -41,21 +41,20 @@ describe('routes', () => {
 
     const home = getByText(/Encountered pokémons/i);
     expect(home).toBeInTheDocument();
-
   });
 
   test('O segundo link deve possuir o texto About com a URL /about', () => {
     const history = createMemoryHistory();
 
     const { getByText } = render(
-    <Router history={history}>
-      <App />
-    </Router>
+      <Router history={history}>
+        <App />
+      </Router>,
     );
-    
+
     const homePage = getByText(/Encountered pokémons/i);
     expect(homePage).toBeInTheDocument();
-    
+
     fireEvent.click(getByText(/About/i));
 
     const about = getByText(/About Pokédex/i);
@@ -66,14 +65,14 @@ describe('routes', () => {
     const history = createMemoryHistory();
 
     const { getByText } = render(
-    <Router history={history}>
-      <App />
-    </Router>
+      <Router history={history}>
+        <App />
+      </Router>,
     );
-    
+
     const homePage = getByText(/Encountered pokémons/i);
     expect(homePage).toBeInTheDocument();
-    
+
     fireEvent.click(getByText(/Favorite Pokémons/));
 
     const favoritesTest = getByText(/Favorite pokémons/);
@@ -82,11 +81,11 @@ describe('routes', () => {
 
   test('Entrar em uma URL desconhecida exibe a página Not Found', () => {
     const { getByText } = render(
-    <MemoryRouter initialEntries={['/not-found/']}>
-      <App />
-    </MemoryRouter>
+      <MemoryRouter initialEntries={['/not-found/']}>
+        <App />
+      </MemoryRouter>,
     );
     const erro = getByText(/Page requested not found/);
     expect(erro).toBeInTheDocument();
-  })
+  });
 });
