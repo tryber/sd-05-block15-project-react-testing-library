@@ -1,7 +1,8 @@
 import React from 'react';
+import { cleanup, fireEvent, render } from '@testing-library/react';
 import { MemoryRouter } from 'react-dom';
 import App from '../App';
-import { cleanup, fireEvent, render } from '@testing-library/react';
+
 import FavoritePokemons from '../components/FavoritePokemons';
 
 afterEach(cleanup);
@@ -12,7 +13,7 @@ test('Caso a pessoa não tenha pokémons favoritos, a mensagem `No favorite poke
       <FavoritePokemons />
     </MemoryRouter>,
   );
-  expect(getBytext('No favorite pokemon found')).toBeinTheDocument();
+  expect(getByText('No favorite pokemon found')).toBeinTheDocument();
 });
 
 test('A página não deve exibir nenhum card de pokémon não favoritado', () => {

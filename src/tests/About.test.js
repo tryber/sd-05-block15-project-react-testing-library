@@ -1,6 +1,7 @@
 import React from 'react';
+import { cleanup, render } from '@testing-library/react';
 import About from '../components/About';
-import { cleanup, render, getByRole } from '@testing-library/react';
+
 afterEach(cleanup);
 
 test('A página "About" deve exibir informações sobre a Pokédex', () => {

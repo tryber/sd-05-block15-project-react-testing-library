@@ -1,8 +1,10 @@
 import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, Router } from 'react-router-dom';
 import { render, fireEvent } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
+import NotFound from '../components/NotFound';
 import App from '../App';
+
 function renderWithRouter(
   ui,
   {
