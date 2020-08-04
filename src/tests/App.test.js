@@ -5,7 +5,6 @@ import App from '../App';
 import renderWithRouter from '../services/renderWithRouter';
 
 describe('test all App', () => {
-
   test('renders a reading with the text `Pokédex`', () => {
     const { getByText } = render(
       <MemoryRouter>
@@ -15,7 +14,7 @@ describe('test all App', () => {
     const heading = getByText(/Pokédex/i);
     expect(heading).toBeInTheDocument();
   });
-  
+
   test('shows the Home Page when the route is `/`', () => {
     const { getByText, history } = renderWithRouter(<App />);
     fireEvent.click(getByText(/Home/i));
