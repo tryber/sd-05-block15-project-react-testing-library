@@ -1,7 +1,8 @@
 import React from 'react';
-import { MemoryRouter, Router } from 'react-router-dom';
+import { MemoryRouter, Router, BrowserRouter } from 'react-router-dom';
 import { render, fireEvent } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
+import propTypes from 'prop-types';
 import App from '../App';
 import NotFound from '../components/NotFound';
 
@@ -91,3 +92,7 @@ test('Entrar em uma URL desconhecida exibe a página Not Found', () => {
   const { getByText } = renderWithRouter(<NotFound />);
   expect(getByText(/page requested not found/i)).toBeInTheDocument();
 });
+
+BrowserRouter.propTypes = {
+  children: propTypes.element.isRequired,
+};
