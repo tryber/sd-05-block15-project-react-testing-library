@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/reports
 /.pnp
 .pnp.js
 
