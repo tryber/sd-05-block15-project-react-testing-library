@@ -11,5 +11,5 @@ test('', () => {
   );
   expect(getByText('Page requested not found')).toBeInTheDocument();
   const imagem = getAllByRole('img')[1];
-  expect(imagem.src).toBe('https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif')
+  expect(imagem.src).toBe('https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif');
 });
