@@ -13,7 +13,7 @@ describe('Testes do arquivo Pokedex.js', () => {
     );
     const botao = getByText(/Próximo pokémon/);
     expect(botao).toBeInTheDocument();
-  });  
+  });
   test('A Pokédex deve exibir apenas um pokémon por vez', () => {
     const { getAllByText } = render(
       <MemoryRouter>
