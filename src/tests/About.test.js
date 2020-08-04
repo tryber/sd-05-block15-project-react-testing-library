@@ -11,9 +11,6 @@ test('inf. of Pokedex', () => {
   );
   expect(getByText('About Pokédex')).toBeInTheDocument();
   expect(container.querySelectorAll('p').length).toBe(2);
-  const imagem = getByRole('img', {
-    src:
-      'https://cdn.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png',
-  });
-  expect(imagem).toBeInTheDocument();
+  const imagem = getByRole('img')
+    expect(imagem.src).toBe('https://cdn.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png');
 });
