@@ -10,7 +10,7 @@ test('Ao apertar o botão de próximo, a página deve exibir o próximo pokémon
   // botao
   const btnNext = getByTestId('next-pokemon');
   expect(btnNext).toBeInTheDocument();
-  // cliques sucessivos, volta no começo, mostra apenas um
+  // cliques sucessivos, volta no começo, mostra apenas um por vez
   const pokemonsNames = ['Charmander', 'Caterpie', 'Ekans', 'Alakazam', 'Mew', 'Rapidash', 'Snorlax', 'Dragonair', 'Pikachu'];
   for (let i = 0; i < pokemonsNames.length; i += 1) {
     fireEvent.click(getByText(/próximo pokémon/i));
@@ -19,7 +19,7 @@ test('Ao apertar o botão de próximo, a página deve exibir o próximo pokémon
   }
 });
 
-test('A Pokédex deve exibir apenas um pokémon por vez', () => {
+test('A Pokédex deve conter botões de filtro', () => {
   const { getAllByTestId, getByText } = render(<MemoryRouter><App /></MemoryRouter>);
   // botao de filtro
   const btnFilter = getAllByTestId('pokemon-type-button');
@@ -27,4 +27,23 @@ test('A Pokédex deve exibir apenas um pokémon por vez', () => {
   // cliques sucessivos com filtro, exemplo de um tipo
   fireEvent.click(getByText(/Psychic/i));
   expect(getByText(/Alakazam/i)).toBeInTheDocument();
+  fireEvent.click(getByText(/próximo pokémon/i));
+  fireEvent.click(getByText(/próximo pokémon/i));
+  expect(getByText(/Alakazam/i)).toBeInTheDocument();
+});
+
+test('A Pokédex deve conter um botão para resetar o filtro', () => {
+  const { getByText, getAllByText } = render(<MemoryRouter><App /></MemoryRouter>);
+  // botao de All
+  const btnAll = getByText('All');
+  // expect(btnAll).toBeInTheDocument();
+  // ver que reseta o filtro
+  fireEvent.click(getByText('Fire'));
+  fireEvent.click(btnAll);
+  const pokemonsNames = ['Charmander', 'Caterpie', 'Ekans', 'Alakazam', 'Mew', 'Rapidash', 'Snorlax', 'Dragonair', 'Pikachu'];
+  for (let i = 0; i < pokemonsNames.length; i += 1) {
+    fireEvent.click(getByText(/próximo pokémon/i));
+    expect(getByText(pokemonsNames[i])).toBeInTheDocument();
+    expect(getAllByText(/Average weight/i)).toHaveLength(1);
+  }
 });
