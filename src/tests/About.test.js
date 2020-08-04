@@ -1,9 +1,10 @@
 import React from 'react';
-import { MemoryRouter, Router } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
-import { cleanup, fireEvent, render } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+//import { createMemoryHistory } from 'history';
+import { cleanup, render } from '@testing-library/react';
 import About from '../components/About';
 
+afterEach(cleanup);
 
 test('renders a reading H2 with the text `About Pokédex`', () => {
   const { getByText, container } = render(
@@ -18,7 +19,7 @@ test('renders a reading H2 with the text `About Pokédex`', () => {
 });
 
 test('renders two paragraphs`', () => {
-  const { getByText, container } = render(
+  const { container } = render(
     <MemoryRouter>
       <About />
     </MemoryRouter>,
@@ -30,7 +31,7 @@ test('renders two paragraphs`', () => {
 });
 
 test('renders specific image`', () => {
-  const { getByText, queryByRole } = render(
+  const { queryByRole } = render(
     <MemoryRouter>
       <About />
     </MemoryRouter>,
