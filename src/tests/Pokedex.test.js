@@ -1,7 +1,7 @@
 import React from 'react';
 import { cleanup, fireEvent, render } from '@testing-library/react';
-import App from '../App.js';
 import { MemoryRouter } from 'react-router-dom';
+import App from '../App.js';
 
 afterEach(cleanup);
 
@@ -42,11 +42,11 @@ test('A Pokédex deve conter um botão para resetar o filtro', () => {
   // ver que reseta o filtro
   fireEvent.click(getByText('Fire'));
   fireEvent.click(btnAll);
-  const pokemonsNames = ['Charmander', 'Caterpie', 'Ekans', 'Alakazam', 'Mew', 'Rapidash', 'Snorlax', 'Dragonair', 'Pikachu'];
-  for (let i = 0; i < pokemonsNames.length; i += 1) {
+  const allPokNames = ['Charmander', 'Caterpie', 'Ekans', 'Alakazam', 'Mew', 'Rapidash', 'Snorlax', 'Dragonair', 'Pikachu'];
+  for (let j = 0; j < allPokNames.length; j += 1) {
     fireEvent.click(getByText(/próximo pokémon/i));
-    expect(getByText(pokemonsNames[i])).toBeInTheDocument();
-    expect(getAllByText(/Average weight/i)).toHaveLength(1);
+    expect(getByText(allPokNames[j])).toBeInTheDocument();
+    expect(getAllByText(/More details/i).length).toBe(1);
   }
 });
 
