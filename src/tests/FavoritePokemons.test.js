@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 import FavoritePokemons from '../components/FavoritePokemons';
 
 test('', () => {
-  const { getByText, getByRole } = render(
+  const { getByText } = render(
     <MemoryRouter>
       <FavoritePokemons />
     </MemoryRouter>,
