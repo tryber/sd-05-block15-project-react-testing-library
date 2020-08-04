@@ -8,7 +8,7 @@ it('tests the content of About page', () => {
   const { queryByText, container } = render(<About />);
   const aboutTag = queryByText('About Pokédex');
   expect(aboutTag).toBeInTheDocument();
-  expect(aboutTag.tagName).toBe('H3');
+  expect(aboutTag.tagName).toBe('H2');
   expect(container.querySelectorAll('p').length).toBe(2);
   expect(container.querySelector('img')).toHaveAttribute(
     'src',
