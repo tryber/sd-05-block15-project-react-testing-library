@@ -3,7 +3,6 @@ import { Router } from 'react-router-dom';
 import { render, cleanup, fireEvent } from '@testing-library/react';
 import { createMemoryHistory, createBrowserHistory } from 'history';
 import App from '../App';
-import { act } from 'react-dom/test-utils';
 
 jest.mock('react-router-dom', () => {
   const originalModule = jest.requireActual('react-router-dom');
@@ -15,7 +14,7 @@ jest.mock('react-router-dom', () => {
 
 function renderWithRouter(
   ui,
-  { route = '/', history = createMemoryHistory({ initialEntries: [route] }) } = {}
+  { route = '/', history = createMemoryHistory({ initialEntries: [route] }), } = {}
 ) {
   return {
     ...render(<Router history={history}>{ui}</Router>),
@@ -23,16 +22,16 @@ function renderWithRouter(
   };
 }
 
-const renderPath = (path) => {
-  const history = createBrowserHistory()
+/* const renderPath = (path) => {
+  const history = createBrowserHistory();
   history.push(path);
   const { ...resources } = render(
     <Router history={history}>
       <App />
     </Router>
-  )
-  return { ...resources }
-};
+  );
+  return { ...resources };
+}; */
 
 describe('renderiza o título da página e a barra de navegação', () => {
   afterEach(cleanup);
@@ -85,10 +84,7 @@ describe('ao clicar na barra de navegaçõ a url da página deve ser modificada'
     expect(app.history.location.pathname).toBe('/favorites');
   });
 
-  test('ao clicar no link Home a aplicação vai para /', () => {
-    const { getByText } = renderWithRouter(<App />);
-    const home = getByText(/Home/i);
-    fireEvent.click(home);
-    expect(location.pathname).toBe('/');
+  test('ao carregar uma path inexistente é mostrada a página not found', () => {
+    expect(location.pathname).toBe('/notFound');
   });
 });
