@@ -1,6 +1,6 @@
 import React from 'react';
 import { MemoryRouter, Router } from 'react-router-dom';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, getByText } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import App from '../App';
 import NotFound from '../components/NotFound';
@@ -83,4 +83,3 @@ test('Entrar em uma URL desconhecida exibe a página Not Found', () => {
   const { getByText } = renderWithRouter(<NotFound />);
   expect(getByText(/page requested not found/i)).toBeInTheDocument();
 });
-
