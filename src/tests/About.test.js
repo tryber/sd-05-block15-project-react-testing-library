@@ -1,6 +1,5 @@
 import React from 'react';
-import { cleanup, fireEvent, render } from '@testing-library/react';
-import App from '../App';
+import { cleanup, render } from '@testing-library/react';
 import About from '../components/About';
 
 afterEach(cleanup);
@@ -9,10 +8,10 @@ test('A página "About" deve exibir informações sobre a Pokédex', () => {
   const { getByText } = render(<About />);
   const infoPokedex = getByText(/About Pokédex/i);
   expect(infoPokedex).toBeInTheDocument();
-})
+});
 
 test('A página deve conter um heading h2 com o texto About Pokédex', () => {
-  const { queryByText, container } = render (<About />);
+  const { queryByText, container } = render(<About />);
   const textAboutPokedex = queryByText('About Pokédex');
   expect(textAboutPokedex).toBeInTheDocument();
   expect(container.querySelector('h2')).toBeInTheDocument();
