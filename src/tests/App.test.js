@@ -4,13 +4,13 @@ import { render, cleanup, fireEvent } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import App from '../App';
 
-jest.mock('react-router-dom', () => {
+/* jest.mock('react-router-dom', () => {
   const originalModule = jest.requireActual('react-router-dom');
   return {
     ...originalModule,
     BrowserRouter: ({ children }) => <div>{children}</div>,
   };
-});
+}); */
 
 function renderWithRouter(
   ui,
