@@ -5,7 +5,7 @@ import { Router } from 'react-router-dom';
 import { render, cleanup, fireEvent } from '@testing-library/react';
 import App from '../App';
 
-// mock BrowserRouter para resetar o histórico de navegação 
+// mock BrowserRouter para resetar o histórico de navegação
 // toda vez que entra na página. Substituindo o BrowserRouter.
 // Agora, retorna só uma div no lugar dele.
 
@@ -23,7 +23,7 @@ import App from '../App';
 // que for feito, ou com um histórico diferente que se possa adicionar
 
 function renderWithRouter(ui, { route = '/', history = createMemoryHistory(
-{ initialEntries: [route] }) } = {} ) {
+{ initialEntries: [route] }) } = {}) {
   return {
     ...render(<Router history={history}>{ui}</Router>),
     history,
@@ -44,7 +44,6 @@ describe('Testes da página inicial', () => {
   });
 
   describe('No topo da aplicação, deve haver um conjunto fixo de links de navegação', () => {
-
     test('O primeiro link deve possuir o texto Home com a URL /', () => {
       const { getByText, history } = renderWithRouter(<App />);
       fireEvent.click(getByText(/home/i));
@@ -62,7 +61,7 @@ describe('Testes da página inicial', () => {
       const about = getByText(/about pokédex/i);
       expect(about).toBeInTheDocument();
     });
-    
+
     test('O terceiro link deve possuir o texto Favorite Pokémons com a URL /favorites', () => {
       const { getByText, history } = renderWithRouter(<App />);
       fireEvent.click(getByText(/favorite pokémons/i));
