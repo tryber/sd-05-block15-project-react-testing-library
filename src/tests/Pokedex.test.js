@@ -3,7 +3,6 @@ import { MemoryRouter } from 'react-router-dom';
 import { render, fireEvent } from '@testing-library/react';
 import App from '../App';
 import Pokedex from '../components/Pokedex';
-import renderWithRouter from '../services/renderWithRouter';
 
 test('renderiza um botão com o texto Próximo Pokémon', () => {
   const { getByText } = render(
