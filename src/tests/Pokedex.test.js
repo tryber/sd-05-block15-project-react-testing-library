@@ -169,15 +169,15 @@ describe('A Pokédex deve conter um botão para resetar o filtro', () => {
 
 test('A Pokédex deve gerar, dinamicamente, um botão de filtro para cada tipo de pokémon', () => {
   const history = createMemoryHistory();
-  render(
+  const { getAllByTestId } = render(
     <Router history={history}>
       <App />
     </Router>,
   );
   const typesArray = pokemons.map((pokemon) => pokemon.type);
+  const buttons = getAllByTestId('pokemon-type-button');
   typesArray.forEach((pokemonType) => {
-    const button = Object.values(document.querySelectorAll('.filter-button'));
-    expect(button.some((text) => text.innerHTML === pokemonType)).toBe(true);
+    expect(buttons.some((button) => button.innerHTML === pokemonType)).toBe(true);
   });
 });
 
