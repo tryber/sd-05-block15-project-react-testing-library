@@ -1,18 +1,10 @@
 import React from 'react';
-import { MemoryRouter, Router, BrowserRouter } from 'react-router-dom';
+import { MemoryRouter, Router } from 'react-router-dom';
 import { render, fireEvent } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import propTypes from 'prop-types';
 import App from '../App';
 import NotFound from '../components/NotFound';
-
-jest.mock('react-router-dom', () => {
-  const originalModule = jest.requireActual('react-router-dom');
-  return {
-    ...originalModule,
-    BrowserRouter: ({ children }) => (<div>{children}</div>),
-  };
-});
 
 function renderWithRouter(ui, { route = '/', history = createMemoryHistory({ initialEntries: [route] }) } = {}) {
   return {
@@ -93,6 +85,3 @@ test('Entrar em uma URL desconhecida exibe a página Not Found', () => {
   expect(getByText(/page requested not found/i)).toBeInTheDocument();
 });
 
-BrowserRouter.propTypes = {
-  children: propTypes.element.isRequired,
-};
