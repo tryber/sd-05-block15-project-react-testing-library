@@ -1,10 +1,10 @@
 import React from 'react';
-import { MemoryRouter, Router } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 import { render, fireEvent } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import App from '../App';
 
-test('Ao apertar o botão de próximo, a página deve exibir o próximo pokémon da lista', () => {
+test('it should show the next pokemon with click on next-pokemon button', () => {
   const history = createMemoryHistory();
   const { getByText } = render(
     <Router history={history}>
@@ -20,3 +20,7 @@ test('Ao apertar o botão de próximo, a página deve exibir o próximo pokémon
     expect(getByText(poke)).toBeInTheDocument();
   });
 });
+
+// test('it should contain filter buttons', () => {
+
+// });
