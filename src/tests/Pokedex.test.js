@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, render, fireEvent } from '@testing-library/react';
+import { cleanup, render, fireEvent, getByText } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import App from '../App';
 
@@ -51,12 +51,59 @@ describe('Testes do arquivo Pokedex.js', () => {
     expect(pokemon.length).toBe(1);
   });
   test('A Pokédex deve conter botões de filtro', () => {
-    const { getAllByTestId } = render(
+    const { getAllByTestId, getByText } = render(
       <MemoryRouter>
         <App />
       </MemoryRouter>,
     );
     const filtro = getAllByTestId(/pokemon-type-button/);
     expect(filtro.length).toBe(7);
+
+    const fireFilter = getByText('Fire');
+    fireEvent.click(fireFilter);
+    expect(getByText('Charmander')).toBeInTheDocument();
+
+    fireEvent.click(getByText(/Próximo pokémon/));
+    expect(getByText('Rapidash')).toBeInTheDocument();
+  });
+  test('A Pokédex deve conter um botão para resetar o filtro', () => {
+    const { getByText } = render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
+
+    const resetFilter = getByText('All');
+    expect(resetFilter).toBeInTheDocument();
+
+    fireEvent.click(resetFilter);
+    expect(getByText('Pikachu')).toBeInTheDocument();
+
+    fireEvent.click(getByText(/Próximo pokémon/));
+    expect(getByText('Charmander')).toBeInTheDocument();
+
+    fireEvent.click(getByText(/Próximo pokémon/));
+    expect(getByText('Caterpie')).toBeInTheDocument();
+
+    fireEvent.click(getByText(/Próximo pokémon/));
+    expect(getByText('Ekans')).toBeInTheDocument();
+
+    fireEvent.click(getByText(/Próximo pokémon/));
+    expect(getByText('Alakazam')).toBeInTheDocument();
+
+    fireEvent.click(getByText(/Próximo pokémon/));
+    expect(getByText('Mew')).toBeInTheDocument();
+
+    fireEvent.click(getByText(/Próximo pokémon/));
+    expect(getByText('Rapidash')).toBeInTheDocument();
+
+    fireEvent.click(getByText(/Próximo pokémon/));
+    expect(getByText('Snorlax')).toBeInTheDocument();
+
+    fireEvent.click(getByText(/Próximo pokémon/));
+    expect(getByText('Dragonair')).toBeInTheDocument();
+
+    fireEvent.click(getByText(/Próximo pokémon/));
+    expect(getByText('Pikachu')).toBeInTheDocument(); 
   });
 });
