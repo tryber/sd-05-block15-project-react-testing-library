@@ -85,7 +85,7 @@ describe('Deve conter mais informações sobre apenas o pokémon selecionado', (
       );
       const locationsMap = getAllByAltText(/Pikachu location/);
       expect(getByText(/Kanto Viridian Forest/i)).toBeInTheDocument();
-      expect(locationsMap[0]).toHaveAttribute('src')
+      expect(locationsMap[0]).toHaveAttribute('src');
       expect(locationsMap[0].src).toBe('https://cdn.bulbagarden.net/upload/0/08/Kanto_Route_2_Map.png');
       expect(getByText(/Kanto Power Plant/i)).toBeInTheDocument();
       expect(locationsMap[1]).toHaveAttribute('src');

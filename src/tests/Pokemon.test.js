@@ -22,17 +22,7 @@ describe('Deve ser retornado um card com as informações de determinado pokémo
         <App />
       </MemoryRouter>,
     );
-    expect(getByTestId('pokemon-weight').innerHTML).toBe('Average weight:6.0kg')
-  });
-
-  test('A imagem deve conter atributos src e alt', () => {
-    const { getByRole, getByAltText } = render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>,
-    );
-    expect(getByRole('img')).toHaveAttribute('src', 'https://cdn.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
-    expect(getByAltText('Pikachu sprite')).toBeInTheDocument();
+    expect(getByTestId('pokemon-weight').innerHTML).toBe('Average weight:6.0kg');
   });
 
   test('A imagem deve conter atributos src e alt', () => {
