@@ -53,7 +53,7 @@ test('O segundo link deve possuir o texto About com a URL /about', () => {
       <App />
     </MemoryRouter>,
   );
-  expect(getbyText(/about/i).toHaveAttribute('href', '/about'));
+  expect(getByText(/about/i)).toHaveAttribute('href', '/about');
 });
 
 test('O terceiro link deve possuir o texto Favorite Pokémons com a URL /favorites.', () => {
