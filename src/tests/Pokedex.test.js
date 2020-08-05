@@ -7,8 +7,8 @@ test('testing pokedex component', () => {
   const { getByText, getAllByTestId } = render(
     <MemoryRouter>
       <App />
-    </MemoryRouter>,
-  )
+    </MemoryRouter>
+  );
   const next = getByText('Próximo pokémon');
   expect(next).toBeInTheDocument();
   expect(getAllByTestId('pokemon-type-button').length).toBe(7);
@@ -31,4 +31,4 @@ test('testing pokedex component', () => {
   expect(getByText('Dragonair')).toBeInTheDocument;
   fireEvent.click(next);
   expect(getByText('Pikachu')).toBeInTheDocument;
-}); 
+});
