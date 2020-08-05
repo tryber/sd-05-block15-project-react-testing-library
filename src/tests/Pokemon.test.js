@@ -21,7 +21,7 @@ test('should render a Card of Pokémon', () => {
   expect(...pokemon).toBeInTheDocument();
   expect(name).toHaveTextContent('Pikachu');
   expect(weight).toHaveTextContent('Average weight:6.0kg');
-  expect(type).toBeInTheDocument();
+  expect(type).toHaveTextContent('Electric');
   expect(img.src).toBe(
     'https://cdn.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png',
   );
