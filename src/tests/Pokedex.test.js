@@ -21,7 +21,7 @@ describe('Ao apertar o botão de próximo, a página deve exibir o próximo pok�
   });
   test('A Pokédex deve conter botões de filtro', () => {
     const { getAllByText, getAllByTestId } = renderWithRouter(<App />);
-    pokemons.forEach( ({ type }) => expect(getAllByText(type)[0]).toBeInTheDocument());
+    pokemons.forEach(({ type }) => expect(getAllByText(type)[0]).toBeInTheDocument());
     expect(getAllByTestId('pokemon-type-button').length).toEqual(7);
   });
   test('A Pokédex deve conter um botão para resetar o filtro', () => {
@@ -34,5 +34,5 @@ describe('Ao apertar o botão de próximo, a página deve exibir o próximo pok�
     const { container } = renderWithRouter(<App />);
     expect(container.querySelector('h2')).toBeInTheDocument();
     expect(container.querySelector('h2').innerHTML).toBe('Encountered pokémons');
-  })
+  });
 });
