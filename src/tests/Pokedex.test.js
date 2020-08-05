@@ -44,3 +44,38 @@ describe('A Pokédex deve conter botões de filtro', () => {
     expect(getByText(/Alakazam/i)).toBeInTheDocument();
   });
 });
+
+describe('A Pokédex deve conter um botão para resetar o filtro', () => {
+  test('O texto do botão deve ser "All"', () => {
+    const { getAllByRole } = render(<MemoryRouter><App /></MemoryRouter>);
+    expect(getAllByRole('button')[0].innerHTML).toMatch('All');
+  });
+
+  test('Após clicá-lo, a Pokédex deve voltar a circular por todos os pokémons', () => {
+    const { getByText, getAllByText } = render(<MemoryRouter><App /></MemoryRouter>);
+    fireEvent.click(getByText('Fire'));
+    fireEvent.click(getByText('All'));
+    const pokemons = ['Charmander', 'Caterpie', 'Ekans', 'Alakazam', 'Mew', 'Rapidash', 'Snorlax', 'Dragonair', 'Pikachu'];
+    pokemons.forEach((pokemon) => {
+      fireEvent.click(getByText(/próximo pokémon/i));
+      expect(getByText(pokemon)).toBeInTheDocument();
+      expect(getAllByText(/More details/i).length).toBe(1);
+    });
+  });
+
+  test('Quando a página carrega, o filtro selecionado deve ser o All', () => {
+    const { getByText, getAllByText } = render(<MemoryRouter initialEntries={['/']}><App /></MemoryRouter>);
+    const pokemons = ['Charmander', 'Caterpie', 'Ekans', 'Alakazam', 'Mew', 'Rapidash', 'Snorlax', 'Dragonair', 'Pikachu'];
+    pokemons.forEach((pokemon) => {
+      fireEvent.click(getByText(/próximo pokémon/i));
+      expect(getByText(pokemon)).toBeInTheDocument();
+      expect(getAllByText(/More details/i).length).toBe(1);
+    });
+  });
+});
+
+test('O botão de Próximo pokémon deve ser desabilitado se a lista filtrada de pokémons tiver um só pokémon', () => {
+  const { getByText } = render(<MemoryRouter><App /></MemoryRouter>);
+  fireEvent.click(getByText('Poison'));
+  expect(getByText(/próximo pokémon/i)).toBeDisabled();
+});
