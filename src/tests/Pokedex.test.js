@@ -72,7 +72,7 @@ describe('Routes', () => {
     const { getByText, getAllByText, container } = resetHistory();
     const type = typeList[Math.floor(Math.random() * typeList.length)];
     const buttonAmount = container.querySelectorAll('.filter-button');
-    const expected = type.length + 1;
+    const expected = typeList.length + 1;
     expect(buttonAmount.length).toBe(expected);
 
     buttonAmount.forEach((button) => {
