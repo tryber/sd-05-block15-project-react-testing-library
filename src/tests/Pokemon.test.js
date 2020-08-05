@@ -14,7 +14,7 @@ describe('Testes do arquivo Pokemon.js', () => {
     const name = getByText('Pikachu');
     expect(name).toBeInTheDocument();
 
-    const peso = getByTestId('pokemon-weight');
+    const peso = getByText('Average weight:6.0kg');
     expect(peso).toBeInTheDocument();
 
     const image = getByRole('img');
