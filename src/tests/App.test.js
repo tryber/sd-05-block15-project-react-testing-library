@@ -93,3 +93,14 @@ describe('Ao clicar nos links de navegação da página', () => {
     expect(getByText('Favorite pokémons')).toBeInTheDocument();
   });
 });
+
+describe('Entrar em uma URL desconhecida', () => {
+  it('exibe a página Not Found', () => {
+    const { getByText } = render(
+      <MemoryRouter initialEntries={['buddybatatinha']}>
+        <App />
+      </MemoryRouter>,
+    );
+    expect(getByText('Page requested not found')).toBeInTheDocument();
+  });
+});
