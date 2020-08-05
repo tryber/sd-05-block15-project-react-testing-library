@@ -2,7 +2,7 @@ import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 // import { createMemoryHistory } from 'history';
 import { cleanup, render, fireEvent } from '@testing-library/react';
-import Pokédex from '../components/Pokedex';
+// import Pokédex from '../components/Pokedex';
 import App from '../App';
 import pokemons from '../data';
 
@@ -62,7 +62,7 @@ test('Only one pokemon at a time', () => {
       <App />
     </MemoryRouter>,
   );
-  const One = getAllByText(/More details/i)
+  const One = getAllByText(/More details/i);
   expect(One.length).toBe(1);
 });
 
@@ -91,11 +91,11 @@ test('There should be one "reset" filter button called "All" that resets the fil
       <App />
     </MemoryRouter>,
   );
-  const One = getAllByText(/All/i)
+  const One = getAllByText(/All/i);
   expect(One.length).toBe(1);
   const buttons = getAllByRole('button');
   const AllButton = buttons[0];
-  expect(AllButton.innerHTML).toBe('All')
+  expect(AllButton.innerHTML).toBe('All');
 
   const pokemonName = getByTestId('pokemon-name');
   expect(pokemonName.innerHTML).toBe(pokemons[0].name);
@@ -109,7 +109,7 @@ test('There should be one "reset" filter button called "All" that resets the fil
   fireEvent.click(NextBtn);
   expect(pokemonName.innerHTML).toBe('Charmander');
   fireEvent.click(NextBtn);
-  expect(pokemonName.innerHTML).toBe('Caterpie'); 
+  expect(pokemonName.innerHTML).toBe('Caterpie');
 });
 
 test('if there is only one Poke of a type the Próximo button should be disabled', () => {
