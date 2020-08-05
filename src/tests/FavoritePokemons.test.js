@@ -1,10 +1,21 @@
 import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, Router } from 'react-router-dom';
+import { createMemoryHistory } from 'history';
 import { fireEvent, cleanup, render } from '@testing-library/react';
 import FavoritePokemons from '../components/FavoritePokemons';
 import App from '../App';
 
 afterEach(cleanup);
+
+function renderWithRouter(
+  ui,
+  { route = '/', history = createMemoryHistory({ initialEntries: [route] }) } = {},
+  ) {
+  return {
+    ...render(<Router history={history}>{ui}</Router>),
+    history,
+  };
+}
 
 test('renders `No favorite pokemon found`', () => {
   const { getByText } = render(
@@ -16,12 +27,9 @@ test('renders `No favorite pokemon found`', () => {
   expect(NoFav).toBeInTheDocument();
 });
 
+
 test('navigating from home to fav pokemon clicking on one favorite', () => {
-  const { getByText, getByLabelText, getAllByText } = render(
-    <MemoryRouter>
-      <App />
-    </MemoryRouter>,
-  );
+  const { getByText, getByLabelText, getAllByText } = renderWithRouter(<App />);
   fireEvent.click(getByText('More details'));
   fireEvent.click(getByLabelText('Pokémon favoritado?'));
   fireEvent.click(getByText(/Favorite Pokémons/i));
