@@ -1,6 +1,7 @@
 import React from 'react';
 import renderWithRouter from '../renderWithRouter';
 import About from '../components/About';
+// blablabla
 
 test('Testes do arquivo About.js', () => {
   const { getByText, container } = renderWithRouter(<About />);
