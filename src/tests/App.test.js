@@ -39,13 +39,21 @@ test('O primeiro link deve possuir o texto Home com a URL /', () => {
 });
 
 test('O segundo link deve possuir o texto About com a URL /about', () => {
-  const { getAllByRole } = render(
+  // const { getAllByRole } = render(
+  //   <MemoryRouter>
+  //     <App />
+  //   </MemoryRouter>,
+  // );
+  // expect(getAllByRole('link')[1]).toHaveAttribute('href', '/about');
+  // expect(getAllByRole('link')[1].innerHTML).toMatch(/about/i);
+  // outro jeito de pegar o elemento de link com texto About
+  // (porém, lembrando que que a melhor pratica de query é a byRole):
+  const { getByText } = render(
     <MemoryRouter>
       <App />
     </MemoryRouter>,
   );
-  expect(getAllByRole('link')[1]).toHaveAttribute('href', '/about');
-  expect(getAllByRole('link')[1].innerHTML).toMatch(/about/i);
+  expect(getbyText(/about/i).toHaveAttribute('href', '/about'));
 });
 
 test('O terceiro link deve possuir o texto Favorite Pokémons com a URL /favorites.', () => {
