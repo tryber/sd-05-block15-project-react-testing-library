@@ -13,8 +13,8 @@ describe('notFound', () => {
   });
 
   test('A página deve exibir a imagem https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif', () => {
-    const { getByRole } = renderWithRouter(<NotFound />);
-    const pikaPika = getByRole('img');
+    const { getAllByRole } = renderWithRouter(<NotFound />);
+    const pikaPika = getAllByRole('img');
     expect(pikaPika[1].src).toBe('https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif');
   });
 });
