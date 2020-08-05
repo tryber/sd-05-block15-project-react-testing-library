@@ -1,9 +1,8 @@
 import React from 'react';
 import { MemoryRouter, Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
-import { render, fireEvent, getByRole } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import App from '../App';
-import { NotFound } from '../components';
 
 test('renders a reading with the text `Pokédex`', () => {
   const { getByText } = render(
@@ -51,6 +50,6 @@ test('testando se os links têm o texto correto e renderizam a página certa', (
   expect(history.location.pathname).toBe('/favorites');
 
   history.push('/outrolink');
-  const textoNotFound= getByAltText('Pikachu crying because the page requested was not found');
+  const textoNotFound = getByAltText('Pikachu crying because the page requested was not found');
   expect(textoNotFound).toBeInTheDocument();
 });
