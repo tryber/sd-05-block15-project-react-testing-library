@@ -23,7 +23,6 @@ test('teste2', () => {
   fireEvent.click(getByText(/Favorite Pokémons/i));
 
   expect(getByText(/More details/i)).toBeInTheDocument();
-
 });
 
 test('teste3', () => {
