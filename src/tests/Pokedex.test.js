@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import { render, fireEvent, cleanup } from '@testing-library/react';
 import App from '../App';
 
@@ -10,4 +10,4 @@ describe('Teste da aplicação, testando o botão e sua funcionalidade', () => {
     const button = getByText('Próximo pokémon');
     expect(button).toBeInTheDocument();
   });
-});
+}); */
