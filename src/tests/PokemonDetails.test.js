@@ -4,7 +4,15 @@ import App from '../App';
 import renderWithRouter from '../services/renderWithRouter';
 
 test('should render a Card of Pokémon', () => {
-  const { queryByText, queryAllByRole, getAllByAltText, getByLabelText, getByText, history, container } = renderWithRouter(<App />);
+  const {
+    queryByText,
+    queryAllByRole,
+    getAllByAltText,
+    getByLabelText,
+    getByText,
+    history,
+    container,
+  } = renderWithRouter(<App />);
   fireEvent.click(getByText(/More details/i));
   const moreDetails = (queryByText(/More details/i));
   const mapOfPokemon = (getByText(/Game Locations of Pikachu/i));
