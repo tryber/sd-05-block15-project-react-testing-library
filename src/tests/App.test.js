@@ -1,8 +1,8 @@
 import React from 'react';
 import { MemoryRouter, Router } from 'react-router-dom';
-import { render, queryByText, fireEvent, querySelectorAll } from '@testing-library/react';
-import App from '../App';
 import { createMemoryHistory } from 'history';
+import { render, fireEvent } from '@testing-library/react';
+import App from '../App';
 
 test('renders a reading with the text `Pokédex`', () => {
   const { getByText } = render(
@@ -28,7 +28,7 @@ test('shows the Pokédex when the route is `/`', () => {
 const renderWithRouter = (component) => {
   const history = createMemoryHistory();
   return {
-  ...render(<Router history={history}>{component}</Router>), history,
+    ...render(<Router history={history}>{component}</Router>), history,
   };
 };
 
@@ -37,7 +37,7 @@ test('O primeiro link deve possuir o texto Home com a URL /', () => {
 
   const firstLink = getByText(/Home/i);
   fireEvent.click(firstLink);
-  expect(history.location.pathname).toBe("/");
+  expect(history.location.pathname).toBe('/');
   expect(firstLink).toBeInTheDocument();
 });
 
@@ -46,7 +46,7 @@ test('O segundo link deve possuir o texto About com a URL /about', () => {
 
   const secondLink = getByText(/About/i);
   fireEvent.click(secondLink);
-  expect(history.location.pathname).toBe("/about");
+  expect(history.location.pathname).toBe('/about');
   expect(secondLink).toBeInTheDocument();
 });
 
@@ -55,6 +55,6 @@ test('O terceiro link deve possuir o texto Favorite Pokémons com a URL /favorit
 
   const thirdLink = getByText(/Favorite Pokémons/i);
   fireEvent.click(thirdLink);
-  expect(history.location.pathname).toBe("/favorites");
+  expect(history.location.pathname).toBe('/favorites');
   expect(thirdLink).toBeInTheDocument();
 });
