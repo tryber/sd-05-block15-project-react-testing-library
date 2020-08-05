@@ -4,7 +4,7 @@ import { render, fireEvent } from '@testing-library/react';
 import App from '../App';
 
 test('Testing pokemon component', () => {
-  const { getByText, getAllByText } = render(
+  const { getByText, getAllByText, container } = render(
     <MemoryRouter>
       <App />
     </MemoryRouter>,
@@ -16,6 +16,6 @@ test('Testing pokemon component', () => {
   expect(getByText('Próximo pokémon')).toBeInTheDocument();
   expect(getByText('Pikachu')).toBeInTheDocument();
   expect(getByText('Average weight:6.0kg')).toBeInTheDocument();
-  const moreDetails = getByText('More details');
-  fireEvent.click(moreDetails);
+  const link = container.querySelectorAll('a')[3];
+  expect(link.href).toBe('http://localhost/pokemons/25');
 });
