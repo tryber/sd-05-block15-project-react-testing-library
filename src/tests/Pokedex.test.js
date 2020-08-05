@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, render } from '@testing-library/react';
+import { cleanup, render, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import App from '../App';
 
@@ -13,6 +13,33 @@ describe('Testes do arquivo Pokedex.js', () => {
     );
     const botao = getByText(/Próximo pokémon/);
     expect(botao).toBeInTheDocument();
+
+    fireEvent.click(botao);
+    expect(getByText('Charmander')).toBeInTheDocument();
+
+    fireEvent.click(botao);
+    expect(getByText('Caterpie')).toBeInTheDocument();
+
+    fireEvent.click(botao);
+    expect(getByText('Ekans')).toBeInTheDocument();
+
+    fireEvent.click(botao);
+    expect(getByText('Alakazam')).toBeInTheDocument();
+
+    fireEvent.click(botao);
+    expect(getByText('Mew')).toBeInTheDocument();
+
+    fireEvent.click(botao);
+    expect(getByText('Rapidash')).toBeInTheDocument();
+
+    fireEvent.click(botao);
+    expect(getByText('Snorlax')).toBeInTheDocument();
+
+    fireEvent.click(botao);
+    expect(getByText('Dragonair')).toBeInTheDocument();
+
+    fireEvent.click(botao);
+    expect(getByText('Pikachu')).toBeInTheDocument();
   });
   test('A Pokédex deve exibir apenas um pokémon por vez', () => {
     const { getAllByText } = render(
@@ -24,21 +51,12 @@ describe('Testes do arquivo Pokedex.js', () => {
     expect(pokemon.length).toBe(1);
   });
   test('A Pokédex deve conter botões de filtro', () => {
-    const { getByText } = render(
+    const { getAllByTestId } = render(
       <MemoryRouter>
         <App />
       </MemoryRouter>,
     );
-    const filtro = getByText(/Psychic/);
-    expect(filtro).toBeInTheDocument();
-  });
-  test('A Pokédex deve conter um botão para resetar o filtro', () => {
-    const { getByText } = render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>,
-    );
-    const filtro = getByText(/All/);
-    expect(filtro).toBeInTheDocument();
+    const filtro = getAllByTestId(/pokemon-type-button/);
+    expect(filtro.length).toBe(7);
   });
 });
