@@ -1,7 +1,7 @@
 import React from 'react';
+import { fireEvent } from '@testing-library/react';
 import renderWithRouter from './renderWithRouter';
 import App from '../App';
-import { fireEvent } from '@testing-library/react';
 
 test('Testes do arquivo Pokemon.js', () => {
   const { getByLabelText, getByText, getByTestId, container, history } = renderWithRouter(<App />);
