@@ -4,6 +4,16 @@ import { render, fireEvent } from '@testing-library/react';
 import App from '../App';
 import Pokedex from '../components/Pokedex';
 
+test('should be Encountered text', () => {
+  const { getByText } = render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>,
+  );
+  const h2Text = getByText(/Encountered/i);
+  expect(h2Text).toBeInTheDocument();
+});
+
 test('renders a button with the text `proximo pokémon`', () => {
   const { getByText } = render(
     <MemoryRouter>
