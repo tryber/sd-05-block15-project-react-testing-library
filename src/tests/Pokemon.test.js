@@ -16,5 +16,6 @@ test('Testing pokemon component', () => {
   expect(getByText('Próximo pokémon')).toBeInTheDocument();
   expect(getByText('Pikachu')).toBeInTheDocument();
   expect(getByText('Average weight:6.0kg')).toBeInTheDocument();
-  expect(getByText('More details')).toBeInTheDocument();
+  const moreDetails = getByText('More details');
+  fireEvent.click(moreDetails);
 });
