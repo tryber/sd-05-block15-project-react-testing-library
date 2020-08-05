@@ -67,7 +67,7 @@ describe('Testing pokémon detail', () => {
   test('Check Maps', () => {
     pkmIndex = getRandomPkmIndex();
     const { id, name, foundAt } = pokemons[pkmIndex];
-    const { container, getByText, queryAllByAltText, getByLabelText } = resetHistory(id);
+    const { container, getByText, queryAllByAltText } = resetHistory(id);
     const h2 = container.querySelectorAll('h2')[2];
 
     expect(h2).toBeInTheDocument();
