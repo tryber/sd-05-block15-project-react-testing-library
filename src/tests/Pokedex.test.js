@@ -5,7 +5,7 @@ import App from '../App';
 import Pokedex from '../components/Pokedex';
 
 test('resolve o problema de h2', () => {
-  const { getByText, history } =  render(
+  const { getByText } = render(
     <MemoryRouter>
       <App />
     </MemoryRouter>,
@@ -65,7 +65,7 @@ test('renderiza e verifica se todos botões com o id pokemon-type-button existem
     </MemoryRouter>,
   );
   const button = getAllByTestId('pokemon-type-button');
-  for( let i = 0; i < 7; i+=1 ){
+  for (let i = 0; i < 7; i += 1){
     expect(button[i]).toBeInTheDocument();
   }
 });
