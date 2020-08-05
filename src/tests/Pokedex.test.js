@@ -13,6 +13,7 @@ test('Ao apertar o botão de próximo, a página deve exibir o próximo pokémon
     fireEvent.click(getByText(/próximo pokémon/i));
     expect(getByText(pokemon)).toBeInTheDocument();
     expect(getAllByText(/average weight/i)).toHaveLength(1);
+    return pokemon;
   });
 });
 
