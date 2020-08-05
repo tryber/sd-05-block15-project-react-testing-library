@@ -15,4 +15,6 @@ test('Testing pokemon component', () => {
   expect(getByText('Encountered pokémons')).toBeInTheDocument();
   expect(getByText('Próximo pokémon')).toBeInTheDocument();
   expect(getAllByTestId('pokemon-type-button').length).toBe(7);
+  expect(getAllByTestId('pokemon-name').length).toBe(1);
+  expect(getAllByTestId('pokemon-weight').length).toBe(1);
 });
