@@ -9,7 +9,7 @@ test('should render a Card of Pokémon', () => {
   const moreDetails = (queryByText(/More details/i));
   const mapOfPokemon = (getByText(/Game Locations of Pikachu/i));
   const p = container.querySelector('p');
-  const summary = (getByText(/Summary/i));
+  const summary = (queryByText(/Summary/i));
   const pathName = history.location.pathname;
   const pokemonName = getByText(/Pikachu Details/i);
   expect(pathName).toBe('/pokemons/25');
