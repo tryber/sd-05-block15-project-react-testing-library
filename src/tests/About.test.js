@@ -5,9 +5,9 @@ import { render } from '@testing-library/react';
 import About from '../components/About';
 
 const renderWithRouter = (component) => {
-  const history = createMemoryHistory();
+  const historyAbout = createMemoryHistory();
   return {
-    ...render(<Router history={history}>{component}</Router>), history,
+    ...render(<Router history={historyAbout}>{component}</Router>), history,
   };
 };
 
