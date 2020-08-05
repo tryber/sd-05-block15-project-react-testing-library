@@ -19,9 +19,7 @@ const resetHistory = (pkm = pokemons[0], isFavorite = false) => {
   return { getByText, container, getByRole, getAllByText, getAllByTestId };
 };
 
-const getRandomPkmIndex = () => {
-  return Math.floor(Math.random() * pokemons.length);
-};
+const getRandomPkmIndex = () => Math.floor(Math.random() * pokemons.length);
 
 describe('Testing pokémon card', () => {
   afterEach(cleanup);
