@@ -69,17 +69,21 @@ describe('Routes', () => {
   });
 
   test('checkout filters', () => {
-    const { getByText, getAllByText } = resetHistory();
+    const { getByText, getAllByText, container } = resetHistory();
     const type = typeList[Math.floor(Math.random() * typeList.length)];
-    let button = getByText(type);
-    expect(button).toBeInTheDocument();
-    fireEvent.click(button);
+    const buttonAmount = container.querySelectorAll('.filter-button');
+    const expected = type.length + 1;
+    expect(buttonAmount.length).toBe(expected);
+
+    buttonAmount.forEach((button) => {
+      if (button.innerHTML === type) fireEvent.click(button);
+    });
 
     const termsCount = getAllByText(type);
     fireEvent.click(getByText(/Próximo pokémon/i));
     expect(termsCount.length).toBe(2);
 
-    button = getByText('All');
+    const button = getByText('All');
     expect(button).toBeInTheDocument();
     fireEvent.click(button);
     fireEvent.click(getByText(/Próximo pokémon/i));
