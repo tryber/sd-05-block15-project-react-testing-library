@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { pokemonType } from '../types';
 import Pokemon from './Pokemon';
-
 import './favorite-pokemons.css';
 
 class FavoritePokemons extends React.Component {
