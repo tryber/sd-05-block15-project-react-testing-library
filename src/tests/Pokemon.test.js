@@ -47,4 +47,18 @@ describe('Deve ser retornado um card com as informações de determinado pokémo
 
     expect(getByText('More details').href).toBe('http://localhost/pokemons/25');
   });
+
+  test('Pokémons favoritados devem exibir um ícone de uma estrela', () => {
+    const { getByText, getByAltText } = render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
+
+    fireEvent.click(getByText(/more details/i));
+    fireEvent.click(getByText(/pokémon favoritado/i));
+
+    expect(getByAltText(/Pikachu is marked as favorite/i)).toBeInTheDocument();
+    expect(getByAltText(/Pikachu is marked as favorite/i)).toHaveAttribute('src', '/star-icon.svg');
+  });
 });
