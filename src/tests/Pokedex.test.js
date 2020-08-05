@@ -65,7 +65,7 @@ test('renderiza e verifica se todos botões com o id pokemon-type-button existem
     </MemoryRouter>,
   );
   const button = getAllByTestId('pokemon-type-button');
-  for (let i = 0; i < 7; i += 1){
+  for (let i = 0; i < 7; i += 1) {
     expect(button[i]).toBeInTheDocument();
   }
 });
