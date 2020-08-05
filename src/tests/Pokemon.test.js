@@ -10,7 +10,8 @@ describe('Deve ser retornado um card com as informações de determinado pokémo
     const { getByText, getAllByText } = render(
       <MemoryRouter>
         <App />
-      </MemoryRouter>);
+      </MemoryRouter>,
+    );
     expect(getByText(/pikachu/i)).toBeInTheDocument();
     expect(getAllByText(/electric/i)).toHaveLength(2);
   });
@@ -19,7 +20,8 @@ describe('Deve ser retornado um card com as informações de determinado pokémo
     const { getByTestId } = render(
       <MemoryRouter>
         <App />
-      </MemoryRouter>);
+      </MemoryRouter>,
+    );
     expect(getByTestId('pokemon-weight').innerHTML).toBe('Average weight:6.0kg')
   });
 
@@ -27,7 +29,8 @@ describe('Deve ser retornado um card com as informações de determinado pokémo
     const { getByRole, getByAltText } = render(
       <MemoryRouter>
         <App />
-      </MemoryRouter>);
+      </MemoryRouter>,
+    );
     expect(getByRole('img')).toHaveAttribute('src', 'https://cdn.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
     expect(getByAltText('Pikachu sprite')).toBeInTheDocument();
   });
@@ -36,7 +39,8 @@ describe('Deve ser retornado um card com as informações de determinado pokémo
     const { getByRole, getByAltText } = render(
       <MemoryRouter>
         <App />
-      </MemoryRouter>);
+      </MemoryRouter>,
+    );
     expect(getByRole('img')).toHaveAttribute('src', 'https://cdn.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
     expect(getByAltText('Pikachu sprite')).toBeInTheDocument();
   });
@@ -45,7 +49,8 @@ describe('Deve ser retornado um card com as informações de determinado pokémo
     const { getByText } = render(
       <MemoryRouter>
         <App />
-      </MemoryRouter>);
+      </MemoryRouter>,
+    );
     expect(getByText(/more details/i)).toHaveAttribute('href', '/pokemons/25');
   });
 
@@ -53,7 +58,8 @@ describe('Deve ser retornado um card com as informações de determinado pokémo
     const { getByText, getByAltText } = render(
       <MemoryRouter>
         <App />
-      </MemoryRouter>);
+      </MemoryRouter>,
+    );
     fireEvent.click(getByText(/more details/i));
     fireEvent.click(getByText(/pokémon favoritado/i));
     expect(getByAltText(/Pikachu is marked as favorite/i)).toBeInTheDocument();
