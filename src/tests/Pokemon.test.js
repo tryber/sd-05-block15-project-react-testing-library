@@ -5,7 +5,7 @@ import App from '../App';
 
 describe('Testes do arquivo Pokemon.js', () => {
   test('testes', () => {
-    const { getByText, getByRole, getByTestId } = render(
+    const { getByText, getByRole } = render(
       <MemoryRouter>
         <App />
       </MemoryRouter>,
