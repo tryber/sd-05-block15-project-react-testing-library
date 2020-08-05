@@ -21,7 +21,7 @@ describe('A página "About" deve exibir informações sobre a Pokédex', () => {
 
   test('A página deve conter a imagem específica de uma Pokédex', () => {
     const { getByAltText, queryByRole } = render(<About />);
-    expect(queryByRole('img')).toBeInTheDocumen();
+    expect(queryByRole('img')).toBeInTheDocument();
     expect(getByAltText('Pokédex').tagName).toMatch(/img/i);
     expect(getByAltText('Pokédex')).toHaveAttribute('src', 'https://cdn.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png');
   });
