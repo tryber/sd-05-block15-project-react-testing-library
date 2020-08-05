@@ -40,7 +40,7 @@ describe('Testa as informações do card do pokemon', () => {
 
   test('pokemons favoritos possuem marcação', () => {
     const { getAllByRole } = renderWithRouter(
-      <Pokemon pokemon={pokemons[0]} isFavorite />
+      <Pokemon pokemon={pokemons[0]} isFavorite />,
     );
     const imgFavorito = getAllByRole('img')[1];
     expect(imgFavorito.src).toMatch(/\/star-icon.svg/);
