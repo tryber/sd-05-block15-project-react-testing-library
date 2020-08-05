@@ -14,7 +14,6 @@ const renderWithRouter = (component) => {
 afterEach(cleanup);
 
 test('', () => {
-
   const { getByText, history, queryByAltText } = renderWithRouter(<App />);
   history.push('/batatinha');
 

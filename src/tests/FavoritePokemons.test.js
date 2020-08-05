@@ -30,7 +30,7 @@ test('teste3', () => {
 
   localStorage.clear();
 
-  fireEvent.click(getByText(/bug/i))
+  fireEvent.click(getByText(/bug/i));
   fireEvent.click(getByText(/more details/i));
   fireEvent.click(getByLabelText(/pokémon favoritado/i));
   fireEvent.click(getByText(/home/i));
