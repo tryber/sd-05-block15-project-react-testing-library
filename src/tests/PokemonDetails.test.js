@@ -30,7 +30,7 @@ test('should render a Card of Pokémon', () => {
   expect(moreDetails).toBeNull();
   expect(p).toBeInTheDocument();
   expect(p).toHaveTextContent(
-    'This intelligent Pokémon roasts hard berries with electricity to make them tender enough to eat.'
+    'This intelligent Pokémon roasts hard berries with electricity to make them tender enough to eat.',
   );
   expect(summaryHeading).toHaveTextContent('Summary');
   expect(mapOfPokemon).toBeInTheDocument();
@@ -38,6 +38,6 @@ test('should render a Card of Pokémon', () => {
   expect(map1).toBeInTheDocument();
   expect(map2).toBeInTheDocument();
   expect(map1.src).toBe(
-    'https://cdn.bulbagarden.net/upload/0/08/Kanto_Route_2_Map.png'
+    'https://cdn.bulbagarden.net/upload/0/08/Kanto_Route_2_Map.png',
   );
 });
