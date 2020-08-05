@@ -47,3 +47,25 @@ test('test the button function with the text `all`', () => {
   fireEvent.click(button);
   expect(Pokedex.prototype.filterPokemons).toHaveBeenCalledWith('all');
 });
+
+test('render all buttons with pokemon-type-button', () => {
+  const { getAllByTestId } = render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>,
+  );
+  const buttons = getAllByTestId('pokemon-type-button');
+  for(let i in buttons){
+    expect(buttons[i]).toBeInTheDocument();
+  };
+});
+
+test('verify if button `Próximo pokémon` is disabled when has one pokemon in group', () =>{
+  const { getByText } = render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>,
+  );
+  fireEvent.click(getByText('Bug'));
+  expect(getByText(/Próximo pokémon/i)).toBeDisabled();
+});
