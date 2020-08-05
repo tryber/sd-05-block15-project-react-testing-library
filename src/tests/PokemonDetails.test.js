@@ -1,17 +1,9 @@
 import React from 'react';
-import { cleanup, render, fireEvent } from '@testing-library/react';
-import { Router } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
+import { cleanup, fireEvent } from '@testing-library/react';
 import App from '../App';
+import renderWithRouter from '../services/renderWithRouter';
 
 afterEach(cleanup);
-
-const renderWithRouter = (component) => {
-  const history = createMemoryHistory();
-  return {
-    ...render(<Router history={history}>{component}</Router>), history,
-  };
-};
 
 describe('Deve conter mais informações sobre apenas o pokémon selecionado', () => {
   test('O pokémon exibido na página de detalhes não deve conter um link de navegação para exibir detalhes deste pokémon', () => {

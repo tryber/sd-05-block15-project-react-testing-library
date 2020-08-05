@@ -1,15 +1,8 @@
 import React from 'react';
-import { MemoryRouter, Router } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { render, fireEvent } from '@testing-library/react';
-import { createMemoryHistory } from 'history';
 import App from '../App';
-
-const renderWithRouter = (component) => {
-  const history = createMemoryHistory();
-  return {
-    ...render(<Router history={history}>{component}</Router>), history,
-  };
-};
+import renderWithRouter from '../services/renderWithRouter';
 
 describe('Testes do arquivo App.js', () => {
   test('Ao carregar a aplicação no caminho de URL “/”, a página principal da Pokédex deve ser mostrada', () => {
