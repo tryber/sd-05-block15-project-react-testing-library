@@ -17,7 +17,7 @@ test('renders `No favorite pokemon found`', () => {
 });
 
 test('navigating from home to fav pokemon clicking on one favorite', () => {
-  const { getByText, getByLabelText, getAllByText, container, history } = render(
+  const { getByText, getByLabelText, getAllByText } = render(
     <MemoryRouter>
       <App />
     </MemoryRouter>,
