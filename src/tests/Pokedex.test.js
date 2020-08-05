@@ -31,16 +31,23 @@ const resetHistory = (pkm = pokemons) => {
     container,
     getByRole,
     getAllByText,
+    getAllByTestId,
   } = render(
     <MemoryRouter>
       <Pokedex pokemons={pkm} isPokemonFavoriteById={false} />
     </MemoryRouter>,
   );
-  return { getByText, container, getByRole, getAllByText };
+  return { getByText, container, getByRole, getAllByText, getAllByTestId };
 };
 
 describe('Routes', () => {
   afterEach(cleanup);
+
+  test('Checkout in right page', () => {
+    const { container } = resetHistory();
+    const h2 = container.querySelector('h2');
+    expect(h2.innerHTML).toBe('Encountered pokémons');
+  });
 
   test('Checkout next button exists', () => {
     const { container } = resetHistory();
@@ -69,11 +76,10 @@ describe('Routes', () => {
   });
 
   test('checkout filters', () => {
-    const { getByText, getAllByText, container } = resetHistory();
+    const { getByText, getAllByText, getAllByTestId } = resetHistory();
     const type = typeList[Math.floor(Math.random() * typeList.length)];
-    const buttonAmount = container.querySelectorAll('.filter-button');
-    const expected = typeList.length + 1;
-    expect(buttonAmount.length).toBe(expected);
+    const buttonAmount = getAllByTestId('pokemon-type-button');
+    expect(buttonAmount.length).toBe(typeList.length);
 
     buttonAmount.forEach((button) => {
       if (button.innerHTML === type) fireEvent.click(button);
