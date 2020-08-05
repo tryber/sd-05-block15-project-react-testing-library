@@ -60,7 +60,7 @@ test('render all buttons with pokemon-type-button', () => {
   }
 });
 
-test('verify if button `Próximo pokémon` is disabled when has one pokemon in group', () =>{
+test('verify if button `Próximo pokémon` is disabled when has one pokemon in group', () => {
   const { getByText } = render(
     <MemoryRouter>
       <App />
