@@ -9,14 +9,13 @@ const resetHistory = (pkm = pokemons[0], isFavorite = false) => {
     getByText,
     container,
     getByRole,
-    getAllByText,
-    getAllByTestId,
+    getByTestId,
   } = render(
     <MemoryRouter>
       <Pokemon isFavorite={isFavorite} pokemon={pkm} />
     </MemoryRouter>,
   );
-  return { getByText, container, getByRole, getAllByText, getAllByTestId };
+  return { getByText, container, getByRole, getByTestId };
 };
 
 const getRandomPkmIndex = () => Math.floor(Math.random() * pokemons.length);
@@ -26,11 +25,14 @@ describe('Testing pokémon card', () => {
   let pkmIndex = getRandomPkmIndex();
 
   test('Card informations', () => {
-    const { name } = pokemons[pkmIndex];
-    const { getByText } = resetHistory(pokemons[pkmIndex]);
+    const { name, type } = pokemons[pkmIndex];
+    const { getByText, getByTestId } = resetHistory(pokemons[pkmIndex]);
 
     const myPkm = getByText(name);
+    const myPkmType = getByTestId('pokemonType');
     expect(myPkm).toBeInTheDocument();
+    expect(myPkmType).toBeInTheDocument();
+    expect(myPkmType.textContent).toBe(type);
   });
 
   test('Testing avarage weight format', () => {
@@ -76,6 +78,7 @@ describe('Testing pokémon card', () => {
     const star = container.querySelector('.favorite-icon');
 
     expect(star).toBeInTheDocument();
+    expect(star.src.includes('/star-icon.svg')).toBe(true);
     expect(star.alt).toBe(`${name} is marked as favorite`);
   });
 });
