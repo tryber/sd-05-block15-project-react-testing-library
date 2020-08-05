@@ -38,13 +38,13 @@ describe('testes componente pokedex', () => {
   });
   test('A Pokédex deve conter um botão para resetar o filtro', () => {
     const { getByText } = render(<MemoryRouter><App /></MemoryRouter>);
-    const btn = getByText(/próximo pokémon/i);
     const btnAll = getByText(/all/i);
     expect(btnAll).toBeInTheDocument();
     fireEvent.click(btnAll);
     Data.forEach((element) => {
+      const btnNext = getByText(/próximo pokémon/i);
       expect(getByText(element.name)).toBeInTheDocument();
-      fireEvent.click(btn);
+      fireEvent.click(btnNext);
     });
   });
   test('A Pokédex deve gerar, dinamicamente, um botão de filtro para cada tipo de pokémon', () => {
