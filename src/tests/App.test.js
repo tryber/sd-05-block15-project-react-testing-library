@@ -24,25 +24,6 @@ test('shows the Pokédex when the route is `/`', () => {
   expect(getByText('Encountered pokémons')).toBeInTheDocument();
 });
 
-// jest.mock('react-router-dom', () => {
-//   const originalModule = jest.requireActual('react-router-dom'); 
-//   return {
-//     ...originalModule,
-//     BrowserRouter: ({ children }) => {
-//       return (
-//         <div>{children}</div>
-//       );
-//     }
-//   };
-// })
-
-// const history = createMemoryHistory();
-//   const { getAllByText } = render(
-//     <Router history={history}>
-//       <App />
-//     </Router>
-//   );
-
 test('every link redirects to the right page', () => {
   const history = createMemoryHistory();
   const { getByText } = render(
