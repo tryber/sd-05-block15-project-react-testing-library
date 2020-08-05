@@ -5,7 +5,7 @@ import App from '../App';
 
 describe('Testes do arquivo Pokemon.js', () => {
   test('testes', () => {
-    const { getByText, getByRole } = render(
+    const { getByText, getByRole, getByTestId } = render(
       <MemoryRouter>
         <App />
       </MemoryRouter>,
@@ -13,6 +13,9 @@ describe('Testes do arquivo Pokemon.js', () => {
 
     const name = getByText('Pikachu');
     expect(name).toBeInTheDocument();
+
+    const tipo = getByTestId('pokemonType');
+    expect(tipo.innerHTML).toBe('Electric');
 
     const peso = getByText('Average weight:6.0kg');
     expect(peso).toBeInTheDocument();
