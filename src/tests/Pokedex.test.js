@@ -1,6 +1,6 @@
 import React from 'react';
 import { Router } from 'react-router-dom';
-import { render, fireEvent, getAllByTestId } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import App from '../App';
 import pokemons from '../data';
@@ -14,13 +14,13 @@ const renderWithRouter = (component) => {
 
 test('it should show the next pokemon with click on next-pokemon button', () => {
   const { getByText } = renderWithRouter(<App />);
-  const pokemons = ['Charmander', 'Caterpie', 'Ekans', 'Alakazam', 'Mew', 'Rapidash', 'Snorlax', 'Dragonair', 'Pikachu'];
+  const pokemonsName = pokemons.map((poke) => poke.name);
 
   const nextButton = getByText('Próximo pokémon');
 
-  pokemons.forEach((poke) => {
-    fireEvent.click(nextButton);
+  pokemonsName.forEach((poke) => {
     expect(getByText(poke)).toBeInTheDocument();
+    fireEvent.click(nextButton);
   });
 });
 
