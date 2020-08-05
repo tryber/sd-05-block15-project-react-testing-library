@@ -21,6 +21,7 @@ test('the app should render one pokemon "card" with it.s name, type and weight',
   const pokemonWeight = getByTestId('pokemon-weight');
   expect(pokemonWeight.innerHTML).toContain(pokemons[0].averageWeight.value);
   expect(pokemonWeight.innerHTML).toContain(pokemons[0].averageWeight.measurementUnit);
+  expect(pokemonWeight.innerHTML).toContain('Average Weight');
 });
 
 test('renders specific image with itś attributes', () => {
