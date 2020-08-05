@@ -10,7 +10,7 @@ test('O nome e o tipo correto do pokémon deve aparecer na tela', () => {
   const { getByText, getAllByText } = render(
     <MemoryRouter>
       <App />
-    </MemoryRouter>
+    </MemoryRouter>,
   );
   expect(getByText(/pikachu/i)).toBeInTheDocument();
   expect(getAllByText(/electric/i)).toHaveLength(2);
@@ -20,7 +20,7 @@ test('O peso médio do pokémon deve ser exibido...etc', () => {
   const { getByTestId } = render(
     <MemoryRouter>
       <App />
-    </MemoryRouter>
+    </MemoryRouter>,
   );
   expect(getByTestId('pokemon-weight').innerHTML).toBe('Average weight:6.0kg');
 });
@@ -29,7 +29,7 @@ test('A imagem deve conter um atributo src com a URL da imagem do pokémon, e ta
   const { getByRole, getByAltText } = render(
     <MemoryRouter>
       <App />
-    </MemoryRouter>
+    </MemoryRouter>,
   );
   expect(getByRole('img').src).toBe('https://cdn.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
   expect(getByAltText('Pikachu sprite')).toBeInTheDocument();
@@ -39,7 +39,7 @@ test('O pokémon exibido na Pokédex deve conter um link de navegação', () => 
   const { getByText } = render(
     <MemoryRouter>
       <App />
-    </MemoryRouter>
+    </MemoryRouter>,
   );
   const pokemonLink = getByText(/more details/i);
   expect(pokemonLink).toHaveAttribute('href', '/pokemons/25');
@@ -49,7 +49,7 @@ test('Pokémons favoritados devem exibir um ícone de uma estrela', () => {
   const { getByText, getByAltText } = render(
     <MemoryRouter>
       <App />
-    </MemoryRouter>
+    </MemoryRouter>,
   );
   fireEvent.click(getByText(/more details/i));
   fireEvent.click(getByText(/pokémon favoritado/i));
