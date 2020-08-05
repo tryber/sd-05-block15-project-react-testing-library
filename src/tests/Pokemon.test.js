@@ -1,10 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-// import { createMemoryHistory } from 'history';
 import { MemoryRouter } from 'react-router-dom';
 import App from '../App';
-// import Pokemon from '../components/Pokemon';
-// import pokemons from '../data';
 
 describe('Testes do arquivo Pokemon.js', () => {
   test('testes', () => {
