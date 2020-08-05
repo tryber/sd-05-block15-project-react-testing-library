@@ -46,10 +46,10 @@ test('Pokemon should render a "button" to "more details"', () => {
 });
 
 function renderWithRouterDois(
-ui,
-{ route = '/', history = createMemoryHistory({ initialEntries: [route] }) } = {},
+  ui,
+  { route = '/', history = createMemoryHistory({ initialEntries: [route] }) } = {},
 ) {
-return { ...render(<Router history={history}>{ui}</Router>), history };
+  return { ...render(<Router history={history}>{ui}</Router>), history };
 }
 
 test('More details navigation', () => {
