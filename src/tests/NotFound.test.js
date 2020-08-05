@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, render, getByRole } from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 import NotFound from '../components/NotFound';
 
 afterEach(cleanup);
