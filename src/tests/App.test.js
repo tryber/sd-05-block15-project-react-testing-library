@@ -1,6 +1,6 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import App from '../App';
 
 describe('Ao carregar a aplicação no caminho de URL “/”, a página principal da Pokédex deve ser mostrada', () => {
@@ -54,5 +54,42 @@ describe('No topo da aplicação, deve haver um conjunto fixo de links de navega
     );
     expect(getAllByRole('link')[2]).toHaveAttribute('href', '/favorites');
     expect(getAllByRole('link')[2].innerHTML).toMatch(/Favorite Pokémons/i);
+  });
+});
+
+describe('Ao clicar nos links de navegação da página', () => {
+  it('Ao clicar no link "Home" na barra de navegação, a aplicação deve ser redirecionada para a página inicial, na URL "/"', () => {
+    const { getByText } = render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
+    expect(getByText('About').pathname).toBe('/about');
+    fireEvent.click(getByText('About'));
+    expect(getByText('About Pokédex')).toBeInTheDocument();
+  });
+
+  it('Ao clicar no link "About" na barra de navegação, a aplicação deve ser redirecionada para a página de About, na URL "/about"', () => {
+    const { getByText } = render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
+    expect(getByText('Home').pathname).toBe('/');
+    fireEvent.click(getByText('About'));
+    expect(getByText('About Pokédex')).toBeInTheDocument();
+    fireEvent.click(getByText('Home'));
+    expect(getByText('Encountered pokémons')).toBeInTheDocument();
+  });
+
+  it('Ao clicar no link "Favorite Pokémons" na barra de navegação, a aplicação deve ser redirecionada para a página de pokémons favoritados, na URL "/favorites"', () => {
+    const { getByText } = render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
+    expect(getByText('Favorite Pokémons').pathname).toBe('/favorites');
+    fireEvent.click(getByText('Favorite Pokémons'));
+    expect(getByText('Favorite pokémons')).toBeInTheDocument();
   });
 });
