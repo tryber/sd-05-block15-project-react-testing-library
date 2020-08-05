@@ -1,8 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+import { createMemoryHistory } from 'history';
 import { MemoryRouter, Router } from 'react-router-dom';
 import App from '../App';
-import { createMemoryHistory } from 'history';
 import Pokemon from '../components/Pokemon';
 import pokemons from '../data';
 
