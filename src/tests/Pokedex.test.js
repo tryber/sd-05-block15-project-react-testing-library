@@ -55,9 +55,9 @@ test('render all buttons with pokemon-type-button', () => {
     </MemoryRouter>,
   );
   const buttons = getAllByTestId('pokemon-type-button');
-  for(let i in buttons){
+  for (let i = 0; i < 7; i += 1) {
     expect(buttons[i]).toBeInTheDocument();
-  };
+  }
 });
 
 test('verify if button `Próximo pokémon` is disabled when has one pokemon in group', () =>{
