@@ -4,24 +4,36 @@ import { render, cleanup, fireEvent } from '@testing-library/react';
 import { PokemonDetails } from '../components';
 import pokemons from '../data';
 
-const resetHistory = (id = 0, favList = []) => {
+import App from '../App';
+
+const resetHistory = (id = 0) => {
   const {
     getByText,
     queryByText,
     container,
-    getByAltText,
+    queryByAltText,
+    queryAllByAltText,
     getByLabelText,
   } = render(
     <MemoryRouter>
       <PokemonDetails
         pokemons={pokemons}
         isPokemonFavoriteById={{ [id]: false }}
-        match={{params: { id: id.toString() }}}
-        onUpdateFavoritePokemons={(pid, isFav) => { favList.push({ pid, isFav }); }}
+        match={{ params: { id: id.toString() } }}
+        onUpdateFavoritePokemons={() => {}}
       />
     </MemoryRouter>,
   );
-  return { getByText, container, getByAltText, queryByText, getByLabelText };
+  return { getByText, container, queryByAltText, queryAllByAltText, queryByText, getByLabelText };
+};
+
+const resetApp = () => {
+  const { container, getByText, getByLabelText } = render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>,
+  );
+  return { container, getByText, getByLabelText };
 };
 
 const getRandomPkmIndex = () => Math.floor(Math.random() * pokemons.length);
@@ -55,29 +67,36 @@ describe('Testing pokémon detail', () => {
   test('Check Maps', () => {
     pkmIndex = getRandomPkmIndex();
     const { id, name, foundAt } = pokemons[pkmIndex];
-    const { container, getByText, getByAltText } = resetHistory(id);
+    const { container, getByText, queryAllByAltText, getByLabelText } = resetHistory(id);
     const h2 = container.querySelectorAll('h2')[2];
 
     expect(h2).toBeInTheDocument();
     expect(h2.innerHTML).toBe(`Game Locations of ${name}`);
 
-    foundAt.forEach(({ location, map }) => {
+    foundAt.forEach(({ location, map }, index) => {
       const loc = getByText(location);
-      const img = getByAltText(`${name} location`);
+      const img = queryAllByAltText(`${name} location`);
       expect(loc).toBeInTheDocument();
-      expect(img).toBeInTheDocument();
-      expect(img.getAttribute('src')).toBe(map);
+      expect(img[index]).toBeInTheDocument();
+      expect(img[index].getAttribute('src')).toBe(map);
     });
   });
 
-  test('Set favorite', () => {
-    pkmIndex = getRandomPkmIndex();
-    const favList = [];
-    const { id } = pokemons[pkmIndex];
-    const { getByLabelText } = resetHistory(id, favList);
-    const checkButton = getByLabelText(/Pokémon favoritado?/i);
+  test('Check favorites', () => {
+    const { container, getByText, getByLabelText } = resetApp();
+    const button = getByText(/More Details/i);
+    expect(button).toBeInTheDocument();
+    fireEvent.click(button);
 
-    expect(checkButton).toBeInTheDocument();
-    expect(favList.length).toBe(0);
+    const favButton = getByLabelText('Pokémon favoritado?');
+    expect(favButton).toBeInTheDocument();
+    fireEvent.click(favButton);
+
+    const favImg = container.querySelector('.favorite-icon');
+    expect(favImg).toBeInTheDocument();
+    expect(favImg.getAttribute('alt')).toBe('Pikachu is marked as favorite');
+    fireEvent.click(favButton);
+
+    expect(favImg).not.toBeInTheDocument();
   });
 });
