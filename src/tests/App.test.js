@@ -1,7 +1,9 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { render, fireEvent } from '@testing-library/react';
+import { cleanup, fireEvent, render } from '@testing-library/react';
 import App from '../App';
+
+afterEach(cleanup);
 
 describe('Ao carregar a aplicação no caminho de URL “/”, a página principal da Pokédex deve ser mostrada', () => {
   test('renderiza um header com o texto `Pokédex`', () => {
@@ -54,6 +56,7 @@ describe('No topo da aplicação, deve haver um conjunto fixo de links de navega
     expect(getAllByRole('link')[2].innerHTML).toMatch(/Favorite Pokémons/i);
   });
 });
+
 describe('Ao clicar nos links de navegação da página', () => {
   test('Ao clicar no link "Home" na barra de navegação, a aplicação deve ser redirecionada para a página inicial, na URL "/"', () => {
     const { getByText } = render(
