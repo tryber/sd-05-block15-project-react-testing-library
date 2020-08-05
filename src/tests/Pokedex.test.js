@@ -6,11 +6,18 @@ import renderWithRouter from './renderWithRouter';
 describe('teste do componente Pokedex', () => {
   afterEach(cleanup);
 
+  test('a página possui um heading Encountered Pokemons', () => {
+    const { getByText } = renderWithRouter(<App />);
+    const title = getByText('Encountered pokémons');
+    expect(title).toBeInTheDocument();
+  });
+
   test('botao de próximo chega no primeiro pokemon', () => {
     const { getByTestId } = renderWithRouter(<App />);
     const pokemon = getByTestId('pokemon-name');
     const firstName = pokemon.innerHTML;
     const buttonNext = getByTestId('next-pokemon');
+    expect(buttonNext.innerHTML).toBe('Próximo pokémon');
     expect(buttonNext).toBeInTheDocument();
     fireEvent.click(buttonNext);
     do {
