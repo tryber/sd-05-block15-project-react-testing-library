@@ -40,5 +40,5 @@ test('deve abrir o botão More Details com detalhes do Pokémon', () => {
   const pokemonFav = getByAltText('Pikachu is marked as favorite');
   expect(pokemonFav).toBeInTheDocument();
   expect(pokemonFav.src).toBe('http://localhost/star-icon.svg');
-  expect(pokemonFav.alt).toBe('Pikachu is marked as favorite');
+  expect(pokemonFav.alt).toBe('Pikachu is marked as favorite'); 
 });
