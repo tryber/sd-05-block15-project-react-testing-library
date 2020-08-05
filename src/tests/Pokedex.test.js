@@ -72,6 +72,16 @@ describe('A Pokédex deve conter um botão para resetar o filtro', () => {
   });
 });
 
+test('A Pokédex deve gerar, dinamicamente, um botão de filtro para cada tipo de pokémon', () => {
+  const { getByText, getAllByTestId } = render(<MemoryRouter><App /></MemoryRouter>);
+  const pokemonTypes = ['Fire', 'Bug', 'Poison', 'Psychic', 'Normal', 'Dragon'];
+
+  pokemonTypes.forEach((type, index) => {
+    expect(getByText(type)).toBeInTheDocument();
+    expect(getAllByTestId('pokemon-type-button')[index + 1].innerHTML).toMatch(type);
+  });
+});
+
 test('O botão de Próximo pokémon deve ser desabilitado se a lista filtrada de pokémons tiver um só pokémon', () => {
   const { getByText } = render(<MemoryRouter><App /></MemoryRouter>);
   fireEvent.click(getByText('Poison'));
