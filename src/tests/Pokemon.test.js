@@ -31,7 +31,7 @@ test('renders specific image with itś attributes', () => {
   );
   expect(queryByRole('img')).toBeInTheDocument();
   expect(queryByRole('img')).toHaveAttribute('src', pokemons[0].image);
-  expect(queryByRole('img')).toHaveAttribute('alt', pokemons[0].name+' '+'sprite');
+  expect(queryByRole('img')).toHaveAttribute('alt', 'Pikachu sprite');
 });
 
 test('Pokemon should render a "button" to "more details"', () => {
@@ -40,43 +40,40 @@ test('Pokemon should render a "button" to "more details"', () => {
       <App />
     </MemoryRouter>,
   );
-  const Btn = getByText(/More details/)
+  const Btn = getByText(/More details/);
   expect(Btn).toBeInTheDocument();
-  expect(Btn).toHaveAttribute('href', '/pokemons/'+pokemons[0].id);
- });
+  expect(Btn).toHaveAttribute('href', '/pokemons/25');
+});
 
- function renderWithRouter(
-  ui,
-  { route = '/', history = createMemoryHistory({ initialEntries: [route] }) } = {},
-  ) {
-  return {
-    ...render(<Router history={history}>{ui}</Router>),
-    history,
-  };
+function renderWithRouterDois(
+ui,
+{ route = '/', history = createMemoryHistory({ initialEntries: [route] }) } = {},
+) {
+return { ...render(<Router history={history}>{ui}</Router>), history };
 }
 
- test('More details navigation', () => {
-  const { getByText, history } = renderWithRouter(<App />);
-  const Btn = getByText(/More details/)
+test('More details navigation', () => {
+  const { getByText, history } = renderWithRouterDois(<App />);
+  const Btn = getByText(/More details/);
   fireEvent.click(Btn);
   const detailPath = history.location.pathname;
-  expect(detailPath).toBe('/pokemons/'+pokemons[0].id);
+  expect(detailPath).toBe('/pokemons/25');
 });
 
 test('renders specific image when favorite', () => {
-  const { queryByRole, getAllByRole, getByText, getByLabelText } = render(
+  const { getAllByRole, getByText, getByLabelText } = render(
     <MemoryRouter>
       <App />
     </MemoryRouter>,
   );
   const One = getAllByRole('img');
   expect(One.length).toBe(1);
-  const Btn = getByText(/More details/)
+  const Btn = getByText(/More details/);
   fireEvent.click(Btn);
   fireEvent.click(getByLabelText('Pokémon favoritado?'));
   fireEvent.click(getByText(/Home/i));
-  
-  const second = getAllByRole('img')[1]
+
+  const second = getAllByRole('img')[1];
   expect(second).toHaveAttribute('src', '/star-icon.svg');
-  expect(second).toHaveAttribute('alt', pokemons[0].name+' '+'is marked as favorite');
+  expect(second).toHaveAttribute('alt', 'Pikachu is marked as favorite');
 });
