@@ -44,11 +44,11 @@ describe('Deve ser retornado um card com as informações de determinado pokémo
   });
 
   test('A imagem deve conter atributos src e alt', () => {
-    const { getByRole, getByAltText } = render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>,
-    );
+    // const { getByRole, getByAltText } = render(
+    //   <MemoryRouter>
+    //     <App />
+    //   </MemoryRouter>,
+    // );
 
     expect(getByRole('img')).toHaveAttribute(
       'src',
