@@ -1,7 +1,10 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, Router } from 'react-router-dom';
 import App from '../App';
+import { createMemoryHistory } from 'history';
+import Pokemon from '../components/Pokemon';
+import pokemons from '../data';
 
 describe('Testes do arquivo Pokemon.js', () => {
   test('testes', () => {
@@ -11,14 +14,14 @@ describe('Testes do arquivo Pokemon.js', () => {
       </MemoryRouter>,
     );
 
-    const name = getByText('Pikachu');
-    expect(name).toBeInTheDocument();
+    const name = getByTestId('pokemon-name');
+    expect(name.innerHTML).toBe('Pikachu');
 
     const tipo = getByTestId('pokemonType');
     expect(tipo.innerHTML).toBe('Electric');
 
-    const peso = getByText('Average weight:6.0kg');
-    expect(peso).toBeInTheDocument();
+    const peso = getByTestId('pokemon-weight');
+    expect(peso.innerHTML).toBe('Average weight:6.0kg');
 
     const image = getByRole('img');
     expect(image.src).toBe('https://cdn.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
@@ -26,5 +29,17 @@ describe('Testes do arquivo Pokemon.js', () => {
 
     const link = getByText('More details');
     expect(link.href).toBe('http://localhost/pokemons/25');
+  });
+
+  test('Pokémons favoritados devem exibir um ícone de uma estrela', () => {
+    const history = createMemoryHistory();
+    const { getByAltText } = render(
+      <Router history={history}>
+        <Pokemon pokemon={pokemons[0]} isFavorite />
+      </Router>,
+    );
+    const img = getByAltText('Pikachu is marked as favorite');
+    expect(img).toBeInTheDocument();
+    expect(img.src).toMatch(/\/star-icon.svg/);
   });
 });
