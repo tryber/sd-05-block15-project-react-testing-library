@@ -20,7 +20,7 @@ describe('Testing NotFound page', () => {
   test('Test page exists', () => {
     const { container } = resetHistory();
     const h2 = container.querySelector('h2');
-    expect(h2.innerHTML).toBe('Page requested not found<span role=\"img\" aria-label=\"Crying emoji\"> 😭 </span>');
+    expect(h2.innerHTML).toBe('Page requested not found<span role="img" aria-label="Crying emoji"> 😭 </span>');
   });
 
   test('Image source', () => {
