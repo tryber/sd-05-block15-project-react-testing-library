@@ -37,4 +37,14 @@ describe('Deve ser retornado um card com as informações de determinado pokémo
     expect(getByRole('img')).toHaveAttribute('src', 'https://cdn.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
     expect(getByAltText('Pikachu sprite')).toBeInTheDocument();
   });
+
+  it('O pokémon exibido na Pokédex deve conter um link de navegação para exibir detalhes deste pokémon', () => {
+    const { getByText } = render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
+
+    expect(getByText('More details').href).toBe('http://localhost/pokemons/25');
+  });
 });
