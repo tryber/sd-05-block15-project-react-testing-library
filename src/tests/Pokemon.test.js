@@ -1,1 +1,29 @@
-test('', () => {});
+import React from 'react';
+import { fireEvent, render } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+import App from '../App';
+import { createMemoryHistory } from 'history';
+
+describe('Testes do arquivo Pokemon.js', () => {
+  test('testes', () => {
+    const history = createMemoryHistory();
+    const { getByText, getByRole, getByTestId } = render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
+
+    const name = getByText('Pikachu');
+    expect(name).toBeInTheDocument();
+
+    const peso = getByTestId('pokemon-weight');
+    expect(peso).toBeInTheDocument();
+
+    const image = getByRole('img');
+    expect(image.src).toBe('https://cdn.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
+    expect(image.alt).toBe('Pikachu sprite');
+
+    const link = getByText('More details');
+    expect(link.href).toBe('http://localhost/pokemons/25');
+  });
+});
