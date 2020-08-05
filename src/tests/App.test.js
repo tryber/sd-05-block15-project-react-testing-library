@@ -20,6 +20,6 @@ test('shows the Pokédex whenthe route is `/`', () => {
     </MemoryRouter>,
   );
 
-  expect(getByText('Encountered pokémons'
+  expect(getByText('Encountered pokémons',
   )).toBeInTheDocument();
 });
