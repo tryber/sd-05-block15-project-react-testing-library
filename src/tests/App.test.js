@@ -45,7 +45,7 @@ test('No topo da aplicação há um conjunto de links de navegação', () => {
   const linkFavorite = getByText(/Favorite/i);
   expect(linkFavorite).toBeInTheDocument();
   fireEvent.click(linkFavorite);
-  expect(history.location.pathname).NottoBe('/favorites');
+  expect(history.location.pathname).toBe('/favorites');
 
   history.push('/blabla');
   const textNotFound = getByText(/page requested not found/i);
