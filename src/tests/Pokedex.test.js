@@ -82,6 +82,12 @@ test('A Pokédex deve gerar, dinamicamente, um botão de filtro para cada tipo d
   });
 });
 
+test('A página deve conter o texto "Encountered pokémons"', () => {
+  const { getByText } = render(<MemoryRouter><App /></MemoryRouter>);
+
+  expect(getByText(/encountered pokémons/i)).toBeInTheDocument();
+});
+
 test('O botão de Próximo pokémon deve ser desabilitado se a lista filtrada de pokémons tiver um só pokémon', () => {
   const { getByText } = render(<MemoryRouter><App /></MemoryRouter>);
   fireEvent.click(getByText('Poison'));
