@@ -3,6 +3,7 @@ import { Router } from 'react-router-dom';
 import { render, cleanup, fireEvent } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import App from '../App';
+import renderWithRouter from './renderWithRouter';
 
 /* jest.mock('react-router-dom', () => {
   const originalModule = jest.requireActual('react-router-dom');
@@ -12,7 +13,7 @@ import App from '../App';
   };
 }); */
 
-function renderWithRouter(
+/* function renderWithRouter(
   ui,
   { route = '/', history = createMemoryHistory({ initialEntries: [route] }) } = {},
 ) {
@@ -20,7 +21,7 @@ function renderWithRouter(
     ...render(<Router history={history}>{ui}</Router>),
     history,
   };
-}
+} */
 
 describe('renderiza o título da página e a barra de navegação', () => {
   afterEach(cleanup);

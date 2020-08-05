@@ -3,8 +3,9 @@ import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { render, cleanup, fireEvent } from '@testing-library/react';
 import App from '../App';
+import renderWithRouter from './renderWithRouter';
 
-function renderWithRouter(
+/* function renderWithRouter(
   ui,
   { route = '/', history = createMemoryHistory({ initialEntries: [route] }) } = {},
 ) {
@@ -12,7 +13,7 @@ function renderWithRouter(
     ...render(<Router history={history}>{ui}</Router>),
     history,
   };
-}
+} */
 
 describe('teste do componente Pokedex', () => {
   afterEach(cleanup);
@@ -51,7 +52,7 @@ describe('teste do componente Pokedex', () => {
         fireEvent.click(buttonNext);
         expect(pokemonType.innerHTML).toBe(firstType);
       } while (firstPokemon !== pokemonName.innerHTML);
-    }); 
+    });
   });
 
   test('O botão All reseta o filtro', () => {
@@ -88,6 +89,5 @@ describe('teste do componente Pokedex', () => {
     fireEvent.click(buttonEletric);
     const buttonNext = getByTestId('next-pokemon');
     expect(buttonNext.disabled).toBe(true);
-
   });
 });
