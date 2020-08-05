@@ -11,7 +11,7 @@ describe('Testes do arquivo PokemonDetails.js', () => {
         <App />
       </MemoryRouter>,
     );
-    
+
     const moreDetails = getByText('More details');
     expect(moreDetails).toBeInTheDocument();
 
@@ -39,6 +39,6 @@ describe('Testes do arquivo PokemonDetails.js', () => {
 
     const icone = getAllByRole('img');
     expect(icone[1].src).toBe('http://localhost/star-icon.svg');
-    expect(icone[1].alt).toBe('Pikachu is marked as favorite');  
+    expect(icone[1].alt).toBe('Pikachu is marked as favorite');
   });
 });
