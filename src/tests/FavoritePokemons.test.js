@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
-import { MemoryRouter, Router } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 import { FavoritePokemons } from '../components';
 import App from '../App';
 
