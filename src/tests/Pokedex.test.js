@@ -4,7 +4,7 @@ import { render, fireEvent } from '@testing-library/react';
 import App from '../App';
 
 test('testing pokedex component', () => {
-  const { getByText, getAllByTestId, getAllByText, getByRole, container } = render(
+  const { getByText, getAllByTestId, getAllByText, container } = render(
     <MemoryRouter>
       <App />
     </MemoryRouter>,
