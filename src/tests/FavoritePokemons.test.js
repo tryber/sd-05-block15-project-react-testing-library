@@ -3,7 +3,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import FavoritePokemons from '../components/FavoritePokemons';
 
-test('', () => {
+test('testing component Favorite Pokemons', () => {
   const { getByText } = render(
     <MemoryRouter>
       <FavoritePokemons />
