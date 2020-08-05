@@ -8,7 +8,7 @@ test('Testing pokemon component', () => {
     <MemoryRouter>
       <App />
     </MemoryRouter>,
-  )
+  );
   const all = getByText('All');
   fireEvent.click(all);
   expect(getAllByText('Electric').length).toBe(2);
