@@ -7,12 +7,13 @@ afterEach(cleanup);
 
 describe('Ao apertar o botão de próximo, a página deve exibir o próximo pokémon da lista', () => {
   it('O botão deve conter o texto Próximo pokémon', () => {
-    const { getByTestId } = render(
+    const { getByText, getByTestId } = render(
       <MemoryRouter>
         <App />
       </MemoryRouter>,
     );
 
+    expect(getByText(/Encountered pokémons/i)).toBeInTheDocument();
     expect(getByTestId('next-pokemon')).toBeInTheDocument();
   });
 
@@ -86,5 +87,16 @@ describe('A Pokédex deve conter um botão para resetar o filtro', () => {
       expect(getByText(pokemons[i])).toBeInTheDocument();
       expect(getAllByText(/More details/i).length).toBe(1);
     }
+  });
+
+  it('O botão de Próximo pokémon deve ser desabilitado se a lista filtrada de pokémons tiver um só pokémon', () => {
+    const { getByText } = render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
+
+    fireEvent.click(getByText('Poison'));
+    expect(getByText(/próximo pokémon/i)).toBeDisabled();
   });
 });
