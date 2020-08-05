@@ -1,9 +1,10 @@
 import React from 'react';
-import { cleanup, render } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
 import App from '../App';
 
+// esta função veio do GitHub do Kent C. Dodds
 const renderWithRouter = (component) => {
   const history = createMemoryHistory();
   return {
@@ -13,26 +14,17 @@ const renderWithRouter = (component) => {
 
 afterEach(cleanup);
 
-test('', () => {
-  const { getByText, history, queryByAltText } = renderWithRouter(<App />);
-  history.push('/batatinha');
-
-  expect(getByText('Page requested not found')).toBeInTheDocument();
-  expect(getByText('Page requested not found').tagName).toBe('H2');
-
-  expect(queryByAltText('Pikachu crying because the page requested was not found')).toBeInTheDocument();
-  expect(queryByAltText('Pikachu crying because the page requested was not found'))
-    .toHaveAttribute('src', 'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif');
+describe('O que deve aparecer na página "Not Found"', () => {
+  test('A página deve conter um heading h2 com o texto Page requested not found 😭', () => {
+    const { getByText, history } = renderWithRouter(<App />);
+    history.push('/goku');
+    expect(getByText('Page requested not found').tagName).toBe('H2');
+    expect(getByText('Page requested not found')).toBeInTheDocument();
+  });
+  test('A página deve exibir a imagem https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif', () => {
+    const { queryByAltText, history } = renderWithRouter(<App />);
+    history.push('/gohan');
+    expect(queryByAltText('Pikachu crying because the page requested was not found')).toBeInTheDocument();
+    expect(queryByAltText('Pikachu crying because the page requested was not found')).toHaveAttribute('src', 'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif');
+  });
 });
-
-// it('deve testar um caminho não existente e a renderização do Not Found', () => {
-//   const { getByText, history } = renderWithRouter(<App />);
-//   history.push('/pagina/que-nao-existe/');
-//   const noMatch = getByText(/Página não encontrada/i);
-//   expect(noMatch).toBeInTheDocument();
-// });
-
-// Testes do arquivo NotFound.js
-// A página deve conter um heading h2 com o texto Page requested not found 😭;
-
-// A página deve exibir a imagem https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif.
