@@ -26,7 +26,7 @@ test('shows the Pokédex when the route is `/`', () => {
 
 test('every link redirects to the right page', () => {
   const history = createMemoryHistory();
-  const { getByText } = render(
+  const { getByText, getByAltText } = render(
     <Router history={history}>
       <App />
     </Router>,
@@ -45,4 +45,8 @@ test('every link redirects to the right page', () => {
   const favLinks = getByText('Favorite Pokémons');
   fireEvent.click(favLinks);
   expect(history.location.pathname).toBe('/favorites');
+
+  history.push('/sei-la');
+  const notFound = getByAltText('Pikachu crying because the page requested was not found');
+  expect(notFound).toBeInTheDocument();
 });
