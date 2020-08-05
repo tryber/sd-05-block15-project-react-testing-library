@@ -59,3 +59,32 @@ describe('A Pokédex deve conter botões de filtro', () => {
     expect(getByText(/Alakazam/i)).toBeInTheDocument();
   });
 });
+
+describe('A Pokédex deve conter um botão para resetar o filtro', () => {
+  it('O texto do botão deve ser All', () => {
+    const { getByText } = render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
+
+    expect(getByText('All')).toBeInTheDocument();
+  });
+
+  it('Após clicá-lo, a Pokédex deve voltar a circular por todos os pokémons', () => {
+    const { getByText, getAllByText } = render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
+    const pokemons = ['Charmander', 'Caterpie', 'Ekans', 'Alakazam', 'Mew', 'Rapidash', 'Snorlax', 'Dragonair', 'Pikachu'];
+
+    fireEvent.click(getByText('Fire'));
+    fireEvent.click(getByText('All'));
+    for (let i = 0; i < pokemons.length; i += 1) {
+      fireEvent.click(getByText(/próximo pokémon/i));
+      expect(getByText(pokemons[i])).toBeInTheDocument();
+      expect(getAllByText(/More details/i).length).toBe(1);
+    }
+  });
+});
