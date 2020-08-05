@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, render, fireEvent, getByText } from '@testing-library/react';
+import { cleanup, render, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import App from '../App';
 
@@ -104,6 +104,6 @@ describe('Testes do arquivo Pokedex.js', () => {
     expect(getByText('Dragonair')).toBeInTheDocument();
 
     fireEvent.click(getByText(/Próximo pokémon/));
-    expect(getByText('Pikachu')).toBeInTheDocument(); 
+    expect(getByText('Pikachu')).toBeInTheDocument();
   });
 });
