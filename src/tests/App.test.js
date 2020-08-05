@@ -1,27 +1,7 @@
 import React from 'react';
-import { Router } from 'react-router-dom';
-import { render, cleanup, fireEvent } from '@testing-library/react';
-import { createMemoryHistory } from 'history';
+import { cleanup, fireEvent } from '@testing-library/react';
 import App from '../App';
 import renderWithRouter from './renderWithRouter';
-
-/* jest.mock('react-router-dom', () => {
-  const originalModule = jest.requireActual('react-router-dom');
-  return {
-    ...originalModule,
-    BrowserRouter: ({ children }) => <div>{children}</div>,
-  };
-}); */
-
-/* function renderWithRouter(
-  ui,
-  { route = '/', history = createMemoryHistory({ initialEntries: [route] }) } = {},
-) {
-  return {
-    ...render(<Router history={history}>{ui}</Router>),
-    history,
-  };
-} */
 
 describe('renderiza o título da página e a barra de navegação', () => {
   afterEach(cleanup);
