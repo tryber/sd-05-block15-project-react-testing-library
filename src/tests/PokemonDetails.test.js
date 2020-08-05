@@ -46,7 +46,7 @@ describe('Testing pokémon detail', () => {
     const { id, name, summary } = pokemons[pkmIndex];
     const { getByText, queryByText } = resetHistory(id);
     const myPkm = getByText(summary);
-    const nameDetails = getByText(name);
+    const nameDetails = getByText(`${name} Details`);
     const link = queryByText(/More details/i);
 
     expect(myPkm).toBeInTheDocument();
