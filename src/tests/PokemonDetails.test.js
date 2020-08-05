@@ -48,8 +48,7 @@ describe('Deve conter mais informações sobre apenas o pokémon selecionado', (
         <App />
       </Router>,
     );
-    expect(getByText('This intelligent Pokémon roasts hard berries with electricity to make them tender enough to eat.'))
-      .toBe('P');
+    expect(getByText(/This intelligent Pokémon roasts hard berries with electricity to make them tender enough to eat./i)).toBe('P');
   });
 
   describe('A página de detalhes deve exibir uma seção com os mapas com as localizações do pokémon', () => {
