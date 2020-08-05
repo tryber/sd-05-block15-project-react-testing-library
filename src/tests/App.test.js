@@ -1,8 +1,8 @@
 import React from 'react';
 import { MemoryRouter, Router } from 'react-router-dom';
-import { render, fireEvent } from '@testing-library/react';
-import App from '../App';
 import { createMemoryHistory } from 'history';
+import { render, fireEvent, getByRole } from '@testing-library/react';
+import App from '../App';
 import { NotFound } from '../components';
 
 test('renders a reading with the text `Pokédex`', () => {
@@ -28,28 +28,29 @@ test('shows the Pokédex when the route is `/`', () => {
 const renderWithRouter = (componente) => {
   const history = createMemoryHistory();
   return {
-    ...render(<Router history={history}>{componente}</Router>), history
-  }
-}
+    ...render(<Router history={history}>{componente}</Router>), history,
+  };
+};
 
 test('testando se os links têm o texto correto e renderizam a página certa', () => {
-  const { getByText, history } = renderWithRouter(<App />);
+  const { getByText, history, getByAltText } = renderWithRouter(<App />);
 
-  const linkHome = getByText("Home");
+  const linkHome = getByText('Home');
   expect(linkHome).toBeInTheDocument();
   fireEvent.click(linkHome);
-  expect(history.location.pathname).toBe("/");
+  expect(history.location.pathname).toBe('/');
 
-  const linkAbout = getByText("About");
+  const linkAbout = getByText('About');
   expect(linkAbout).toBeInTheDocument();
   fireEvent.click(linkAbout);
-  expect(history.location.pathname).toBe("/about");
+  expect(history.location.pathname).toBe('/about');
 
-  const linkFavoritos = getByText("Favorite Pokémons");
+  const linkFavoritos = getByText('Favorite Pokémons');
   expect(linkFavoritos).toBeInTheDocument();
   fireEvent.click(linkFavoritos);
-  expect(history.location.pathname).toBe("/favorites");
+  expect(history.location.pathname).toBe('/favorites');
 
-  history.push("/outrolink");
-  const notFound = render(<NotFound />);
+  history.push('/outrolink');
+  const textoNotFound= getByAltText('Pikachu crying because the page requested was not found');
+  expect(textoNotFound).toBeInTheDocument();
 });
