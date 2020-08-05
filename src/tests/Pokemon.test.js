@@ -3,17 +3,15 @@ import { MemoryRouter } from 'react-router-dom';
 import {
   render,
   fireEvent,
-  getByText,
-  getByLabelText,
 } from '@testing-library/react';
 import App from '../App';
 import renderWithRouter from '../services/renderWithRouter';
 
 test('should render a Card of Pokémon', () => {
-  const { getByText, getByTestId, container, getByAltText } = render(
+  const { getByTestId, container, getByAltText } = render(
     <MemoryRouter>
       <App />
-    </MemoryRouter>
+    </MemoryRouter>,
   );
   const pokemon = container.querySelectorAll('.pokemon');
   const name = getByTestId('pokemon-name');
@@ -25,13 +23,13 @@ test('should render a Card of Pokémon', () => {
   expect(weight).toHaveTextContent('Average weight:6.0kg');
   expect(type).toBeInTheDocument();
   expect(img.src).toBe(
-    'https://cdn.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png'
+    'https://cdn.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png',
   );
 });
 
 test('deve abrir o botão More Details com detalhes do Pokémon', () => {
   const { getByText, history, getByLabelText, getByAltText } = renderWithRouter(
-    <App />
+    <App />,
   );
   fireEvent.click(getByText(/More Details/i));
   const pathname = history.location.pathname;
