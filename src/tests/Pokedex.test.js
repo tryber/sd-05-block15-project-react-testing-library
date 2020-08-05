@@ -4,31 +4,32 @@ import { render, fireEvent } from '@testing-library/react';
 import App from '../App';
 
 test('testing pokedex component', () => {
-  const { getByText, getAllByTestId } = render(
+  const { getByText, getAllByTestId, getAllByText, getByRole, container } = render(
     <MemoryRouter>
       <App />
-    </MemoryRouter>
+    </MemoryRouter>,
   );
   const next = getByText('Próximo pokémon');
   expect(next).toBeInTheDocument();
   expect(getAllByTestId('pokemon-type-button').length).toBe(7);
   expect(getAllByTestId('next-pokemon').length).toBe(1);
   fireEvent.click(next);
-  expect(getByText('Charmander')).toBeInTheDocument;
+  expect(getByText('Charmander')).toBeInTheDocument();
   fireEvent.click(next);
-  expect(getByText('Caterpie')).toBeInTheDocument;
   fireEvent.click(next);
-  expect(getByText('Ekans')).toBeInTheDocument;
   fireEvent.click(next);
-  expect(getByText('Alakazam')).toBeInTheDocument;
   fireEvent.click(next);
-  expect(getByText('Mew')).toBeInTheDocument;
   fireEvent.click(next);
-  expect(getByText('Rapidash')).toBeInTheDocument;
   fireEvent.click(next);
-  expect(getByText('Snorlax')).toBeInTheDocument;
   fireEvent.click(next);
-  expect(getByText('Dragonair')).toBeInTheDocument;
+  expect(getByText('Dragonair')).toBeInTheDocument();
   fireEvent.click(next);
-  expect(getByText('Pikachu')).toBeInTheDocument;
+  expect(getByText('Pikachu')).toBeInTheDocument();
+  const fire = getByText('Fire');
+  fireEvent.click(fire);
+  expect(getAllByText('Fire').length).toBe(2);
+  const all = getByText('All');
+  fireEvent.click(all);
+  expect(container.querySelector('h2')).toBeInTheDocument();
+  expect(getByText('Encountered pokémons')).toBeInTheDocument();
 });
