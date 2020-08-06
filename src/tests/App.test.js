@@ -1,22 +1,9 @@
 import React from 'react';
-import { MemoryRouter, Router } from 'react-router-dom';
-import { render, fireEvent } from '@testing-library/react';
-import { createMemoryHistory } from 'history';
-import NotFound from '../components/NotFound';
+import { MemoryRouter } from 'react-router-dom';
+import { cleanup, render, fireEvent } from '@testing-library/react';
 import App from '../App';
 
-function renderWithRouter(
-  ui,
-  {
-    route = '/',
-    history = createMemoryHistory({ initialEntries: [route] }),
-  } = {},
-) {
-  return {
-    ...render(<Router history={history}>{ui}</Router>),
-    history,
-  };
-}
+afterEach(cleanup);
 
 test('renders a reading with the text `Pokédex`', () => {
   const { getByText } = render(
@@ -34,41 +21,66 @@ test('O primeiro link deve possuir o texto  Home com a URL / ', () => {
       <App />
     </MemoryRouter>,
   );
-  expect(getAllByRole('link')[0]).toHaveAttribute('href', '/');
   expect(getAllByRole('link')[0].innerHTML).toMatch(/home/i);
+  expect(getAllByRole('link')[0]).toHaveAttribute('href', '/');
 });
 
-test('O segundo link deve possuir o texto `About` com a URL `/about', () => {
-  const { getByText } = renderWithRouter(<App />);
-  const memory = createMemoryHistory();
-  memory.push('/favorites');
-  const textAbout = getByText(/favorite pokémons/i);
-  expect(textAbout).toBeInTheDocument();
+test('O segundo link deve possuir o texto About com a URL /about', () => {
+  const { getByText } = render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>,
+  );
+  expect(getByText(/about/i)).toHaveAttribute('href', '/about');
+});
+test('O terceiro link deve possuir o texto Favorite Pokémons com a URL /favorites.', () => {
+  const { getAllByRole } = render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>,
+  );
+  expect(getAllByRole('link')[2]).toHaveAttribute('href', '/favorites');
+  expect(getAllByRole('link')[2].innerHTML).toMatch(/Favorite Pokémons/i);
+});
+test('Ao clicar no link "Home" na barra de navegação, a aplicação deve ser redirecionada para a página inicial, na URL "/"', () => {
+  const { getByText } = render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>,
+  );
+  fireEvent.click(getByText('About'));
+  expect(getByText('About').pathname).toBe('/about');
+  expect(getByText(/About Pokédex/i)).toBeInTheDocument();
 });
 
-test('Ao clicar no link "Home" na barra de navegação, a aplicação deve ser redirecionada para a página inicial, na URL "/" ', () => {
-  const { getByText } = renderWithRouter(<App />);
-  const memory = createMemoryHistory();
-  history.push('/');
-  fireEvent.click(getByText(/home/i));
-  expect(memory.location.pathname).toBe('/about');
-});
+test('Ao clicar no link "Home" na barra de navegação, a aplicação deve ser redirecionada para a página inicial, na URL "/"', () => {
+  const { getByText } = render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>,
+  );
 
-test('Ao clicar no link "About" na barra de navegação, a aplicação deve ser redirecionada para a página de About, na URL "/about ', () => {
-  const { getByText } = renderWithRouter(<app />);
-  const memory = createMemoryHistory();
-  memory.push('/about');
-  fireEvent.click(getByText(/about/i));
-  expect(memory.location.pathname).toBe('/about');
+  fireEvent.click(getByText('About'));
+  expect(getByText('Home').pathname).toBe('/');
+  expect(getByText('About Pokédex')).toBeInTheDocument();
+  fireEvent.click(getByText('Home'));
+  expect(getByText(/Encountered pokémons/i)).toBeInTheDocument();
 });
-test('Ao clicar no link "Favorite Pokémons" na barra de navegação, a aplicação deve ser redirecionada para a página de pokémons favoritados, na URL "/favorites ', () => {
-  const { getByText } = renderWithRouter(<App />);
-  const memory = createMemoryHistory();
-  memory.push('/favorites');
-  fireEvent.click(getByText(/favorite pokémons/i));
-  expect(memory.location.pathname).toBe('/favorites');
+test('Ao clicar no link "Favorite Pokémons" na barra de navegação, a aplicação deve ser redirecionada para a página de pokémons favoritados, na URL "/favorites"', () => {
+  const { getByText } = render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>,
+  );
+  expect(getByText('Favorite Pokémons').pathname).toBe('/favorites');
+  fireEvent.click(getByText('Favorite Pokémons'));
+  expect(getByText('Favorite pokémons')).toBeInTheDocument();
 });
 test('Entrar em uma URL desconhecida exibe a página Not Found', () => {
-  const { getByText } = renderWithRouter(<NotFound />);
-  expect(getByText(/page requested not found/i)).toBeInTheDocument();
+  const { getByText } = render(
+    <MemoryRouter initialEntries={['N']}>
+      <App />
+    </MemoryRouter>,
+  );
+  expect(getByText('Page requested not found')).toBeInTheDocument();
 });
