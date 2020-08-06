@@ -58,3 +58,14 @@ test('O terceiro link deve possuir o texto Favorite Pokémons com a URL /favorit
   expect(history.location.pathname).toBe('/favorites');
   expect(thirdLink).toBeInTheDocument();
 });
+
+test('Entrar em uma URL desconhecida exibe a página Not Found', () => {
+  const { getByText } = render(
+    <MemoryRouter initialEntries={['/batatinha']}>
+      <App />
+    </MemoryRouter>,
+  );
+
+  expect(getByText('Page requested not found',
+  )).toBeInTheDocument();
+});

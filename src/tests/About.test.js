@@ -1,16 +1,16 @@
 import React from 'react';
 import { createMemoryHistory } from 'history';
-import { render } from 'react-dom';
-import { MemoryRouter, Router } from 'react-router-dom';
+import { render } from '@testing-library/react';
+import { Router } from 'react-router-dom';
 import About from '../components/About';
 // import App from '../App';
 
-
 test('A página "About" deve exibir informações sobre a Pokédex', () => {
+  const history = createMemoryHistory();
   const { getByText } = render(
-    <MemoryRouter>
+    <Router history={history}>
       <About />
-    </MemoryRouter>,
+    </Router>,
   );
   expect(getByText(/About Pokédex/i)).toBeInTheDocument();
 });
@@ -23,6 +23,16 @@ const renderWithRouter = (comp) => {
 };
 
 test('A página deve conter um heading h2 com o texto About Pokédex', () => {
-  const { getByRole } = renderWithRouter(<About />);
-  expect(getByRole('h2', 'About Pokédex').toBeInTheDocument());
+  const { getByText } = renderWithRouter(<About />);
+
+  const h2 = getByText('About Pokédex');
+  expect(h2).toBeInTheDocument();
+  expect(h2.tagName).toBe('H2');
+});
+
+test('A página deve conter a imagem de uma Pokédex', () => {
+  const { container } = renderWithRouter(<About />);
+
+  const image = container.querySelector('img');
+  expect(image.src).toBe('https://cdn.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png');
 });
