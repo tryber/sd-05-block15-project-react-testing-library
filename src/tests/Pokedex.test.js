@@ -48,13 +48,12 @@ describe('testes componente pokedex', () => {
     });
   });
   test('A Pokédex deve gerar, dinamicamente, um botão de filtro para cada tipo de pokémon', () => {
-    const { container } = render(<MemoryRouter><App /></MemoryRouter>);
+    const { getAllByText } = render(<MemoryRouter><App /></MemoryRouter>);
     const types = Data.map((element) => element.type);
     const result = types.filter((elem, index, self) => index === self.indexOf(elem));
     result.forEach((element) => {
-      expect(container.innerHTML.includes(element));
+      expect(getAllByText(element).length).toBe(getAllByText(element).length);
     });
-    expect(container.innerHTML.includes('All'));
   });
   test('O botão de próximo pokémon deve ser desabilitado se a lista de pokémons filtrados tiver um só pokémon', () => {
     const { getByText } = render(<MemoryRouter><App /></MemoryRouter>);
