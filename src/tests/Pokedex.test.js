@@ -59,6 +59,7 @@ test('it should have a all button to reset the filter', () => {
   const { getByText } = renderWithRouter(<App />);
   const allButton = getByText('All');
   expect(allButton).toBeInTheDocument();
+  fireEvent.click(allButton);
   expect(getByText('Pikachu')).toBeInTheDocument();
   const nextButton = getByText('Próximo pokémon');
   fireEvent.click(nextButton);
@@ -75,4 +76,10 @@ test('it should create filter buttons dynamic', () => {
     expect(butt.innerHTML).toBe(pokemonsTypes[index]);
     expect(allButton).toBeInTheDocument();
   });
+});
+
+test('page should have a text "Encountered Pokemons', () => {
+  const { getByText } = renderWithRouter(<App />);
+  const encounteredText = getByText(/Encountered pokémons/i);
+  expect(encounteredText).toBeInTheDocument();
 });
