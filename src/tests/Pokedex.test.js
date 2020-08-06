@@ -54,6 +54,7 @@ describe('testes componente pokedex', () => {
     result.forEach((element) => {
       expect(container.innerHTML.includes(element));
     });
+    expect(container.innerHTML.includes('All'));
   });
   test('O botão de próximo pokémon deve ser desabilitado se a lista de pokémons filtrados tiver um só pokémon', () => {
     const { getByText } = render(<MemoryRouter><App /></MemoryRouter>);
