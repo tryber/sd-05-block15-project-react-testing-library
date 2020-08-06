@@ -16,12 +16,14 @@ test('Deve ser retornado um card com as informações de determinado pokémon', 
   expect(getByTestId('pokemon-weight')).toBeInTheDocument();
 });
 
-test('O nome correto do pokémon deve aparecer na tela', () => {
-  const { getByText } = render(<MemoryRouter><App /></MemoryRouter>);
+test('O nome e tipo corretos do pokémon deve aparecer na tela', () => {
+  const { getByText, getAllByText } = render(<MemoryRouter><App /></MemoryRouter>);
   fireEvent.click(getByText('Normal'));
   expect(getByText('Snorlax')).toBeInTheDocument();
+  expect(getAllByText('Normal')).toHaveLength(2);
   fireEvent.click(getByText('Bug'));
   expect(getByText('Caterpie')).toBeInTheDocument();
+  expect(getAllByText('Bug')).toHaveLength(2);
 });
 
 test('O peso médio do pokémon deve ser exibido com um texto no formato Average weight: <value> <measurementUnit>, onde <value> e <measurementUnit> são, respectivamente, o peso médio do pokémon e sua unidade de medida', () => {
