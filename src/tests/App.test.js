@@ -1,15 +1,12 @@
-// import history from 'history';
 import React from 'react';
-import { MemoryRouter, Router } from 'react-router-dom';
-import { createMemoryHistory as historic } from 'history';
+import { MemoryRouter } from 'react-router-dom';
 import { render, cleanup, fireEvent } from '@testing-library/react';
 import App from '../App';
-// import { screen } from '@testing-library/dom';
+// import { createMemoryHistory as historic } from 'history';
 
-
-describe('Requirement One testing de Principal Page', () => {
+describe('Requirement 1: testing the App.js file', () => {
   afterEach(cleanup);
-  test('renders a bunch of links at the top of a Page with the text `Pokédex`', () => {
+  test('renders a Navbar with (Home, About and Favorite Pokémons) on the Page and checks if there is a text `Pokédex` in it', () => {
     const { getByText } = render(
       <MemoryRouter>
         <App />
@@ -19,74 +16,73 @@ describe('Requirement One testing de Principal Page', () => {
     const heading = getByText(/Pokédex/i);
     expect(heading).toBeInTheDocument();
 
-    const links = [getByText(/Home/i), getByText(/About/i), getByText(/Favorite Pokémons/i)];
-
+    const links = ['Home', 'About', 'Favorite Pokémons'];
     links.forEach((link) => {
-      expect(link).toBeInTheDocument();
+      expect(getByText(link)).toBeInTheDocument();
     });
   });
 
-
-  test('renders `Encountered pokémons` Page on the initial page and at the Home link', () => {
-    const history = historic();
+  test('renders the `Encountered pokémons` Home Page on the default routePath.', () => {
     const { getByText } = render(
-      <Router history={history}>
+      <MemoryRouter initialEntries={['/']}>
         <App />
-      </Router>,
+      </MemoryRouter>,
     );
 
-    // console.log(container);
-    const rota = history.location.pathname;
-    expect(rota).toBe('/');
+    const route = getByText('Home').pathname;
+    expect(route).toBe('/');
     const heading = getByText(/Encountered pokémon/i);
     expect(heading).toBeInTheDocument();
   });
 
-  test('renders `About Pokédex` Page and route to `/about` after click on the link About', () => {
+  test('Sets the routePath to `/about` by clicking on the `About link` and renders `About Pokédex` Page.', () => {
     const { getAllByRole, queryByText, getByText } = render(
       <MemoryRouter>
         <App />
       </MemoryRouter>,
     );
 
+    const home = getByText(/Encountered pokémon/i);
+    expect(home).toBeInTheDocument();
+
     const rota = getAllByRole('link');
     expect(rota[1].getAttribute('href')).toBe('/about');
 
     fireEvent.click(rota[1]);
-    const heading = queryByText(/About Pokédex/);
-    expect(heading).toBeInTheDocument();
+    const about = queryByText(/About Pokédex/);
+    expect(about).toBeInTheDocument();
     expect(getByText('About').pathname).toBe('/about');
   });
 
-  test('renders `Favorite Pokémons` Page and route to `/favorites` after click on the link Favorite Pokémons', () => {
-    const { getAllByRole, queryByText } = render(
-      <MemoryRouter>
+  test('Sets routePath to `/favorites` by clicking on the `Favorite Pokémons link` and renders `Favorite Pokémons` Page.', () => {
+    const { getAllByRole, queryByText, getByText } = render(
+      <MemoryRouter initialEntries={['/']}>
         <App />
       </MemoryRouter>,
     );
+    const favorite = queryByText(/Favorite pokémons/);
+    expect(favorite).not.toBeInTheDocument();
 
     const rota = getAllByRole('link');
     expect(rota[2].getAttribute('href')).toBe('/favorites');
 
     fireEvent.click(rota[2]);
-    const heading = queryByText(/Favorite pokémons/);
+    const heading = getByText('Favorite Pokémons');
     expect(heading).toBeInTheDocument();
+    expect(heading.pathname).toBe('/favorites');
   });
 
-  test('renders `Not Found` Page if route is a unknown path', () => {
-    const { container, getAllByRole } = render(
+  test('renders the `Not Found` Page if the routePath gets into an unknown path', () => {
+    const { container, queryByText } = render(
       <MemoryRouter initialEntries={['buddy batatinha']}>
         <App />
       </MemoryRouter>,
     );
 
-    // const rota = getAllByRole('link');
-    // // expect(rota[1].getAttribute('href')).toBe('/about');
+    const teste = container.querySelector('h2').innerHTML;
+    expect(teste).toContain('Page requested not found');
 
-    // fireEvent.click(rota[4]);
-    // queryByText(/About Pokédex/);
-    // screen.debug();
-    expect(getAllByRole('heading')[1].innerHTML.substr(0, 24)).toBe('Page requested not found');
-    expect(container).toBeInTheDocument();
+    const h2 = queryByText('Page requested not found');
+    expect(h2).toBeInTheDocument();
   });
 });
