@@ -66,12 +66,13 @@ test('it should have a all button to reset the filter', () => {
 });
 
 test('it should create filter buttons dynamic', () => {
-  const { getAllByTestId } = renderWithRouter(<App />);
+  const { getAllByTestId, getByText } = renderWithRouter(<App />);
   const pokemonsButtons = getAllByTestId('pokemon-type-button');
   pokemonsButtons.forEach((butt, index) => {
-    const pokemonsTypes = ['Electric', 'Fire', 'Bug', 'Poison', 'Psychic', 'Normal', 'Dragon' ];
+    const pokemonsTypes = ['Electric', 'Fire', 'Bug', 'Poison', 'Psychic', 'Normal', 'Dragon'];
+    const allButton = getByText('All');
     expect(butt).toBeInTheDocument();
     expect(butt.innerHTML).toBe(pokemonsTypes[index]);
+    expect(allButton).toBeInTheDocument();
   });
-
 });
