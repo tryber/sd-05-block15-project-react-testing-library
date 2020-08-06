@@ -7,7 +7,7 @@ test('A página deve conter um heading h2 com o texto Page requested not found',
   const { getByText } = render(
     <MemoryRouter>
       <NotFound />
-    </MemoryRouter>
+    </MemoryRouter>,
   );
   const h2 = getByText(/Page requested not found/i);
   expect(h2).toBeInTheDocument();
@@ -18,7 +18,7 @@ test('A página deve exibir a imagem https://media.giphy.com/media/kNSeTs31XBZ3G
   const { container } = render(
     <MemoryRouter>
       <NotFound />
-    </MemoryRouter>
+    </MemoryRouter>,
   );
   const image = container.querySelector('img');
   expect(image.src).toBe('https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif');
