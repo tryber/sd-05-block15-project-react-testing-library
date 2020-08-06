@@ -107,4 +107,19 @@ describe('testes no componente Pokedex', () => {
       if (everyButton[i].innerHTML !== 'All') expect(filtrados[0].type).toBe(everyButton[i].innerHTML);
     }
   });
+  it('teste que não estava no enunciado, mas eh necessário', () => {
+    const { getByText } = renderWithRouter(<Pokedex
+      pokemons={pokemons} isPokemonFavoriteById={favPokemons}
+    />);
+    const getText = getByText(/Encountered pokémons/i);
+    expect(getText).toBeInTheDocument();
+  });
+  it('outro teste que não estava no enunciado, mas eh necessário', () => {
+    const { getAllByTestId } = renderWithRouter(<Pokedex
+      pokemons={pokemons} isPokemonFavoriteById={favPokemons}
+    />);
+    expect(getAllByTestId('pokemon-type-button')).toHaveLength(7);
+    //  no primeiro dia o dataTestID não funcionava. logo, o teste era
+    //  feito pelo nome dos botões e não opelo testid.
+  });
 });
