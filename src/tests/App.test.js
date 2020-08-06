@@ -1,6 +1,6 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { cleanup, render, fireEvent } from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 import App from '../App';
 
 afterEach(cleanup);
