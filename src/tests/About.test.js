@@ -6,7 +6,7 @@ import About from '../components/About';
 describe('2. Testes do arquivo About.js', () => {
   afterEach(cleanup);
   test('2.1 - A página "About" deve exibir informações sobre a Pokédex', () => {
-    const { getByTestId } = render(
+    const { getByText } = render(
       <MemoryRouter>
         <About />
       </MemoryRouter>,
