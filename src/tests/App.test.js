@@ -67,8 +67,8 @@ describe('1. Testes do arquivo App.js', () => {
         <NotFound />
       </MemoryRouter>,
     );
-    history.push('Page requested ' + 'not found');
-    const notFound = getByText('Page requested ' + 'not found');
+    history.push('Page requested not found');
+    const notFound = getByText(/Page requested not found/i);
     expect(notFound).toBeInTheDocument();
   });
 });

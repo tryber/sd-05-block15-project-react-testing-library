@@ -13,18 +13,17 @@ const renderWithRouter = (component) => {
 };
 
 describe('2. Testes do arquivo About.js', () => {
-
   test('2.1 - A página "About" deve exibir informações sobre a Pokédex', () => {
     const { getByTestId } = renderWithRouter(<About />);
 
-    const infoPokedex = getByTestId('infos');
+    const infoPokedex = getByTestId('custom-element');
     expect(infoPokedex).toBeInTheDocument();
   });
 
   test('2.2 - A página deve conter um heading h2 com o texto About Pokédex', () => {
     const { getByText } = renderWithRouter(<About />);
 
-    const veriTitulo = getByText("About " + "Pokédex");
+    const veriTitulo = getByText(/About Pokédex/i);
     expect(veriTitulo).toBeInTheDocument();
   });
 

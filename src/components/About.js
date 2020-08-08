@@ -5,7 +5,7 @@ const About = () => (
   <section>
     <h2>{`About ` + `Pokédex`}</h2>
     <section>
-      <p data-testid="infos">This application simulates a Pokédex, a digital encliclopedia containing all Pokémons </p>
+      <p data-testid="custom-element">This application simulates a Pokédex, a digital encliclopedia containing all Pokémons </p>
       <p>One can filter Pokémons by type, and see more details for each one of them</p>
       <img
         className="pokedex-image"
