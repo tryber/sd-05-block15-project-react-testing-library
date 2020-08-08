@@ -12,7 +12,7 @@ describe('2. Testes do arquivo About.js', () => {
       </MemoryRouter>,
     );
 
-    const infoPokedex = getByTestId('custom-element');
+    const infoPokedex = getByText(/About Pokédex/i);
     expect(infoPokedex).toBeInTheDocument();
   });
 
