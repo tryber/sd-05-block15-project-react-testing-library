@@ -16,7 +16,7 @@ describe('Testes do arquivo Pokémon', () => {
     expect(type.innerHTML).toMatch('Electric');
     const weight = getByTestId('pokemon-weight');
     expect(weight).toBeInTheDocument();
-    expect(weight.innerHTML).toMatch('Average weight');
+    expect(weight.innerHTML).toMatch('Average weight:6.0kg');
   });
 
   test('A imagem deve conter um atributo src com a URL da imagem do pokémon', () => {
