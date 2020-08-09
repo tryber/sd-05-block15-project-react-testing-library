@@ -14,3 +14,13 @@ import App from '../App';
       );
       expect(getByText(/Pokédex/i)).toBeInTheDocument();
     });
+
+    test('mostra a Pokédex quando a rota é `/`', () => {
+      const { getByText } = render(
+        <MemoryRouter initialEntries={['/']}>
+          <App />
+        </MemoryRouter>,
+      );
+      expect(getByText('Encountered pokémons')).toBeInTheDocument();
+    });
+  });
