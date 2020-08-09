@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
-import { render, cleanup, fireEvent } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 import App from '../App';
 import Pokemon from '../components/Pokemon';
 import pokemons from '../data';
@@ -58,7 +58,7 @@ describe('Deve ser retornado um card com as informações de determinado pokémo
   });
 
   test('link para mais detalhes', () => {
-    const { getAllByRole, history } = renderWithRouter(<App />);
+    const { getAllByRole } = renderWithRouter(<App />);
     const detalhesButton = getAllByRole('link')[3];
     console.log(detalhesButton);
     expect(detalhesButton).toBeInTheDocument();
