@@ -73,7 +73,7 @@ describe('routes', () => {
 
   test('Entrar em uma URL desconhecida exibe a página Not Found', () => {
     const { getByText } = render(
-      <MemoryRouter initialEntries={['/not-found/']}>
+      <MemoryRouter initialEntries={['/not-found']}>
         <App />
       </MemoryRouter>,
     );

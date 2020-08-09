@@ -11,7 +11,7 @@ const renderWithRouter = (component) => {
   };
 };
 
-describe('Test Favorite Pokemons', () => {
+describe('Testes do arquivo NotFound.js', () => {
   afterEach(cleanup);
 
   test('A página deve conter um heading h2 com o texto Page requested not found 😭', () => {
