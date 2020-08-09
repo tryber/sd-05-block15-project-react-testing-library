@@ -1,19 +1,12 @@
 import React from 'react';
-import { createMemoryHistory } from 'history';
-import { Router } from 'react-router-dom';
-import { render, cleanup } from '@testing-library/react';
+// import { createMemoryHistory } from 'history';
+// import { Router } from 'react-router-dom';
+// import { render, cleanup } from '@testing-library/react';
 import { About } from '../components';
-
-function renderWithRouter(ui, { route = '/', history = createMemoryHistory(
-{ initialEntries: [route] }) } = {}) {
-  return {
-    ...render(<Router history={history}>{ui}</Router>),
-    history,
-  };
-}
+import renderWithRouter from './renderWithRouter';
 
 describe('Testes da página about', () => {
-  afterEach(cleanup);
+  // afterEach(cleanup);
 
   test('A página "About" deve exibir informações sobre a Pokédex', () => {
     const { getByText } = renderWithRouter(<About />);

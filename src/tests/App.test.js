@@ -4,6 +4,7 @@ import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
 import { render, cleanup, fireEvent } from '@testing-library/react';
 import App from '../App';
+import renderWithRouter from './renderWithRouter';
 
 // mock BrowserRouter para resetar o histórico de navegação
 // toda vez que entra na página. Substituindo o BrowserRouter.
@@ -22,13 +23,13 @@ import App from '../App';
 // criação de um elemento encapsulado pelo Router, com um histórico novo, a cada teste
 // que for feito, ou com um histórico diferente que se possa adicionar
 
-function renderWithRouter(ui, { route = '/', history = createMemoryHistory(
-{ initialEntries: [route] }) } = {}) {
-  return {
-    ...render(<Router history={history}>{ui}</Router>),
-    history,
-  };
-}
+// function renderWithRouter(ui, { route = '/', history = createMemoryHistory(
+// { initialEntries: [route] }) } = {}) {
+//   return {
+//     ...render(<Router history={history}>{ui}</Router>),
+//     history,
+//   };
+// }
 
 describe('Testes da página inicial', () => {
   afterEach(cleanup);
