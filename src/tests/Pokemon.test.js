@@ -41,20 +41,6 @@ describe('Deve ser retornado um card com as informações de determinado pokémo
     expect(getByAltText('Pikachu sprite')).toBeInTheDocument();
   });
 
-  test('A imagem deve conter atributos src e alt', () => {
-    const { getByRole, getByAltText } = render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>,
-    );
-
-    expect(getByRole('img')).toHaveAttribute(
-      'src',
-      'https://cdn.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png',
-    );
-    expect(getByAltText('Pikachu sprite')).toBeInTheDocument();
-  });
-
   test('O pokémon exibido na Pokédex deve conter um link de navegação', () => {
     const { getByText } = render(
       <MemoryRouter>
