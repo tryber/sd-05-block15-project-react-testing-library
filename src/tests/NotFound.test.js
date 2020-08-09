@@ -4,7 +4,7 @@ import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
 import App from '../App';
 
-//Função disponibilizada na documentação
+// Função disponibilizada na documentação
 const renderWithRouter = (component) => {
   const history = createMemoryHistory();
   return {

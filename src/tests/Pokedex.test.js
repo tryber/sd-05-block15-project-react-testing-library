@@ -22,7 +22,17 @@ describe('Ao apertar o botão de próximo, a página deve exibir o próximo pok�
         <App />
       </MemoryRouter>,
     );
-    const pokemons = ['Charmander', 'Caterpie', 'Ekans', 'Alakazam', 'Mew', 'Rapidash', 'Snorlax', 'Dragonair', 'Pikachu'];
+    const pokemons = [
+      'Charmander',
+      'Caterpie',
+      'Ekans',
+      'Alakazam',
+      'Mew',
+      'Rapidash',
+      'Snorlax',
+      'Dragonair',
+      'Pikachu',
+    ];
     for (let i = 0; i < pokemons.length; i += 1) {
       fireEvent.click(getByText(/próximo pokémon/i));
       expect(getByText(pokemons[i])).toBeInTheDocument();
@@ -72,7 +82,17 @@ describe('A Pokédex deve conter um botão para resetar o filtro', () => {
         <App />
       </MemoryRouter>,
     );
-    const pokemons = ['Charmander', 'Caterpie', 'Ekans', 'Alakazam', 'Mew', 'Rapidash', 'Snorlax', 'Dragonair', 'Pikachu'];
+    const pokemons = [
+      'Charmander',
+      'Caterpie',
+      'Ekans',
+      'Alakazam',
+      'Mew',
+      'Rapidash',
+      'Snorlax',
+      'Dragonair',
+      'Pikachu',
+    ];
     fireEvent.click(getByText('Fire'));
     fireEvent.click(getByText('All'));
     for (let i = 0; i < pokemons.length; i += 1) {
