@@ -44,7 +44,7 @@ describe('A Pokédex deve conter botões de filtro ', () => {
       'Dragonair',
       'Pikachu',
     ];
-    for (let index = 0; index < pokes.length; index =+1) {
+    for (let index = 0; index < pokes.length; index =+1 ) {
       fireEvent.click(getByText(/próximo pokémon/i));
       expect(getByText(pokes[index])).toBeInTheDocument();
     }
