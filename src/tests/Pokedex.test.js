@@ -39,13 +39,7 @@ test('cliques sucessivos no botão devem mostrar o próximo pokémon da lista ',
   }
 });
 
-test('A Pokédex deve gerar, dinamicamente, um botão de filtro para cada tipo de pokémon ', () => {
-  const {} = render(
-    <MemoryRouter>
-      <App />
-    </MemoryRouter>,
-  );
-});
+test('A Pokédex deve gerar, dinamicamente, um botão de filtro para cada tipo de pokémon ', () => {});
 
 test('O texto do botão deve ser o nome do tipo, p. ex. Psychic ', () => {
   const { getByText } = render(
