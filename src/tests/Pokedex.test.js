@@ -2,7 +2,7 @@ import React from 'react';
 import { fireEvent, render, cleanup } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import App from '../App.js';
-import Pokedex from '../components/Pokedex';
+
 afterEach(cleanup);
 
 describe('Ao apertar o botão de próximo, a página deve exibir o próximo pokémon da lista', () => {
@@ -17,7 +17,7 @@ describe('Ao apertar o botão de próximo, a página deve exibir o próximo pok�
 });
 
 test('cliques sucessivos no botão devem mostrar o próximo pokémon da lista ', () => {
-  const { getByAllText, getByText } = render(
+  const { getByText } = render(
     <MemoryRouter>
       <App />
     </MemoryRouter>,
@@ -33,14 +33,14 @@ test('cliques sucessivos no botão devem mostrar o próximo pokémon da lista ',
     'Dragonair',
     'Pikachu',
   ];
-  for (let index = 0; index < pokes.length; index++) {
+  for (let index = 0; index < pokes.length; index += 1) {
     fireEvent.click(getByText(/próximo pokémon/i));
     expect(getByText(pokes[index])).toBeInTheDocument();
   }
 });
 
 test('A Pokédex deve gerar, dinamicamente, um botão de filtro para cada tipo de pokémon ', () => {
-  const { getAllByTestId } = render(
+  const {} = render(
     <MemoryRouter>
       <App />
     </MemoryRouter>,
