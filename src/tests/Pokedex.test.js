@@ -13,9 +13,11 @@ const renderWithRouter = (component) => {
 };
 
 test('it should show the next pokemon with click on next-pokemon button', () => {
-  const { getByText } = renderWithRouter(<App />);
+  const { getByText, getByTestId } = renderWithRouter(<App />);
   const pokemonsName = pokemons.map((poke) => poke.name);
 
+  const proxButton = getByTestId('next-pokemon');
+  console.log(proxButton);
   const nextButton = getByText('Próximo pokémon');
 
   pokemonsName.forEach((poke) => {
