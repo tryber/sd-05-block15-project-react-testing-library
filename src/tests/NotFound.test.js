@@ -1,6 +1,7 @@
 import React from 'react';
-import { render, cleanup, getByText } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 import Notfound from '../components/NotFound';
+
 afterEach(cleanup);
 
 test('A página deve conter um heading h2 com o texto Page requested not found ', () => {
