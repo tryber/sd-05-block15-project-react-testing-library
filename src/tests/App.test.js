@@ -45,3 +45,14 @@ import App from '../App';
       expect(getAllByRole('link')[1]).toHaveAttribute('href', '/about');
       expect(getAllByRole('link')[1].innerHTML).toMatch(/about/i);
     });
+
+    test('O terceiro link deve possuir o texto Favorite Pokémons com a URL /favorites.', () => {
+      const { getAllByRole } = render(
+        <MemoryRouter>
+          <App />
+        </MemoryRouter>,
+      );
+      expect(getAllByRole('link')[2]).toHaveAttribute('href', '/favorites');
+      expect(getAllByRole('link')[2].innerHTML).toMatch(/Favorite Pokémons/i);
+    });
+  });
