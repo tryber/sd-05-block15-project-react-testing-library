@@ -21,7 +21,7 @@ describe('Teste do arquivo PokemonDetails', () => {
   });
 
   test('A seção de detalhes deve conter um parágrafo com o resumo do pokémon específico sendo visualizado', () => {
-    const { container, getByText, } = renderWithRouter(<App />);
+    const { container, getByText } = renderWithRouter(<App />);
     fireEvent.click(getByText(/more details/i));
     const p = container.querySelectorAll('p')[3];
     expect(p).toHaveTextContent('This intelligent Pokémon roasts hard berries with electricity to make them tender enough to eat.');
