@@ -92,3 +92,18 @@ describe('Ao clicar nos links de navegação da página', () => {
     fireEvent.click(getByText('Favorite Pokémons'));
     expect(getByText('Favorite pokémons')).toBeInTheDocument();
   });
+
+  describe('Entrar em uma URL desconhecida', () => {
+    it('exibe a página Not Found', () => {
+      const { getByText } = render(
+        <MemoryRouter initialEntries={['URL-da-batatinha']}>
+          <App />
+        </MemoryRouter>,
+      );
+      // outra forma de fazer sem usar o "initialEntries" é com o history.push, como abaixo:
+      // const { getByText, history } = renderWithRouter(<App />);
+      // history.push('/batatinha');
+      expect(getByText('Page requested not found')).toBeInTheDocument();
+    });
+  });
+});
