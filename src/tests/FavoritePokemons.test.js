@@ -28,37 +28,29 @@ test('A página não deve exibir nenhum card de pokémon não favoritado.', () =
 });
 
 test('A página deve exibir todos os cards de pokémons favoritados', () => {
-  const { getByLabelText, getAllByText, getByText } = render(<MemoryRouter>
-    <App />
-  </MemoryRouter>
+  const { getByLabelText, getAllByText, getByText } = render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>,
   );
   localStorage.clear();
-  
-fireEvent.click
-(getByText(/bug/i));
-  
-fireEvent.click
-(getByText(/bug/i));
-  
-fireEvent.click
-(getByText(/more details/i));
-  
-fireEvent.click
-(getByLabelText(/pokémon favoritado/i));
-  
-fireEvent.click
-(getByText(/home/i));
-  
-fireEvent.click
-(getByText(/fire/i));
-  
-fireEvent.click
-(getByText(/more details/i));
-  
-fireEvent.click
-(getByLabelText(/pokémon favoritado/i));
-  
-fireEvent.click
-(getByText(/Favorite Pokémons/i));
+
+  fireEvent.click(getByText(/bug/i));
+
+  fireEvent.click(getByText(/bug/i));
+
+  fireEvent.click(getByText(/more details/i));
+
+  fireEvent.click(getByLabelText(/pokémon favoritado/i));
+
+  fireEvent.click(getByText(/home/i));
+
+  fireEvent.click(getByText(/fire/i));
+
+  fireEvent.click(getByText(/more details/i));
+
+  fireEvent.click(getByLabelText(/pokémon favoritado/i));
+
+  fireEvent.click(getByText(/Favorite Pokémons/i));
   expect(getAllByText(/More details/i).length).toBe(2);
 });
