@@ -48,7 +48,7 @@ test('A seção de detalhes deve conter um parágrafo com o resumo do pokémon e
       <App />
     </Router>,
   );
-  expect(getByText(/This intelligent Pokémon roasts hard berries with electricity to make them tender enough to eat./i)).toBe("p");
+  expect(getByText(/'This intelligent Pokémon roasts hard berries with electricity to make them tender enough to eat'./i)).toBe('p');
 });
 
 describe('A página de detalhes deve exibir uma seção com os mapas com as localizações do pokémon', () => {
@@ -80,7 +80,7 @@ describe('A imagem da localização deve ter um atributo src com a URL da locali
     expect(localizarMap[1]).toHaveAttribute('src');
     expect(localizarMap[1].src).toBe('https://cdn.bulbagarden.net/upload/b/bd/Kanto_Celadon_City_Map.png');
   });
-})
+});
 describe('O label do checkbox deve ser: Pokémon favoritado?', () => {
   test('A página de detalhes deve conter um checkbox que permita favoritar um pokémon. Cliques no checkbox devem, alternadadamente, adicionar e remover o pokémon da lista de favoritos ', () => {
     const history = createMemoryHistory();
