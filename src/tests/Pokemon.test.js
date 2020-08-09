@@ -25,6 +25,7 @@ describe('Deve ser retornado um card com as informações de determinado pokémo
 
     const nome = getByTestId(/pokemon-name/);
     expect(nome).toBeInTheDocument();
+    expect(nome.innerHTML).toMatch('Pikachu');
   });
 
   test('O peso médio do pokémon deve ser exibido', () => {
