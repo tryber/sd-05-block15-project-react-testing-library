@@ -17,9 +17,9 @@ class Pokedex extends React.Component {
   }
 
   nextPokemon(numberOfPokemons) {
-    this.setState((state) => (
-      { pokemonIndex: (state.pokemonIndex + 1) % numberOfPokemons }
-    ));
+    this.setState((state) => ({
+      pokemonIndex: (state.pokemonIndex + 1) % numberOfPokemons,
+    }));
   }
 
   fetchFilteredPokemons() {
@@ -35,7 +35,9 @@ class Pokedex extends React.Component {
   fetchPokemonTypes() {
     const { pokemons } = this.props;
 
-    return [...new Set(pokemons.reduce((types, { type }) => [...types, type], []))];
+    return [
+      ...new Set(pokemons.reduce((types, { type }) => [...types, type], [])),
+    ];
   }
 
   renderPokemonButtonsPanel() {

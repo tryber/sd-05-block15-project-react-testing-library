@@ -2,7 +2,6 @@ import React from 'react';
 import { cleanup, fireEvent, render } from '@testing-library/react';
 import { MemoryRouter } from 'react-dom';
 import App from '../App';
-
 import FavoritePokemons from '../components/FavoritePokemons';
 
 afterEach(cleanup);
