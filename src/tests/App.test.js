@@ -24,3 +24,24 @@ import App from '../App';
       expect(getByText('Encountered pokémons')).toBeInTheDocument();
     });
   });
+
+  describe('No topo da aplicação, deve haver um conjunto fixo de links de navegação', () => {
+    test('O primeiro link deve possuir o texto Home com a URL /', () => {
+      const { getAllByRole } = render(
+        <MemoryRouter>
+          <App />
+        </MemoryRouter>,
+      );
+      expect(getAllByRole('link')[0]).toHaveAttribute('href', '/');
+      expect(getAllByRole('link')[0].innerHTML).toMatch(/home/i);
+    });
+  
+    test('O segundo link deve possuir o texto About com a URL /about', () => {
+      const { getAllByRole } = render(
+        <MemoryRouter>
+          <App />
+        </MemoryRouter>,
+      );
+      expect(getAllByRole('link')[1]).toHaveAttribute('href', '/about');
+      expect(getAllByRole('link')[1].innerHTML).toMatch(/about/i);
+    });
