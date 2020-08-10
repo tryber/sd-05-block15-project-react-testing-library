@@ -4,6 +4,9 @@ import { render, fireEvent } from '@testing-library/react';
 import App from '../App';
 import pokemons from '../data';
 
+let typeOfPokemons = {};
+pokemons.forEach((pokemon) => (typeOfPokemons[pokemon.type] = 1));
+typeOfPokemons = Object.keys(typeOfPokemons);
 
 test('Testing Pokedex next buttom `Próximo pokémon`', () => {
   const { getByText } = render(
@@ -61,23 +64,36 @@ test('Render with data test ID', () => {
   expect(dataID.length).toBe(7);
 });
 test('Filter all should work', () => {
-  const { getByText } = render(
+  const { getByText, getAllByRole } = render(
     <MemoryRouter>
       <App />
     </MemoryRouter>,
   );
-  expect(getByText('Pikachu')).toBeInTheDocument();
+  const typeButton = getAllByRole('button').filter((e) => e.innerHTML !== 'Próximo pokémon');
   const nextButton = getByText('Próximo pokémon');
   expect(nextButton).toBeInTheDocument();
-  const first = pokemons[0].name;
-  let counter = 0;
-  pokemons.forEach((pokemon) => {
-    const actualPoke = getByText(pokemon.name);
-    expect(actualPoke.innerHTML).not.toBe('');
-    counter += 1;
-    fireEvent.click(nextButton);
+  typeButton.forEach((btn) => {
+    fireEvent.click(btn);
+    let first;
+    const selected = pokemons.filter((el) => {
+      if (btn.innerHTML !== 'All') {
+        first = pokemons.find((e) => e.type === btn.innerHTML).name;
+        return el.type === btn.innerHTML;
+      }
+      first = 'Pikachu';
+      return true;
+    });
+    let counter = 0;
+    selected.forEach((pokemon) => {
+      const actualPoke = getByText(pokemon.name);
+      expect(actualPoke.innerHTML).not.toBe('');
+      counter += 1;
+      fireEvent.click(nextButton);
+    });
+    const actualPoke = getByText(selected[0].name);
+    expect(actualPoke.innerHTML).toBe(first);
+    expect(counter).toBe(selected.length);
   });
-  const actualPoke = getByText(pokemons[0].name);
-  expect(actualPoke.innerHTML).toBe(first);
-  expect(counter).toBe(9);
+  fireEvent.click(typeButton[0]);
+  expect(getByText('Pikachu')).toBeInTheDocument();
 });
