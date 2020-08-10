@@ -44,6 +44,7 @@ describe('Testando navegação', () => {
     fireEvent.click(goHome);
     expect(history.location.pathname).toBe('/');
   });
+  // Testando o about
   test('Navegando about', () => {
     const { getByText, history } = renderWithRouter(<App />);
     const goAbout = getByText(/This application simulates/i);
