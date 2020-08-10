@@ -39,4 +39,24 @@ test('Checking type buttons', () => {
   expect(allButtons.some((btn) => btn.innerHTML === 'Psychic')).toBe(true);
   expect(allButtons.some((btn) => btn.innerHTML === 'Normal')).toBe(true);
   expect(allButtons.some((btn) => btn.innerHTML === 'Dragon')).toBe(true);
+  expect(allButtons.some((btn) => btn.innerHTML === 'Próximo pokémon')).toBe(true);
+});
+test('Render basic title', () => {
+  const { getByText } = render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>,
+  );
+  const title = getByText(/Encountered pokémons/i);
+  expect(title).toBeInTheDocument();
+});
+test('Render with data test ID', () => {
+  const { getAllByTestId } = render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>,
+  );
+  const dataID = getAllByTestId(/pokemon-type-button/i);
+  dataID.forEach((e) => expect(e).toBeInTheDocument());
+  expect(dataID.length).toBe(7);
 });
