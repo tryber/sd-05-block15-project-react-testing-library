@@ -31,26 +31,29 @@ test('shows the Pokédex when the route is `/`', () => {
       <App />
     </MemoryRouter>,
   );
-
   expect(getByText('Encountered pokémons')).toBeInTheDocument();
 });
+
 describe('Testando navegação', () => {
   afterEach(cleanup);
 
   test('Navegando home', () => {
     const { getByText, history } = renderWithRouter(<App />);
-    const goHome = getByText(/Encountered pokémons/i);
+    const goHome = getByText(/Home/i);
     expect(goHome).toBeInTheDocument();
     fireEvent.click(goHome);
     expect(history.location.pathname).toBe('/');
+    const homeText = getByText(/Encountered pokémons/i);
+    expect(homeText).toBeInTheDocument();
   });
-  // Testando o about
   test('Navegando about', () => {
     const { getByText, history } = renderWithRouter(<App />);
-    const goAbout = getByText(/This application simulates/i);
+    const goAbout = getByText(/About/i);
     expect(goAbout).toBeInTheDocument();
     fireEvent.click(goAbout);
     expect(history.location.pathname).toBe('/about');
+    const textAbout = getByText(/About Pokédex/i);
+    expect(textAbout).toBeInTheDocument();
   });
 
   test('Navegando favoritos', () => {
@@ -59,5 +62,12 @@ describe('Testando navegação', () => {
     expect(goFav).toBeInTheDocument();
     fireEvent.click(goFav);
     expect(history.location.pathname).toBe('/favorites');
+  });
+
+  test('Pagina não encontrada', () => {
+    const { getByText, history } = renderWithRouter(<App />);
+    history.push('/notFound');
+    const pageNotFound = getByText(/page requested not found/i);
+    expect(pageNotFound).toBeInTheDocument();
   });
 });
