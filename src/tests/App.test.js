@@ -5,7 +5,7 @@ import App from '../App';
 // start PR
 
 test('renders a reading with the text `Pokédex`', () => {
-  const { getByText, getAllByRole } = render(
+  const { getByText } = render(
     <MemoryRouter>
       <App />
     </MemoryRouter>,
@@ -18,7 +18,5 @@ test('renders a reading with the text `Pokédex`', () => {
   expect(about).toBeInTheDocument();
   const favorites = getByText(/Favorite/i);
   expect(favorites).toBeInTheDocument();
-  
-
 
 });
