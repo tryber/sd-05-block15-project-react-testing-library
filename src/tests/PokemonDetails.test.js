@@ -37,5 +37,5 @@ test('Render Pokemon Details', () => {
     </MemoryRouter>
   );
   /* const locationPoke = getByText(/Game Locations of [.]+/i);
-  expect(locationPoke).toBeInTheDocument(); */
+  expect(locationPoke).toBeInTheDocument();
 }); */
