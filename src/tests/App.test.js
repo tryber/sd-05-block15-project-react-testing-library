@@ -18,5 +18,4 @@ test('renders a reading with the text `Pokédex`', () => {
   expect(about).toBeInTheDocument();
   const favorites = getByText(/Favorite/i);
   expect(favorites).toBeInTheDocument();
-
 });
