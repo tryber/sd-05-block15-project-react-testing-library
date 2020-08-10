@@ -1,12 +1,13 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { render, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import FavoritePokemons from '../components/FavoritePokemons';
+
 test('Render `FavoritePokemons` to check no favorite', () => {
-  const {getByText} = render(
+  const { getByText } = render(
     <MemoryRouter>
       <FavoritePokemons />
-    </MemoryRouter>
+    </MemoryRouter>,
   );
   expect(getByText(/No favorite pokemon found/))
     .toBeInTheDocument();
