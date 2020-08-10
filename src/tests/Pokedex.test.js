@@ -66,6 +66,7 @@ test('Filter all should work', () => {
       <App />
     </MemoryRouter>,
   );
+  expect(getByText('Pikachu')).toBeInTheDocument();
   const nextButton = getByText('Próximo pokémon');
   expect(nextButton).toBeInTheDocument();
   const first = pokemons[0].name;
