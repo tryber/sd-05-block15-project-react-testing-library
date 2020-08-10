@@ -5,6 +5,7 @@ import { createMemoryHistory } from 'history';
 import App from '../App';
 import About from '../components/About';
 
+const img = 'https://cdn.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png';
 describe('A página About deve exibir informações sobre a Pokédex', () => {
   test('Verificando o pathname', () => {
     const history = createMemoryHistory();
@@ -32,7 +33,6 @@ describe('A página About deve exibir informações sobre a Pokédex', () => {
   });
 
   it('A página deve conter uma imagem de uma Pokedéx', () => {
-    const img = 'https://cdn.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png';
     const { getByRole } = render(<About />);
     const pokdedexImg = getByRole('img');
     expect(pokdedexImg).toBeInTheDocument();
