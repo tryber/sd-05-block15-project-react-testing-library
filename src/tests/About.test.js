@@ -1,6 +1,6 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { render, fireEvent, getByRole } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import App from '../App';
 
 test('renders a reading with the text `About Pokédex`', () => {
@@ -14,5 +14,5 @@ test('renders a reading with the text `About Pokédex`', () => {
   expect(about).toBeInTheDocument();
   const pic = getByRole('img');
   expect(pic.src).not.toBe('');
-  expect(pic.src).toBe(`https://cdn.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png`);
+  expect(pic.src).toBe('https://cdn.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png');
 });
