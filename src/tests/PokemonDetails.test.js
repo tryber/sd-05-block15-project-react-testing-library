@@ -23,12 +23,13 @@ const pokemonTest = {
       map: 'https://cdn.bulbagarden.net/upload/b/bd/Kanto_Celadon_City_Map.png',
     },
   ],
-  summary: 'This intelligent Pokémon roasts hard berries with electricity to make them tender enough to eat.',
+  summary: 'This intelligent Pokémon roasts hard berries ' +
+  'with electricity to make them tender enough to eat.',
 }
 test('Render Pokemon Details', () => {
   const { getByText } = render(
     <MemoryRouter>
-      <App 
+      <App
         isPokemonFavoriteById={{25:true}}
         match={{params: {id: '2'}}}
         onUpdateFavoritePokemons={()=>true}
