@@ -60,13 +60,6 @@ describe('A página de detalhes deve exibir uma seção com os mapas com as loca
     expect(getAllByAltText('Pikachu location')[0]).toHaveAttribute('src', 'https://cdn.bulbagarden.net/upload/0/08/Kanto_Route_2_Map.png');
     expect(getAllByAltText('Pikachu location')[1]).toHaveAttribute('src', 'https://cdn.bulbagarden.net/upload/b/bd/Kanto_Celadon_City_Map.png');
   });
-
-  test('A imagem da localização deve ter um atributo src com a URL da localização', () => {
-    const { getByText, getAllByAltText } = render(<MemoryRouter><App /></MemoryRouter>);
-    fireEvent.click(getByText(/more details/i));
-    expect(getAllByAltText('Pikachu location')[0]).toHaveAttribute('src', 'https://cdn.bulbagarden.net/upload/0/08/Kanto_Route_2_Map.png');
-    expect(getAllByAltText('Pikachu location')[1]).toHaveAttribute('src', 'https://cdn.bulbagarden.net/upload/b/bd/Kanto_Celadon_City_Map.png');
-  });
 });
 
 describe('A página de detalhes deve permitir favoritar um pokémon', () => {
