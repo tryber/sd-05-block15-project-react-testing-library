@@ -60,3 +60,23 @@ test('Render with data test ID', () => {
   dataID.forEach((e) => expect(e).toBeInTheDocument());
   expect(dataID.length).toBe(7);
 });
+test('Filter all should work', () => {
+  const { getByText } = render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>,
+  );
+  const nextButton = getByText('Próximo pokémon');
+  expect(nextButton).toBeInTheDocument();
+  const first = pokemons[0].name;
+  let counter = 0;
+  pokemons.forEach((pokemon) => {
+    const actualPoke = getByText(pokemon.name);
+    expect(actualPoke.innerHTML).not.toBe('');
+    counter += 1;
+    fireEvent.click(nextButton);
+  });
+  const actualPoke = getByText(pokemons[0].name);
+  expect(actualPoke.innerHTML).toBe(first);
+  expect(counter).toBe(9);
+});
