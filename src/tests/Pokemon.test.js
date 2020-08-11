@@ -81,13 +81,14 @@ describe('Testes do arquivo Pokemon', () => {
   });
 
   it('Ao clicar no link de navegação do pokémon, a aplicação deve ser redirecionada para a página de detalhes de pokémon. A URL exibida no navegador deve mudar para /pokemon/<id>, onde <id> é o id do pokémon cujos detalhes se deseja ver;', () => {
+    const { id } = data.find(Boolean);
     const history = createMemoryHistory();
+    history.push(`/pokemons/${id}`);
     const { getByRole } = render(
       <Router history={history}>
         <Pokemon pokemon={data.find(Boolean)} isFavorite={false} />
       </Router>,
     );
-    const { id } = data.find(Boolean);
     const detailLink = getByRole('link');
     fireEvent.click(detailLink);
     expect(history.location.pathname).toBe(`pokemons/${id}`);
