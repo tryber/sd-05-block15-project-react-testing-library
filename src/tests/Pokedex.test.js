@@ -1,10 +1,8 @@
 import React from 'react';
 import { MemoryRouter, Router } from 'react-router-dom';
-import { render, fireEvent, getAllByTestId } from '@testing-library/react';
-import { createMemoryHistory } from 'history';
+import { render, fireEvent } from '@testing-library/react';
 import App from '../App';
 import data from '../data';
-import Pokedex from '../components/Pokedex';
 
 const allPokeTypes = [...new Set(data.reduce((types, { type }) => [...types, type], []))];
 
@@ -62,7 +60,7 @@ describe('Testando o componente Pokédex.', () => {
       const typeButon = getAllByTestId('pokemon-type-button')[1];
       const pokeTypes = data.filter(({ type }) => type === typeButon.innerHTML);
       fireEvent.click(typeButon);
-      for (let poke = 0; poke < pokeTypes.length; poke++) {
+      for (let poke = 0; poke < pokeTypes.length; poke += 1) {
         const actualPokemon = getByTestId('pokemonType').innerHTML;
         expect(actualPokemon).toBe(typeButon.innerHTML);
         fireEvent.click(queryByText(/Próximo pokémon/i));
@@ -100,7 +98,7 @@ describe('Testando o componente Pokédex.', () => {
       it('Quando a página Carrega o filtro selecionado deve ser o All', () => {
         const { queryByText, queryByTestId } = render(<MemoryRouter><App /></MemoryRouter>);
         const nextButton = queryByText(/Próximo pokémon/i);
-        const actualType = data.find((e) => true).type;
+        const actualType = data.find(Boolean).type;
         const nextType = data.find(({ type }) => type !== actualType);
         for (let index = 0; index < data.indexOf(nextType); index += 1) {
           fireEvent.click(nextButton);
