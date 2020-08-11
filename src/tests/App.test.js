@@ -24,6 +24,7 @@ describe('test app', () => {
     expect(heading).toBeInTheDocument();
   });
 
+
   test('shows the About Page when the route is `/about`', () => {
     const { getByText, history } = renderRoute(<App />);
     fireEvent.click(getByText(/About/i));
