@@ -11,9 +11,9 @@ test('should render a Card of Pokémon', () => {
     </MemoryRouter>,
   );
     const pokemon = container.querySelectorAll('.pokemon');
-     const name = getByTestId('pokemon-name');
-      const type = getByTestId('pokemonType');
-      const weight = getByTestId('pokemon-weight');
+    const name = getByTestId('pokemon-name');
+    const type = getByTestId('pokemonType');
+    const weight = getByTestId('pokemon-weight');
     const img = getByAltText('Pikachu sprite');
     expect(...pokemon).toBeInTheDocument();
     expect(name).toHaveTextContent('Pikachu');
@@ -25,11 +25,11 @@ test('should render a Card of Pokémon', () => {
 test('deve abrir o botão More Details com detalhes do Pokémon', () => {
   const { getByText, history, getByLabelText, getByAltText } = renderRoute(<App />);
   fireEvent.click(getByText(/More Details/i));
-    const pathname = history.location.pathname;
+  const pathname = history.location.pathname;
   expect(pathname).toBe('/pokemons/25');
   fireEvent.click(getByLabelText('Pokémon favoritado?'));
   fireEvent.click(getByText('Home'));
-   const pokemonFav = getByAltText('Pikachu is marked as favorite');
+  const pokemonFav = getByAltText('Pikachu is marked as favorite');
   expect(pokemonFav).toBeInTheDocument();
   expect(pokemonFav.src).toBe('http://localhost/star-icon.svg');
   expect(pokemonFav.alt).toBe('Pikachu is marked as favorite');
