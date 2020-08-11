@@ -84,7 +84,6 @@ describe('Teste do componente PokemonDetails', () => {
 
     const label = queryByLabelText('Pokémon favoritado?');
     expect(label).toBeInTheDocument();
-
     fireEvent.click(label);
     const pokeImage = getAllByRole('img')
       .find(({ src }) => src.endsWith('/star-icon.svg'));
