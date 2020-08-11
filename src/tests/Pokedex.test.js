@@ -3,6 +3,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { render, fireEvent } from '@testing-library/react';
 import App from '../App';
 import data from '../data';
+import Pokedex from '../components/Pokedex';
 
 const allPokeTypes = [...new Set(data.reduce((types, { type }) => [...types, type], []))];
 
@@ -74,6 +75,7 @@ describe('Testando o componente Pokédex.', () => {
         expect(allPokeTypes).toContain(innerHTML);
       });
     });
+
     it('Botão proximo pokemon deve ser desabilitado quando a lista filtrada conter apenas um pokémon.', () => {
       const { queryByText, getAllByTestId } = render(<MemoryRouter><App /></MemoryRouter>);
       const count = (pType) => data.filter(({ type }) => type === pType).length;
@@ -126,5 +128,16 @@ describe('Testando o componente Pokédex.', () => {
         expect(queryByTestId('pokemonType').innerHTML).not.toBe(actualType);
       });
     });
+  });
+
+  it('Deve conter um h2 com o texto Encountered pokémos', () => {
+    const { queryByText } = render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
+    const h2Text = queryByText(/Encountered pokémons/i);
+    expect(h2Text).toBeInTheDocument();
+    expect(h2Text.tagName).toBe('H2');
   });
 });
