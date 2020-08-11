@@ -31,11 +31,9 @@ describe('Teste do componente PokemonDetails', () => {
         <App />
       </Router>,
     );
-
-    const detailContainer = findByText('Summary');
-    console.log(detailContainer.innerHTML);
-    expect(detailContainer.tagName).toBe('H2');
+    const detailContainer = findByText(/Summary/);
     expect(detailContainer).toBeInTheDocument();
+    expect(detailContainer.tagName).toBe('H2');
   });
 
   it('A seção de detalhes deve conter um heading h2 com o texto Game Locations of <name>, , onde <name> é o nome do pokémon exibido;', () => {
