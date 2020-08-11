@@ -26,14 +26,15 @@ describe('Teste do componente PokemonDetails', () => {
     const { id } = poke;
     const history = createMemoryHistory();
     history.push(`/pokemons/${id}`);
-    const { queryByText } = render(
+    const { getAllByRole } = render(
       <Router history={history}>
         <App />
       </Router>,
     );
 
-    const detailContainer = queryByText(/Summary/i);
+    const detailContainer = getAllByRole('heading')[2];
     expect(detailContainer.tagName).toBe('H2');
+    expect(detailContainer.innerHTML).toBe(' Summary ');
   });
 
   it('A seção de detalhes deve conter um heading h2 com o texto Game Locations of <name>, , onde <name> é o nome do pokémon exibido;', () => {
