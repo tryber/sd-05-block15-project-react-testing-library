@@ -36,7 +36,6 @@ describe('No topo da aplicação, deve haver um conjunto fixo de links de navega
     const history = createMemoryHistory();
     const { queryAllByRole } = render(<Router history={history}><App /></Router>);
     const firstLink = queryAllByRole('link')[2];
-    console.log(firstLink.text);
     expect(firstLink.text).toBe('Favorite Pokémons');
     expect(firstLink.pathname).toBe('/favorites');
   });
