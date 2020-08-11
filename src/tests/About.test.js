@@ -23,6 +23,7 @@ test('contains two paragraphs with text about the Pokedéx', () => {
 
   // there's a p tag
   expect(container.querySelector('p')).toBeInTheDocument();
+  
   // there's two
   const paragraphs = container.querySelectorAll('p');
   expect(paragraphs.length).toBe(2);
