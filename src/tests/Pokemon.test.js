@@ -13,6 +13,7 @@ test('should render a Card of Pokémon', () => {
     const pokemon = container.querySelectorAll('.pokemon');
     const name = getByTestId('pokemon-name');
     const type = getByTestId('pokemonType');
+
     const weight = getByTestId('pokemon-weight');
     const img = getByAltText('Pikachu sprite');
     expect(...pokemon).toBeInTheDocument();
