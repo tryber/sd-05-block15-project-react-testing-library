@@ -109,7 +109,11 @@ describe('Testando o componente Pokédex.', () => {
       });
 
       it('Após clicá-lo, a Pokédex deve voltar a circular por todos os pokémons', () => {
-        const { queryByText, queryByTestId, queryAllByTestId } = render(<MemoryRouter><App /></MemoryRouter>);
+        const { queryByText, queryByTestId, queryAllByTestId } = render(
+          <MemoryRouter>
+            <App />
+          </MemoryRouter>,
+        );
         const resetButton = queryByText('All');
         const nextButton = queryByText(/Próximo pokémon/i);
         const actualType = queryByTestId('pokemonType').innerHTML;
