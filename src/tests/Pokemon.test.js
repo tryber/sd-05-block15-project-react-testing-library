@@ -87,7 +87,6 @@ describe('Testes do arquivo Pokemon', () => {
         <Pokemon pokemon={data.find(Boolean)} isFavorite={false} />
       </Router>,
     );
-
     const { id } = data.find(Boolean);
     const detailLink = getByRole('link');
     fireEvent.click(detailLink);
