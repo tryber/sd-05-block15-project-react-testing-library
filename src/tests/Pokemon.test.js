@@ -94,31 +94,17 @@ describe('Testes do arquivo Pokemon', () => {
     expect(history.location.pathname).toBe(`pokemons/${id}`);
   });
 
-  describe('Pokémons favoritados devem exibir um ícone de uma estrela.', () => {
-    it('O ícone deve ser uma imagem. com o atributo src igual /star-icon.svg', () => {
-      const { getAllByRole } = render(
-        <MemoryRouter>
-          <Pokemon pokemon={data.find(Boolean)} isFavorite />
-        </MemoryRouter>,
-      );
-
-      const pokeImage = getAllByRole('img')
-        .some(({ src }) => src.endsWith('/star-icon.svg'));
-
-      expect(pokeImage).toBe(true);
-    });
-
-    it('A imagem deve ter o atributo alt igual a <pokemon> is marked as favorite, onde <pokemon> é o nome do pokémon cujos detalhes estão sendo exibidos.', () => {
-      const { getAllByRole } = render(
-        <MemoryRouter>
-          <Pokemon pokemon={data.find(Boolean)} isFavorite />
-        </MemoryRouter>,
-      );
-
-      const { name } = data.find(Boolean);
-      const pokeImage = getAllByRole('img')
-        .find(({ src }) => src.endsWith('/star-icon.svg'));
-      expect(pokeImage.alt).toBe(`${name} is marked as favorite`);
-    });
+  it(`Pokémons favoritados devem exibir um ícone de uma estrela.
+    A imagem deve ter o atributo alt igual a <pokemon> is marked as favorite, onde <pokemon> é o nome do pokémon cujos detalhes estão sendo exibidos.`, () => {
+    const { getAllByRole } = render(
+      <MemoryRouter>
+        <Pokemon pokemon={data.find(Boolean)} isFavorite />
+      </MemoryRouter>,
+    );
+    const pokeImage = getAllByRole('img')
+      .find(({ src }) => src.endsWith('/star-icon.svg'));
+    const { name } = data.find(Boolean);
+    expect(pokeImage).toBeInTheDocument();
+    expect(pokeImage.alt).toBe(`${name} is marked as favorite`);
   });
 });
