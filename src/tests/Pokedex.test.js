@@ -3,7 +3,6 @@ import { MemoryRouter } from 'react-router-dom';
 import { render, fireEvent } from '@testing-library/react';
 import App from '../App';
 import data from '../data';
-import Pokedex from '../components/Pokedex';
 
 const allPokeTypes = [...new Set(data.reduce((types, { type }) => [...types, type], []))];
 
