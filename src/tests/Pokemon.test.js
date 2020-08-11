@@ -102,7 +102,6 @@ describe('Testes do arquivo Pokemon', () => {
         </MemoryRouter>,
       );
 
-      const { name } = data.find(Boolean);
       const pokeImage = getAllByRole('img')
         .some(({ src }) => src.endsWith('/star-icon.svg'));
 
