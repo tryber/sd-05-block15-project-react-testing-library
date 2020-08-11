@@ -1,4 +1,3 @@
- 
 import React from 'react';
 import renderRouter from '../services/render';
 import { About } from '../components';
