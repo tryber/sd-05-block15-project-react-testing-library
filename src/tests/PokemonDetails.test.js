@@ -26,13 +26,13 @@ describe('Teste do componente PokemonDetails', () => {
     const { id } = poke;
     const history = createMemoryHistory();
     history.push(`/pokemons/${id}`);
-    const { queryByText } = render(
+    const { findByText } = render(
       <Router history={history}>
         <App />
       </Router>,
     );
 
-    const detailContainer = queryByText('Summary');
+    const detailContainer = findByText('Summary');
     console.log(detailContainer.innerHTML);
     expect(detailContainer.tagName).toBe('H2');
     expect(detailContainer).toBeInTheDocument();
