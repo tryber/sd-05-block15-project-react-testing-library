@@ -27,3 +27,6 @@ yarn-error.log*
 
 # stryker temp files
 .stryker-tmp
+
+# strkye reports folder
+/reports
