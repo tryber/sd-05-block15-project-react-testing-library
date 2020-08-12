@@ -37,7 +37,7 @@ Todos os arquivos de teste que vocês usarão **já estão previamente criados e
 
 ### 1. Testes do arquivo App.js
 
-  - Ao carregar a aplicação no caminho de URL “/”, a página principal da Pokédex deve ser mostrada.
+  - Ao carregar a aplicação no caminho de URL   , a página principal da Pokédex deve ser mostrada.
 
   - No topo da aplicação, deve haver um conjunto fixo de links de navegação
 
