@@ -7,9 +7,9 @@ import Pokemon from '../components/Pokemon';
 test('Deve ser retornado um card com as informações de determinado pokémon', () => {
   const history = createMemoryHistory();
   const { getByTestId } = render(
-  <Router history={history}>
-    <Pokemon />
-  </Router>,
+    <Router history={history}>
+      <Pokemon />
+    </Router>,
 );
   expect(getByTestId('pokemon-overview')).toBeInTheDocument();
 });
