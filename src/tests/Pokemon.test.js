@@ -18,6 +18,7 @@ test('returns a card with information about selected pokemon', () => {
   const { averageWeight, image, name } = selectedPokemon;
 
   expect(getByTestId('pokemon-name')).toBeInTheDocument();
+  expect(getByTestId('pokemon-name').innerHTML).toEqual(name);
   expect(getByTestId('pokemon-weight').innerHTML).toBe(`Average weight:${averageWeight.value}${averageWeight.measurementUnit}`);
   expect(getAllByRole('img')[0]).toHaveProperty('src', image);
   expect(getAllByRole('img')[0]).toHaveProperty('alt', `${name} sprite`);
@@ -26,12 +27,13 @@ test('returns a card with information about selected pokemon', () => {
 });
 
 test('if favorited, shows a star icon', () => {
-  const { getByLabelText, getByText, getAllByRole } = render(
+  const { getByLabelText, getByText, getAllByRole, getByTestId } = render(
     <MemoryRouter>
       <App />
     </MemoryRouter>,
   );
 
+  const name = getByTestId('pokemon-name').innerHTML;
   fireEvent.click(getByText('More details'));
   const favCheckbox = getByLabelText('Pokémon favoritado?');
   if (favCheckbox.checked === false) {
@@ -39,4 +41,5 @@ test('if favorited, shows a star icon', () => {
   }
   fireEvent.click(getByText('Home'));
   expect(getAllByRole('img')[1]).toHaveProperty('src', 'http://localhost/star-icon.svg');
+  expect(getAllByRole('img')[1]).toHaveProperty('alt', `${name} is marked as favorite`);
 });
