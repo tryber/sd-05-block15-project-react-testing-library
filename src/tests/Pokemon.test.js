@@ -19,6 +19,7 @@ test('returns a card with information about selected pokemon', () => {
 
   expect(getByTestId('pokemon-name')).toBeInTheDocument();
   expect(getByTestId('pokemon-name').innerHTML).toEqual(name);
+  expect(getByTestId('pokemonType')).toBeInTheDocument();
   expect(getByTestId('pokemon-weight').innerHTML).toBe(`Average weight:${averageWeight.value}${averageWeight.measurementUnit}`);
   expect(getAllByRole('img')[0]).toHaveProperty('src', image);
   expect(getAllByRole('img')[0]).toHaveProperty('alt', `${name} sprite`);
