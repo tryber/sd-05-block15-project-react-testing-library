@@ -1,6 +1,6 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { render, fireEvent, queryByText } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import App from '../App';
 import { FavoritePokemons } from '../components';
 
@@ -36,7 +36,7 @@ test('shows all favorited pokemons', () => {
 });
 
 test('doesnt show any non-favorited pokemons', () => {
-  const { getByText, getByLabelText } = render(
+  const { getByText, getByLabelText, queryByText } = render(
     <MemoryRouter initialEntries={['/']}>
       <App />
     </MemoryRouter>,
