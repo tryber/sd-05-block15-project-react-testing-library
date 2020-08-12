@@ -2,6 +2,7 @@ import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { render, fireEvent } from '@testing-library/react';
 import App from '../App';
+import pokemons from '../data';
 
 test('A página deve exibir o próximo pokémon da lista', () => {
   const { getByText } = render(
@@ -51,4 +52,31 @@ test('Encontrado Pokemon', () => {
   );
   const encontradoPokemon = getByText(/Encountered pokémons/i);
   expect(encontradoPokemon).toBeInTheDocument();
+});
+
+test('Typo', () => {
+  const { getAllByTestId, getByText } = render(
+    <MemoryRouter>
+      <App />;
+    </MemoryRouter>,
+  );
+  const tipoBotao = getAllByTestId('pokemon-type-button');
+  const botaoProximo = getByText('Próximo pokémon');
+  tipoBotao.forEach((btn) => {
+    fireEvent.click(btn);
+    const selecao = pokemons.filter((pokemon) => pokemon.type === btn.innerHTML);
+    const primeiro = selecao[0];
+    let count = 0;
+    selecao.forEach(
+      (pokemon) => {
+        const pokemonAtual = getByText(pokemon.name);
+        expect(pokemonAtual.innerHTML).not.toBe('');
+        count += 1;
+        fireEvent.click(botaoProximo);
+      },
+    );
+    const pokemonAtual = getByText(selecao[0].name);
+    expect(pokemonAtual.innerHTML).toBe(primeiro.name);
+    expect(count).toBe(selecao.length);
+  });
 });
