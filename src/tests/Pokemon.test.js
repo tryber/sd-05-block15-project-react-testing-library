@@ -1,6 +1,6 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, getByLabelText, getByRole } from '@testing-library/react';
 import App from '../App';
 import pokemons from '../data';
 
@@ -24,3 +24,17 @@ test('returns a card with information about selected pokemon', () => {
 
   expect(getByText('More details')).toHaveProperty('href', `http://localhost/pokemons/${pid}`);
 });
+
+test('if favorited, shows a star icon', () => {
+  const { getByLabelText, getByText, getAllByRole } = render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>,
+  );
+
+  fireEvent.click(getByText('More details'));
+  const favCheckbox = getByLabelText('Pokémon favoritado?');
+  favCheckbox.checked === false ? fireEvent.click(favCheckbox) : null;
+  fireEvent.click(getByText('Home'));
+  expect(getAllByRole('img')[1]).toHaveProperty('src', 'http://localhost/star-icon.svg');
+})

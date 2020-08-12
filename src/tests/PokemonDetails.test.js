@@ -2,6 +2,20 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import App from '../App';
+import pokemons from '../data';
+
+test('page contains info only about the selected pokemon', () => {
+  const { getByText, queryByText } = render(
+    <MemoryRouter initialEntries={['/']}>
+      <App />
+    </MemoryRouter>,
+  );
+
+  fireEvent.click(getByText('Poison'));
+  fireEvent.click(getByText('More details'));
+
+  expect(queryByText('Caterpie Details')).not.toBeInTheDocument();
+});
 
 test('page contains the text <name> Details, where name refers to the pokemon', () => {
   const { getByText, getByTestId } = render(
@@ -42,13 +56,18 @@ test('shows a summary heading"', () => {
 });
 
 test('shows a paragraph with the pokemon details"', () => {
+  const pokemonId = 25;
+
   const { getByText } = render(
-    <MemoryRouter initialEntries={['/pokemons/25']}>
+    <MemoryRouter initialEntries={[`/pokemons/${pokemonId}`]}>
       <App />
     </MemoryRouter>,
   );
 
-  expect(getByText(/This intelligent Pokémon/i)).toBeInTheDocument();
+  const selectedPokemon = pokemons.find((pokemon) => pokemon.id === pokemonId);
+  const { summary } = selectedPokemon;
+
+  expect(getByText(summary)).toBeInTheDocument();
 });
 
 
@@ -77,7 +96,6 @@ test('allows the user to favorite pokemon', () => {
   );
 
   fireEvent.click(getByText('More details'));
-
-  expect(getByLabelText('Pokémon favoritado?').checked).toEqual(false);
-  fireEvent.click(getByLabelText('Pokémon favoritado?'));
+  const favCheckbox = getByLabelText('Pokémon favoritado?');
+  expect(favCheckbox).toHaveProperty('type', 'checkbox');
 });
