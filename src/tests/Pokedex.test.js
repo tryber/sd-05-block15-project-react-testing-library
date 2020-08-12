@@ -1,5 +1,5 @@
 import React from 'react';
-import { MemoryRouter, history } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { cleanup, render, fireEvent } from '@testing-library/react';
 import App from '../App';
 

@@ -11,15 +11,15 @@ test('Deve ser retornado um card com as informações de determinado pokémon, O
   );
   const pokemonName = getByTestId(/pokemon-name/i);
   expect(pokemonName).toBeInTheDocument();
-  expect(pokemonName.innerHTML).toBe("Pikachu");
+  expect(pokemonName.innerHTML).toBe('Pikachu');
 
   const pokemonType = getByTestId(/pokemonType/i);
   expect(pokemonType).toBeInTheDocument();
-  expect(pokemonType.innerHTML).toBe("Electric");
+  expect(pokemonType.innerHTML).toBe('Electric');
 
   const pokemonWeight = getByTestId(/pokemon-weight/i);
   expect(pokemonWeight).toBeInTheDocument();
-  expect(pokemonWeight.innerHTML).toBe("Average weight:6.0kg");
+  expect(pokemonWeight.innerHTML).toBe('Average weight:6.0kg');
 
   const textoPeso = getByText(/Average weight:6.0kg/i);
   expect(textoPeso).toBeInTheDocument();
