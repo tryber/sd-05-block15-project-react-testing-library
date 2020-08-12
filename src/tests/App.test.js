@@ -11,4 +11,10 @@ test('renders a reading with the text `Pokédex`', () => {
   );
   const heading = getByText(/Pokédex/i);
   expect(heading).toBeInTheDocument();
+  const home = getByText(/Home/i);
+  expect(home).toBeInTheDocument();
+  const about = getByText(/About/i);
+  expect(about).toBeInTheDocument();
+  const favorite = getByText(/Favorite/i);
+  expect(favorite).toBeInTheDocument();
 });
