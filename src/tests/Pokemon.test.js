@@ -1,6 +1,6 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { render, fireEvent, getByLabelText, getByRole } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import App from '../App';
 import pokemons from '../data';
 
@@ -34,7 +34,9 @@ test('if favorited, shows a star icon', () => {
 
   fireEvent.click(getByText('More details'));
   const favCheckbox = getByLabelText('Pokémon favoritado?');
-  favCheckbox.checked === false ? fireEvent.click(favCheckbox) : null;
+  if (favCheckbox.checked === false) {
+    fireEvent.click(favCheckbox);
+  };
   fireEvent.click(getByText('Home'));
   expect(getAllByRole('img')[1]).toHaveProperty('src', 'http://localhost/star-icon.svg');
-})
+});
