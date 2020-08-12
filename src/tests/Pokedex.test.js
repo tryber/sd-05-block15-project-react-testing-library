@@ -38,5 +38,5 @@ test('must show filter buttons', () => {
   const filters = ['All', 'Electric', 'gdfs', 'Bug', 'Poison', 'Psychic', 'Normal', 'Dragon'];
   for (let i = 0; i <= filters.length; i += 1) {
     expect(getByText(filters[i])).toBeInTheDocument();
-  };
+  }
 });
