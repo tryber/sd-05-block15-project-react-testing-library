@@ -1,15 +1,6 @@
 import React from 'react';
-import { createMemoryHistory } from 'history';
-import { render } from '@testing-library/react';
-import { Router } from 'react-router-dom';
 import About from '../components/About';
-
-const renderWithRouter = (component) => {
-  const history = createMemoryHistory();
-  return {
-    ...render(<Router history={history}>{component}</Router>), history,
-  };
-};
+import renderWithRouter from '../components/renderWithRouter';
 
 test('A página "About" deve exibir informações sobre a Pokédex', () => {
   const { getAllByText } = renderWithRouter(<About />);
@@ -39,4 +30,3 @@ test('A página deve conter a seguinte imagem de uma Pokédex', () => {
   const src = getByRole('img');
   expect(src).toBeInTheDocument();
 });
-
