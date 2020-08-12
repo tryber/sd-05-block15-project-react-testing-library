@@ -1,7 +1,7 @@
 import React from 'react';
-import App from '../App';
 import { render, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+import App from '../App';
 
 test('Ao apertar o botão de próximo, a página deve exibir o próximo pokémon da lista', () => {
   // O botão deve conter o texto Próximo pokémon
@@ -30,8 +30,8 @@ test('Teste id', () => {
       <App />
     </MemoryRouter>,
   );
-    const testeId = getAllByTestId('pokemon-type-button');
-    expect(testeId.length).toBe(7);
+  const testeId = getAllByTestId('pokemon-type-button');
+  expect(testeId.length).toBe(7);
 });
 
 test('Próximo Pokémon', () => {
