@@ -10,5 +10,5 @@ test('texto Page requested not found', () => {
   expect(batatinha).toBeInTheDocument();
   const abobrinha = getAllByRole('img',
   { src: 'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif' });
-  expect(abobrinha[0]).toBeInTheDocument();
+  expect(abobrinha[1].src).not.toBe('');
 });
