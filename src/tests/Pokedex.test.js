@@ -70,18 +70,25 @@ test('Encontrado Pokemon', () => {
 ]; */
 
 test('Tipo Pokemon', () => {
-  const { getAllByTestId, getByText } = render(
+  const { getAllByRole, getByText } = render(
     <MemoryRouter>
       <App />
     </MemoryRouter>,
   );
 
-  const tipoBotao = getAllByTestId('pokemon-type-button');
-  const botaoProximo = getByText('Próximo pokémon');
+  const tipoBotao = getAllByRole('button').filter((e) => e.innerHTML !== 'Próximo pokémon');
+  const botaoProximo = getByText(/Próximo pokémon/i);
   tipoBotao.forEach((btn) => {
     fireEvent.click(btn);
-    const selecao = pokemons.filter((pokemon) => pokemon.type === btn.innerHTML);
-    const primeiro = selecao[0];
+    let primeiro;
+    const selecao = pokemons.filter((pokemon) => {
+      if (btn.innerHTML !== 'All') {
+        primeiro = pokemons.find((element) => element.type === btn.innerHTML).name;
+        return (pokemon.type === btn.innerHTML);
+      }
+      primeiro = 'Pikachu';
+      return true;
+    });
     let count = 0;
     selecao.forEach((pokemon) => {
       const pokemonAtual = getByText(pokemon.name);
@@ -90,7 +97,7 @@ test('Tipo Pokemon', () => {
       fireEvent.click(botaoProximo);
     });
     const pokemonAtual = getByText(selecao[0].name);
-    expect(pokemonAtual.innerHTML).toBe(primeiro.name);
+    expect(pokemonAtual.innerHTML).toBe(primeiro);
     expect(count).toBe(selecao.length);
   });
 });
