@@ -11,4 +11,8 @@ test('testando HOME', () => {
   );
   const home = getByText(/Home/i);
   expect(home).toBeInTheDocument();
+  const about = getByText(/About/i);
+  expect(about).toBeInTheDocument();  
+  const favorite = getByText(/Favorite/i);
+  expect(favorite).toBeInTheDocument();
 });
