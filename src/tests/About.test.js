@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, getByRole } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import About from '../components/About';
 
 test('About deve exibir informações sobre a Pokédex', () => {
