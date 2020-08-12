@@ -72,23 +72,24 @@ test('shows a paragraph with the pokemon details"', () => {
 
 
 test('shows a maps section', () => {
-  const { getByText, getByTestId, getAllByRole } = render(
+  const { getByText, getByTestId, getAllByRole, getAllByAltText } = render(
     <MemoryRouter initialEntries={['/']}>
       <App />
     </MemoryRouter>,
   );
 
   const name = getByTestId('pokemon-name').innerHTML;
+  const selectedPokemon = pokemons.find((pokemon) => pokemon.name === name);
+  const { foundAt } = selectedPokemon;
 
   fireEvent.click(getByText('More details'));
 
   expect(getAllByRole('heading')[3].tagName).toBe('H2');
-  expect(getAllByRole('heading')[3]).toHaveTextContent('Game Locations of');
-  expect(getAllByRole('img')[1]).toHaveProperty('src', 'https://cdn.bulbagarden.net/upload/0/08/Kanto_Route_2_Map.png');
-  expect(getAllByRole('img')[1]).toHaveProperty('alt', `${name} location`);
+  expect(getAllByRole('heading')[3]).toHaveTextContent(`Game Locations of ${name}`);
+  expect(getAllByAltText(`${name} location`)[0]).toHaveProperty('src', `${foundAt[0].map}`);
 });
 
-test('allows the user to favorite pokemon', () => {
+test('allows the user to favorite a pokemon', () => {
   const { getByText, getByLabelText } = render(
     <MemoryRouter>
       <App />
