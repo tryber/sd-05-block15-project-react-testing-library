@@ -36,7 +36,7 @@ test('if favorited, shows a star icon', () => {
   const favCheckbox = getByLabelText('Pokémon favoritado?');
   if (favCheckbox.checked === false) {
     fireEvent.click(favCheckbox);
-  };
+  }
   fireEvent.click(getByText('Home'));
   expect(getAllByRole('img')[1]).toHaveProperty('src', 'http://localhost/star-icon.svg');
 });
