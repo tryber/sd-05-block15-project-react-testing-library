@@ -99,7 +99,7 @@ describe('A Pokédex deve conter um botão para resetar o filtro', () => {
   });
 
   test('teste que não foi avisado', () => {
-    const { getByText, container } = renderWithRouter(<App />);
+    const { container } = renderWithRouter(<App />);
     const procuraH2 = container.querySelector('h2');
     expect(procuraH2).toBeInTheDocument();
     expect(procuraH2.innerHTML).toBe('Encountered pokémons');
