@@ -20,14 +20,14 @@ test('shows the Pokédex when the route is `/`', () => {
     </MemoryRouter>,
   );
 
-  expect(getByText('Encountered pokémons')).toBeInTheDocument();
+  expect(getByText(/Encountered pokémons/i)).toBeInTheDocument();
 });
 
 test('navigation linnks exist', () => {
   const { getByText } = renderWithRouter(<App />);
   const home = getByText(/home/i);
   const about = getByText(/about/i);
-  const favoritePokemons = getByText(/favorite pokémons/i);
+  const favoritePokemons = getByText(/favorite/i);
   expect(home).toBeInTheDocument();
   expect(about).toBeInTheDocument();
   expect(favoritePokemons).toBeInTheDocument();
@@ -49,7 +49,7 @@ test('link about should render about page', () => {
 
 test('link favorite pokemon should render favorite page', () => {
   const { getByText, history } = renderWithRouter(<App />);
-  fireEvent.click(getByText(/favorite pokémons/i));
+  fireEvent.click(getByText(/favorite/i));
   const pathname = history.location.pathname;
   expect(pathname).toBe('/favorites');
 });
