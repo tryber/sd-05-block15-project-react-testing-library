@@ -11,7 +11,7 @@ test('Caso a pessoa não tenha pokémons favoritos, a mensagem `No favorite poke
 
 test('A página não deve exibir nenhum card de pokémon não favoritado.', () => {
   const { getAllByText } = renderWithRouter(<FavoritePokemons pokemons={[pokemons[0]]} />);
-  const textPokemon = getAllByText('Pikachu')
+  const textPokemon = getAllByText('Pikachu');
   expect(textPokemon.length).toEqual(1);
   expect(getAllByText(/Average weight:/i).length).toEqual(1);
 });
