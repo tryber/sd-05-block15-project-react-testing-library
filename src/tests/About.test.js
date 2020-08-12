@@ -26,7 +26,8 @@ test('A página deve conter dois parágrafos com texto sobre a Pokédex', () => 
 });
 
 test('A página deve conter a seguinte imagem de uma Pokédex', () => {
-  const { getByRole } = renderWithRouter(<About />);
-  const src = getByRole('img');
-  expect(src).toBeInTheDocument();
+  const { getByRole, getByAltText } = renderWithRouter(<About />);
+  const img = getByRole('img');
+  expect(img.src).toBe('https://cdn.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png');
+  expect(getByAltText('Pokédex')).toHaveAttribute('src', 'https://cdn.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png');
 });
