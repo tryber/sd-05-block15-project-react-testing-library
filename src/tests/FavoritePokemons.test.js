@@ -5,7 +5,6 @@ import renderWithRouter from '../components/renderWithRouter';
 
 test('A mensagem No favorite pokemon found deve aparecer na tela', () => {
   const { getByText } = renderWithRouter(<FavoritePokemons />);
-  const favorite = getByText(/No favorite pokemon found/i);
-  expect(favorite).toBeInTheDocument(); 
-
+  const favorit = getByText(/No favorite pokemon found/i);
+  expect(favorit).toBeInTheDocument();
 });
