@@ -1,0 +1,294 @@
+13:06:13 (8572) INFO ConfigReader Using stryker.conf.js
+13:06:14 (8572) DEBUG BroadcastReporter Broadcasting to reporters ["progress","clear-text","html"]
+13:06:13 (8572) DEBUG ConfigReader Loading config /home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/stryker.conf.js
+13:06:13 (8572) DEBUG ConfigReader Loaded config: {
+  "comment": "This config was generated using a preset. Please see the handbook for more information: https://github.com/stryker-mutator/stryker-handbook/blob/master/stryker/guides/react.md#react",
+  "mutate": [
+    "src/**/*.js?(x)",
+    "!src/**/*@(.test|.spec|Spec).js?(x)"
+  ],
+  "mutator": "javascript",
+  "testRunner": "jest",
+  "reporters": [
+    "progress",
+    "clear-text",
+    "html"
+  ],
+  "coverageAnalysis": "off",
+  "jest": {
+    "projectType": "create-react-app"
+  },
+  "allowConsoleColors": true,
+  "commandRunner": {
+    "command": "npm test"
+  },
+  "clearTextReporter": {
+    "allowColor": true,
+    "logTests": true,
+    "maxTestsToLog": 3
+  },
+  "dashboard": {
+    "baseUrl": "https://dashboard.stryker-mutator.io/api/reports",
+    "reportType": "full"
+  },
+  "eventReporter": {
+    "baseDir": "reports/mutation/events"
+  },
+  "fileLogLevel": "trace",
+  "logLevel": "debug",
+  "maxConcurrentTestRunners": 9007199254740991,
+  "plugins": [
+    "@stryker-mutator/*"
+  ],
+  "symlinkNodeModules": true,
+  "tempDirName": ".stryker-tmp",
+  "thresholds": {
+    "high": 80,
+    "low": 60,
+    "break": null
+  },
+  "timeoutFactor": 1.5,
+  "timeoutMS": 5000,
+  "transpilers": [],
+  "warnings": true,
+  "configFile": "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/stryker.conf.js"
+}
+13:06:13 (8572) DEBUG PluginLoader Loading @stryker-mutator/* from /home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator
+13:06:13 (8572) DEBUG PluginLoader Loading plugin "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator/javascript-mutator" (matched with expression @stryker-mutator/*)
+13:06:13 (8572) DEBUG PluginLoader Loading plugin "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator/jest-runner" (matched with expression @stryker-mutator/*)
+13:06:13 (8572) DEBUG PluginLoader Loading plugins /home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator/javascript-mutator
+13:06:14 (8572) DEBUG PluginLoader Loading plugins /home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator/jest-runner
+13:06:14 (8572) DEBUG PluginLoader Loading plugins /home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator/core/src/reporters/index.js
+13:06:14 (8572) DEBUG buildSchemaWithPluginContributions Contributing 1 schemas from plugins to options validation.
+13:06:14 (8572) WARN markUnknownOptions Unknown stryker config option "comment".
+13:06:14 (8572) WARN markUnknownOptions 
+   Possible causes:
+   * Is it a typo on your end?
+   * Did you only write this property as a comment? If so, please postfix it with "_comment".
+   * You might be missing a plugin that is supposed to use it. Stryker loaded plugins from: ["@stryker-mutator/*","/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator/core/src/reporters/index.js"]
+   * The plugin that is using it did not contribute explicit validation. 
+   (disable "warnings.unknownOptions" to ignore this warning)
+13:06:14 (8572) INFO InputFileResolver Found 15 of 58 file(s) to be mutated.
+13:06:14 (8572) DEBUG InputFileResolver All input files: [
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/stryker.log",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/.codeclimate.yml",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/.eslintrc",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/.github/CODEOWNERS",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/.github/workflows/main.yml",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/.gitignore",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/.stylelintrc.json",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/.travis.yml",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/README.md",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/package-lock.json",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/package.json",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/public/favicon.ico",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/public/index.html",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/public/logo192.png",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/public/logo512.png",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/public/manifest.json",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/public/robots.txt",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/public/star-icon.svg",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/App.css",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/App.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/components/About.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/components/Button.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/components/FavoritePokemons.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/components/NotFound.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/components/Pokedex.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/components/Pokemon.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/components/PokemonDetails.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/components/about.css",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/components/button.css",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/components/favorite-pokemons.css",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/components/index.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/components/not-found.css",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/components/pokedex.css",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/components/pokemon-details.css",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/components/pokemon.css",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/data.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/index.css",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/index.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/logo.svg",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/serviceWorker.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/services/pokedexService.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/setupTests.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/tests/About.test.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/tests/App.test.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/tests/FavoritePokemons.test.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/tests/NotFound.test.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/tests/Pokedex.test.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/tests/Pokemon.test.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/tests/PokemonDetails.test.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/types/index.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/stryker.conf.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/stryker/About.conf.json",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/stryker/App.conf.json",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/stryker/FavoritePokemons.conf.json",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/stryker/NotFound.conf.json",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/stryker/Pokedex.conf.json",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/stryker/Pokemon.conf.json",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/stryker/PokemonDetails.conf.json"
+]
+13:06:14 (8572) DEBUG InputFileResolver Files to mutate: [
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/App.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/components/About.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/components/Button.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/components/FavoritePokemons.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/components/NotFound.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/components/Pokedex.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/components/Pokemon.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/components/PokemonDetails.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/components/index.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/data.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/index.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/serviceWorker.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/services/pokedexService.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/setupTests.js",
+  "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/src/types/index.js"
+]
+13:06:14 (8572) DEBUG TemporaryDirectory Using temp directory "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/.stryker-tmp"
+13:06:14 (8572) DEBUG TestFrameworkOrchestrator The `coverageAnalysis` setting is "off", not hooking into the test framework to achieve performance benefits.
+13:06:14 (8572) INFO InitialTestExecutor Starting initial test run. This may take a while.
+13:06:14 (8572) DEBUG Sandbox Creating a sandbox for files in /home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/.stryker-tmp/sandbox3387501
+13:06:14 (8572) DEBUG Sandbox Creating test runner 0
+13:06:14 (8572) DEBUG ChildProcessProxy Starting /home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator/core/src/test-runner/ChildProcessTestRunnerWorker.js in child process 8586
+13:06:16 (8572) DEBUG TimeoutDecorator Starting timeout timer (300000 ms) for a test run
+13:06:15 (8586) DEBUG ChildProcessProxyWorker Changing current working directory for this process to /home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/.stryker-tmp/sandbox3387501
+13:06:15 (8586) DEBUG PluginLoader Loading @stryker-mutator/* from /home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator
+13:06:15 (8586) DEBUG PluginLoader Loading plugin "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator/javascript-mutator" (matched with expression @stryker-mutator/*)
+13:06:15 (8586) DEBUG PluginLoader Loading plugin "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator/jest-runner" (matched with expression @stryker-mutator/*)
+13:06:15 (8586) DEBUG PluginLoader Loading plugins /home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator/javascript-mutator
+13:06:16 (8586) DEBUG PluginLoader Loading plugins /home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator/jest-runner
+13:06:16 (8586) DEBUG PluginLoader Loading plugins /home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator/core/src/reporters/index.js
+13:06:16 (8586) TRACE JestTestRunner Merging file-based config {
+  "roots": [
+    "<rootDir>/src"
+  ],
+  "collectCoverageFrom": [
+    "**/*.{js,jsx}",
+    "!src/index.js",
+    "!src/serviceWorker.js"
+  ],
+  "setupFiles": [
+    "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/react-app-polyfill/jsdom.js"
+  ],
+  "setupFilesAfterEnv": [
+    "<rootDir>/src/setupTests.js"
+  ],
+  "testMatch": [
+    "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
+    "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
+  ],
+  "testEnvironment": "jest-environment-jsdom-fourteen",
+  "transform": {
+    "^.+\\.(js|jsx|ts|tsx)$": "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/react-scripts/config/jest/babelTransform.js",
+    "^.+\\.css$": "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/react-scripts/config/jest/cssTransform.js",
+    "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/react-scripts/config/jest/fileTransform.js"
+  },
+  "transformIgnorePatterns": [
+    "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
+    "^.+\\.module\\.(css|sass|scss)$"
+  ],
+  "modulePaths": [],
+  "moduleNameMapper": {
+    "^react-native$": "react-native-web",
+    "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
+  },
+  "moduleFileExtensions": [
+    "web.js",
+    "js",
+    "web.ts",
+    "ts",
+    "web.tsx",
+    "tsx",
+    "json",
+    "web.jsx",
+    "jsx",
+    "node"
+  ],
+  "watchPlugins": [
+    "jest-watch-typeahead/filename",
+    "jest-watch-typeahead/testname"
+  ],
+  "rootDir": "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/.stryker-tmp/sandbox3387501"
+} 
+      with custom config {}
+      and default (internal) stryker config [object Object]
+13:06:16 (8586) DEBUG JestTestRunner Running jest with --findRelatedTests flag. Set jest.enableFindRelatedTests to false to run all tests on every mutant.
+13:06:16 (8586) DEBUG JestTestRunner Project root is /home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/.stryker-tmp/sandbox3387501
+13:06:16 (8586) TRACE JestLessThan25TestAdapter Invoking Jest with config {"roots":["<rootDir>/src"],"collectCoverageFrom":["**/*.{js,jsx}","!src/index.js","!src/serviceWorker.js"],"setupFiles":["/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/react-app-polyfill/jsdom.js"],"setupFilesAfterEnv":["<rootDir>/src/setupTests.js"],"testMatch":["<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}","<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"],"testEnvironment":"jest-environment-jsdom-fourteen","transform":{"^.+\\.(js|jsx|ts|tsx)$":"/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/react-scripts/config/jest/babelTransform.js","^.+\\.css$":"/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/react-scripts/config/jest/cssTransform.js","^(?!.*\\.(js|jsx|ts|tsx|css|json)$)":"/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/react-scripts/config/jest/fileTransform.js"},"transformIgnorePatterns":["[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$","^.+\\.module\\.(css|sass|scss)$"],"modulePaths":[],"moduleNameMapper":{"^react-native$":"react-native-web","^.+\\.module\\.(css|sass|scss)$":"identity-obj-proxy"},"moduleFileExtensions":["web.js","js","web.ts","ts","web.tsx","tsx","json","web.jsx","jsx","node"],"watchPlugins":["jest-watch-typeahead/filename","jest-watch-typeahead/testname"],"rootDir":"/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/.stryker-tmp/sandbox3387501","collectCoverage":false,"verbose":false,"bail":false,"notify":false,"reporters":[]}
+13:11:16 (8572) DEBUG TimeoutDecorator Timeout expired, restarting the process and reporting timeout
+13:11:18 (8572) DEBUG ChildProcessProxy Disposing of worker process 8586
+13:11:20 (8572) DEBUG ChildProcessProxy Kill 8586
+13:11:20 (8572) DEBUG ChildProcessProxy Starting /home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator/core/src/test-runner/ChildProcessTestRunnerWorker.js in child process 10641
+13:11:20 (10641) DEBUG ChildProcessProxyWorker Changing current working directory for this process to /home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/.stryker-tmp/sandbox3387501
+13:11:20 (10641) DEBUG PluginLoader Loading @stryker-mutator/* from /home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator
+13:11:20 (10641) DEBUG PluginLoader Loading plugin "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator/javascript-mutator" (matched with expression @stryker-mutator/*)
+13:11:20 (10641) DEBUG PluginLoader Loading plugin "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator/jest-runner" (matched with expression @stryker-mutator/*)
+13:11:20 (10641) DEBUG PluginLoader Loading plugins /home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator/javascript-mutator
+13:11:21 (10641) DEBUG PluginLoader Loading plugins /home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator/jest-runner
+13:11:21 (10641) DEBUG PluginLoader Loading plugins /home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator/core/src/reporters/index.js
+13:11:21 (10641) TRACE JestTestRunner Merging file-based config {
+  "roots": [
+    "<rootDir>/src"
+  ],
+  "collectCoverageFrom": [
+    "**/*.{js,jsx}",
+    "!src/index.js",
+    "!src/serviceWorker.js"
+  ],
+  "setupFiles": [
+    "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/react-app-polyfill/jsdom.js"
+  ],
+  "setupFilesAfterEnv": [
+    "<rootDir>/src/setupTests.js"
+  ],
+  "testMatch": [
+    "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
+    "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
+  ],
+  "testEnvironment": "jest-environment-jsdom-fourteen",
+  "transform": {
+    "^.+\\.(js|jsx|ts|tsx)$": "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/react-scripts/config/jest/babelTransform.js",
+    "^.+\\.css$": "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/react-scripts/config/jest/cssTransform.js",
+    "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/react-scripts/config/jest/fileTransform.js"
+  },
+  "transformIgnorePatterns": [
+    "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
+    "^.+\\.module\\.(css|sass|scss)$"
+  ],
+  "modulePaths": [],
+  "moduleNameMapper": {
+    "^react-native$": "react-native-web",
+    "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
+  },
+  "moduleFileExtensions": [
+    "web.js",
+    "js",
+    "web.ts",
+    "ts",
+    "web.tsx",
+    "tsx",
+    "json",
+    "web.jsx",
+    "jsx",
+    "node"
+  ],
+  "watchPlugins": [
+    "jest-watch-typeahead/filename",
+    "jest-watch-typeahead/testname"
+  ],
+  "rootDir": "/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/.stryker-tmp/sandbox3387501"
+} 
+      with custom config {}
+      and default (internal) stryker config [object Object]
+13:11:21 (10641) DEBUG JestTestRunner Running jest with --findRelatedTests flag. Set jest.enableFindRelatedTests to false to run all tests on every mutant.
+13:11:21 (10641) DEBUG JestTestRunner Project root is /home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/.stryker-tmp/sandbox3387501
+13:11:21 (8572) DEBUG ChildProcessProxy Disposing of worker process 10641
+13:11:21 (8572) DEBUG ChildProcessProxy Kill 10641
+13:11:21 (8572) ERROR InitialTestExecutor Initial test run timed out! Ran following tests before timeout:
+13:11:21 (8572) ERROR StrykerCli an error occurred Error: Something went wrong in the initial test run
+    at InitialTestExecutor.validateResult (/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator/core/src/process/InitialTestExecutor.js:86:15)
+    at InitialTestExecutor.run (/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator/core/src/process/InitialTestExecutor.js:41:14)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at async Stryker.runMutationTest (/home/elisa/Documents/coding/trybe-course/projects/15/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator/core/src/Stryker.js:53:38)
