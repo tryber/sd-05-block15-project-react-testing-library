@@ -5,11 +5,11 @@ import { render } from '@testing-library/react';
 import Pokemon from '../components/Pokemon';
 
 test('Deve ser retornado um card com as informações de determinado pokémon', () => {
-const history = createMemoryHistory();
-const { getByTestId } = render(
+  const history = createMemoryHistory();
+  const { getByTestId } = render(
   <Router history={history}>
     <Pokemon />
   </Router>,
 );
-expect(getByTestId('pokemon-overview')).toBeInTheDocument();
+  expect(getByTestId('pokemon-overview')).toBeInTheDocument();
 });
