@@ -39,10 +39,11 @@ describe('Testes do arquivo Pokedex.js', () => {
     );
     const testeId = getAllByTestId('pokemon-type-button');
     expect(testeId.length).toBe(7);
-
+    
     const buttons = ['Electric', 'Fire', 'Bug', 'Poison', 'Psychic', 'Normal', 'Dragon'];
-    buttons.map((button) => {
+    return buttons.map((button) => {
       if(button === 'Electric') {
+
         expect(getAllByText(button)[1]).toBeInTheDocument();
       } else {
         expect(getByText(button)).toBeInTheDocument();
