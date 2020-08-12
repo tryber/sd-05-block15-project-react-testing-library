@@ -3,7 +3,6 @@ import { render, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import App from '../App';
 import pokemons from '../data';
-import { isElementOfType } from 'react-dom/test-utils';
 
 test('Ao apertar o botão de próximo, a página deve exibir o próximo pokémon da lista', () => {
   // O botão deve conter o texto Próximo pokémon
@@ -57,7 +56,7 @@ test('Pokemon Encontrado', () => {
 });
 
 test('Todos os tipos', () => {
-  const { getByText, getAllByRole} = render(
+  const { getByText, getAllByRole } = render(
     <MemoryRouter>
       <App />
     </MemoryRouter>,
@@ -68,10 +67,10 @@ test('Todos os tipos', () => {
     fireEvent.click(btn);
     let first;
     const selection = pokemons.filter((pokemon) => {
-      if(btn.innerHTML !== 'All') {
+      if (btn.innerHTML !== 'All') {
         first = pokemons.find((element) => element.type === btn.innerHTML).name;
         return (pokemon.type === btn.innerHTML);
-      };
+      }
       first = 'Pikachu';
       return true;
     });
