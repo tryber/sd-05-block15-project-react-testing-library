@@ -9,5 +9,5 @@ test('About deve exibir informações sobre a Pokédex', () => {
   const batatinha = getByText(/About Pokédex/i);
   expect(batatinha).toBeInTheDocument();
   const abobrinha = getByRole('img');
-  expect(abobrinha).toBeInTheDocument();
+  expect(abobrinha.src).not.toBe('');
 });
