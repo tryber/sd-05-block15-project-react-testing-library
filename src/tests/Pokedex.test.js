@@ -43,11 +43,9 @@ describe('Testes do arquivo Pokedex.js', () => {
     buttons.map((button) => {
       if (button === 'Electric') {
         return expect(getAllByText(button)[1]).toBeInTheDocument();
-      } else {
-        return expect(getByText(button)).toBeInTheDocument();
       }
+      return expect(getByText(button)).toBeInTheDocument();
     });
-    return button;
   });
 
   test('A Pokédex deve conter um botão para resetar o filtro', () => {
