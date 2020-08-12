@@ -1,6 +1,6 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, getByText } from '@testing-library/react';
 import App from '../App';
 
 test('must render a button to load next pokemon', () => {
@@ -29,14 +29,15 @@ test('must show one pokemon at a time', () => {
 });
 
 test('must show filter buttons', () => {
-  const { getByText } = render(
+  const { getAllByText } = render(
     <MemoryRouter>
       <App />
     </MemoryRouter>,
   );
 
-  const filters = ['All', 'Electric', 'gdfs', 'Bug', 'Poison', 'Psychic', 'Normal', 'Dragon'];
-  for (let i = 0; i <= filters.length; i += 1) {
-    expect(getByText(filters[i])).toBeInTheDocument();
+  const filters = ['All', 'Electric', 'Fire', 'Bug', 'Poison', 'Psychic', 'Normal', 'Dragon'];
+  for (let i in filters) {
+    let filter = filters[i];
+    expect(getAllByText(filter)[0]).toBeInTheDocument();
   }
 });
