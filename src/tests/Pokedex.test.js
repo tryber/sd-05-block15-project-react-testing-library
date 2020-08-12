@@ -4,7 +4,7 @@ import { Router } from 'react-router-dom';
 import { render, fireEvent, cleanup } from '@testing-library/react';
 import App from '../App';
 
-function renderWithRouter(
+function renderWithRouter2(
   ui,
   { route = '/',
   history = createMemoryHistory({ initialEntries: [route] }) } = {},
@@ -18,7 +18,7 @@ function renderWithRouter(
 describe('Teste da página Pokedex', () => {
   afterEach(cleanup);
   test('Teste do botão next ', () => {
-    const { getByText } = renderWithRouter(<App />);
+    const { getByText } = renderWithRouter2(<App />);
     let checkPokemon = getByText(/Pikachu/i);
     const btnText = getByText(/Próximo pokémon/i);
     expect(btnText).toBeInTheDocument();
@@ -52,19 +52,19 @@ describe('Teste da página Pokedex', () => {
     expect(checkPokemon).toBeInTheDocument();
   });
   test('Teste do botão reset filtro', () => {
-    const { getByText } = renderWithRouter(<App />);
+    const { getByText } = renderWithRouter2(<App />);
     const resetBtnText = getByText(/All/i);
     fireEvent.click(resetBtnText);
     const isReseted = getByText(/Pikachu/i);
     expect(isReseted).toBeInTheDocument();
   });
   test('Teste o número de botões de filtro', () => {
-    const { getAllByTestId } = renderWithRouter(<App />);
+    const { getAllByTestId } = renderWithRouter2(<App />);
     const numberOfFilters = getAllByTestId(/pokemon-type-button/);
     expect(numberOfFilters.length).toBe(7);
   });
   test('Teste dos botões de filtro', () => {
-    const { getByText, getAllByText } = renderWithRouter(<App />);
+    const { getByText, getAllByText } = renderWithRouter2(<App />);
     let filterName = getAllByText(/Electric/i);
     // console.log(filterName)
     let pokeName = getByText(/Pikachu/i);
@@ -96,7 +96,7 @@ describe('Teste da página Pokedex', () => {
     expect(pokeName).toBeInTheDocument();
   });
   test('Teste h2 com o título ', () => {
-    const { getByText } = renderWithRouter(<App />);
+    const { getByText } = renderWithRouter2(<App />);
     const h2Text = getByText(/Encountered pokémons/i);
     expect(h2Text).toBeInTheDocument();
   });
