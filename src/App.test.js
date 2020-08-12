@@ -1,8 +1,8 @@
 import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
-import { render, cleanup } from '@testing-library/react';
-import App from '../App';
+import { MemoryRouter, Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
+import { render, cleanup, fireEvent } from '@testing-library/react';
+import App from '../App';
 
 afterEach(cleanup);
 
