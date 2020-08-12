@@ -7,7 +7,7 @@ import data from '../data';
 describe('Testes da página FavoritePokémons', () => {
   afterEach(cleanup);
 
-  test('Caso a pessoa não tenha pokémons favoritos, a mensagem No favorite pokemon found deve aparecer na tela', () => {
+  test('Caso a pessoa não tenha pokémons favoritos, a mensagem No favorite pokemon found deve aparecer', () => {
     const { getByText } = renderWithRouter(<FavoritePokemons pokemons={[]} />);
     expect(getByText(/No favorite p/i)).toBeInTheDocument();
   });
