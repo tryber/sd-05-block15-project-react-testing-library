@@ -1,13 +1,13 @@
-import React from "react";
-import { render } from "@testing-library/react";
+import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
+import { render } from '@testing-library/react';
 import NotFound from '../components/NotFound';
-import { MemoryRouter } from "react-router-dom";
 
 test('Heading e Imagem', () => {
   const { getByText, container } = render(
-  <MemoryRouter>  
-    <NotFound />
-  </MemoryRouter>,
+    <MemoryRouter>
+      <NotFound />
+    </MemoryRouter>,
   );
   const heading = getByText('Page requested not found');
   expect(heading).toBeInTheDocument();
