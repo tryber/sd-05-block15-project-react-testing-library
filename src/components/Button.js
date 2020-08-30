@@ -6,6 +6,7 @@ import './button.css';
 const Button = ({
   className,
   children,
+  dataTestId,
   disabled,
   onClick,
 }) => (
@@ -13,6 +14,7 @@ const Button = ({
     onClick={onClick}
     className={`button-text ${className}`}
     disabled={disabled}
+    data-testid={dataTestId}
     type="button"
   >
     {children}
