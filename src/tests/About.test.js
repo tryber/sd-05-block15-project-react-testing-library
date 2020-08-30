@@ -9,7 +9,7 @@ test('exibir informações sobre a Pokedéx', () => {
       <About />
     </MemoryRouter>,
   );
-  const aboutPokedex = getByText(/About/);
+  const aboutPokedex = getByText(/About Pokédex/);
   expect(aboutPokedex).toBeInTheDocument();
   expect(aboutPokedex.tagName).toBe('H2');
   const paragraphs = container.querySelectorAll('p');
