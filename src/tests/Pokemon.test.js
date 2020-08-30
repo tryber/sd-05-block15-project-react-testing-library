@@ -10,17 +10,17 @@ test('should render a Card of Pokémon', () => {
       <App />
     </MemoryRouter>,
   );
-    const pokemon = container.querySelectorAll('.pokemon');
-    const name = getByTestId('pokemon-name');
-    const type = getByTestId('pokemonType');
+  const pokemon = container.querySelectorAll('.pokemon');
+  const name = getByTestId('pokemon-name');
+  const type = getByTestId('pokemonType');
 
-    const weight = getByTestId('pokemon-weight');
-    const img = getByAltText('Pikachu sprite');
-    expect(...pokemon).toBeInTheDocument();
-    expect(name).toHaveTextContent('Pikachu');
-    expect(weight).toHaveTextContent('Average weight:6.0kg');
-    expect(type).toHaveTextContent('Electric');
-    expect(img.src).toBe('https://cdn.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
+  const weight = getByTestId('pokemon-weight');
+  const img = getByAltText('Pikachu sprite');
+  expect(...pokemon).toBeInTheDocument();
+  expect(name).toHaveTextContent('Pikachu');
+  expect(weight).toHaveTextContent('Average weight:6.0kg');
+  expect(type).toHaveTextContent('Electric');
+  expect(img.src).toBe('https://cdn.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
 });
 
 test('deve abrir o botão More Details com detalhes do Pokémon', () => {
