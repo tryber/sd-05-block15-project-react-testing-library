@@ -14,7 +14,7 @@ test('A página deve conter um heading h2 com o texto About Pokédex', () => {
   const { container } = renderWithRouter(<About />);
   const history = createMemoryHistory();
   history.push('/about');
-  expect(container.innerHTML.includes("h2"));
+  expect(container.innerHTML.includes('h2'));
 });
 
 test('A página deve conter dois parágrafos com texto sobre a Pokédex', () => {
