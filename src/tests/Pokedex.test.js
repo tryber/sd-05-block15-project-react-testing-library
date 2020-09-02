@@ -71,7 +71,7 @@ describe('testes componente pokedex', () => {
     const { getAllByText } = render(
       <MemoryRouter>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     const types = Data.map((element) => element.type);
     const result = types.filter(
