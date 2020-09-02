@@ -74,8 +74,7 @@ test('Ao clicar no link "About" na barra de navegação, a aplicação deve ser 
     </MemoryRouter>,
   );
   const history = createMemoryHistory('/about');
-  const About = getByText(/about/i);
-  fireEvent.click(About);
+  fireEvent.click(getByText(/about/i));
   expect(history.location.pathname).toBe('/about');
 });
 test('Ao clicar no link "Favorite Pokémons" na barra de navegação, a aplicação deve ser redirecionada para a página de pokémons favoritados, na URL "/favorites"', () => {
@@ -85,8 +84,7 @@ test('Ao clicar no link "Favorite Pokémons" na barra de navegação, a aplicaç
     </MemoryRouter>,
   );
   const history = createMemoryHistory('/favorites');
-  const favoritePokémons = getByText(/favorite pokémons/i);
-  fireEvent.click(favoritePokémons);
+  fireEvent.click(getByText(/favorite pokémons/i));
   expect(history.location.pathname).toBe('/favorites');
 });
 test('Entrar em uma URL desconhecida exibe a página Not Found', () => {
