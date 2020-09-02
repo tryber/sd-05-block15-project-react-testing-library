@@ -54,6 +54,7 @@ describe('Deve conter mais informações sobre apenas o pokémon selecionado;', 
       'This intelligent Pokémon roasts hard berries with electricity to make them tender enough to eat.',
     );
   });
+});
   describe('A página de detalhes deve exibir uma seção com os mapas com as localizações do pokémon', () => {
     test('A seção de detalhes deve conter um heading h2 com o texto Game Locations of <name>, , onde <name> é o nome do pokémon exibido', () => {
       const history = createMemoryHistory();
@@ -108,4 +109,3 @@ describe('Deve conter mais informações sobre apenas o pokémon selecionado;', 
     const checkbox = getByLabelText('Pokémon favoritado?');
     expect(checkbox).toBeInTheDocument();
   });
-}

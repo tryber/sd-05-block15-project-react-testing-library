@@ -22,7 +22,7 @@ describe('Deve ser retornado um card com as informações de determinado pokémo
       </MemoryRouter>,
     );
     expect(getByTestId('pokemon-weight').innerHTML).toBe(
-      'Average weight:6.0kg'
+      'Average weight:6.0kg',
     );
   });
   test('A imagem deve conter atributos src e alt', () => {
@@ -33,7 +33,7 @@ describe('Deve ser retornado um card com as informações de determinado pokémo
     );
     expect(getByRole('img')).toHaveAttribute(
       'src',
-      'https://cdn.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png'
+      'https://cdn.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png',
     );
     expect(getByAltText('Pikachu sprite')).toBeInTheDocument();
   });
@@ -56,7 +56,7 @@ describe('Deve ser retornado um card com as informações de determinado pokémo
     expect(getByAltText(/Pikachu is marked as favorite/i)).toBeInTheDocument();
     expect(getByAltText(/Pikachu is marked as favorite/i)).toHaveAttribute(
       'src',
-      '/star-icon.svg'
+      '/star-icon.svg',
     );
   });
 });
