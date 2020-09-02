@@ -3,6 +3,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { render } from '@testing-library/react';
 import App from '../App';
+import pokemons from '../data';
 
 describe('Deve conter mais informações sobre apenas o pokémon selecionado;', () => {
   test('A página deve conter um texto <name> Details, onde <name> é o nome do pokémon', () => {
@@ -106,6 +107,6 @@ test('O label do checkbox deve ser Pokémon favoritado?', () => {
       <App />
     </MemoryRouter>,
   );
-      const checkbox = getByLabelText('Pokémon favoritado?');
-      expect(checkbox).toBeInTheDocument();
+  const checkbox = getByLabelText('Pokémon favoritado?');
+  expect(checkbox).toBeInTheDocument();
 });
