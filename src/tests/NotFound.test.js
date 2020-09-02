@@ -1,13 +1,18 @@
 import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, Router } from 'react-router-dom';
 import { render } from '@testing-library/react';
-import NotFound from '../components/NotFound';
+
+import { createMemoryHistory} from 'history';
+
+import App from '../App';
 
 test('Heading e Imagem', () => {
+  const history = createMemoryHistory();
+  history.push('/batatinha');
   const { getByText, container } = render(
-    <MemoryRouter>
-      <NotFound />
-    </MemoryRouter>,
+    <Router history={history}>
+      <App />
+    </Router>,
   );
   const heading = getByText('Page requested not found');
   expect(heading).toBeInTheDocument();
