@@ -11,7 +11,7 @@ describe('testando componente favorite pokemon', () => {
     const { getByText } = render(
       <MemoryRouter>
         <FavoritePokemon />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(getByText('No favorite pokemon found')).toBeInTheDocument();
   });
@@ -19,7 +19,7 @@ describe('testando componente favorite pokemon', () => {
     const { getByText, getByLabelText } = render(
       <MemoryRouter>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     fireEvent.click(getByText(/more details/i));
     fireEvent.click(getByLabelText(/pokémon favoritado/i));
@@ -30,7 +30,7 @@ describe('testando componente favorite pokemon', () => {
     const { getByText, getByLabelText, getAllByText } = render(
       <MemoryRouter>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     localStorage.clear();
     fireEvent.click(getByText(/psychic/i));
