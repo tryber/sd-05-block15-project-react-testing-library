@@ -1,97 +1,94 @@
 import React from 'react';
+import { render, cleanup, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { cleanup, render, fireEvent } from '@testing-library/react';
 import App from '../App';
-import Data from '../data';
 
 afterEach(cleanup);
 
-describe('testes componente pokedex', () => {
+describe('Ao apertar o botão de próximo, a página deve exibir o próximo pokémon da lista', () => {
   test('O botão deve conter o texto Próximo pokémon', () => {
-    const { getByText } = render(
+    const { getByText, getByTestId } = render(
       <MemoryRouter>
         <App />
       </MemoryRouter>,
     );
-    const btn = getByText(/próximo pokémon/i);
-    expect(btn).toBeInTheDocument();
+    expect(getByText(/Encountered pokémons/i)).toBeInTheDocument();
+    expect(getByTestId('next-pokemon')).toBeInTheDocument();
   });
-  test('Cliques sucessivos no botão devem mostrar o próximo pokémon da lista', () => {
-    const { getByText } = render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>,
-    );
-    const btn = getByText(/próximo pokémon/i);
-    Data.forEach((element) => {
-      expect(getByText(element.name)).toBeInTheDocument();
-      fireEvent.click(btn);
-    });
-  });
-  test('A Pokédex deve exibir apenas um pokémon por vez', () => {
-    const { getAllByText, getByText } = render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>,
-    );
-    const btn = getByText(/próximo pokémon/i);
-    expect(getAllByText(/average weight/i).length).toBe(1);
-    fireEvent.click(btn);
-    expect(getAllByText(/average weight/i).length).toBe(1);
-  });
-  test('A partir da seleção de um botão de tipo, a Pokédex deve circular somente pelos pokémons daquele tipo', () => {
+
+  test('Cliques sucessivos no botão devem mostrar o próximo pokémon da lista, depois voltar ao primeiro', () => {
     const { getByText, getAllByText } = render(
       <MemoryRouter>
         <App />
       </MemoryRouter>,
     );
-    const btnFire = getByText('Fire');
-    const btnPsychic = getByText('Psychic');
-    fireEvent.click(btnFire);
-    expect(getAllByText(/fire/i).length).toBe(2);
-    fireEvent.click(btnPsychic);
-    expect(getAllByText(/psychic/i).length).toBe(2);
+    const pokemons = ['Charmander', 'Caterpie', 'Ekans', 'Alakazam', 'Mew', 'Rapidash', 'Snorlax', 'Dragonair', 'Pikachu'];
+    for (let i = 0; i < pokemons.length; i += 1) {
+      fireEvent.click(getByText(/próximo pokémon/i));
+      expect(getByText(pokemons[i])).toBeInTheDocument();
+      expect(getAllByText(/Average weight/i)).toHaveLength(1);
+    }
   });
-  test('A Pokédex deve conter um botão para resetar o filtro', () => {
+});
+
+describe('A Pokédex deve conter botões de filtro', () => {
+  test('A partir da seleção de um botão de tipo, a Pokédex deve circular somente pelos pokémons daquele tipo', () => {
+    const { getAllByTestId } = render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
+    const pokemonTypeButton = getAllByTestId('pokemon-type-button');
+    expect(pokemonTypeButton.length).toBe(7);
+  });
+
+  test('O texto do botão deve ser o nome do tipo, p. ex. Psychic', () => {
     const { getByText } = render(
       <MemoryRouter>
         <App />
       </MemoryRouter>,
     );
-    const btnAll = getByText(/all/i);
-    expect(btnAll).toBeInTheDocument();
-    fireEvent.click(btnAll);
-    Data.forEach((element) => {
-      const btnNext = getByText(/próximo pokémon/i);
-      expect(getByText(element.name)).toBeInTheDocument();
-      fireEvent.click(btnNext);
-    });
+    fireEvent.click(getByText(/Psychic/i));
+    expect(getByText(/Alakazam/i)).toBeInTheDocument();
+    fireEvent.click(getByText(/próximo pokémon/i));
+    fireEvent.click(getByText(/próximo pokémon/i));
+    expect(getByText(/Alakazam/i)).toBeInTheDocument();
   });
-  test('A Pokédex deve gerar, dinamicamente, um botão de filtro para cada tipo de pokémon', () => {
-    const { getAllByText } = render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>,
-    );
-    const types = Data.map((element) => element.type);
-    const result = types.filter(
-      (elem, index, self) => index === self.indexOf(elem),
-    );
-    result.forEach((element) => {
-      expect(getAllByText(element).length).toBe(getAllByText(element).length);
-    });
-  });
-  test('O botão de próximo pokémon deve ser desabilitado se a lista de pokémons filtrados tiver um só pokémon', () => {
+});
+
+describe('A Pokédex deve conter um botão para resetar o filtro', () => {
+  test('O texto do botão deve ser All', () => {
     const { getByText } = render(
       <MemoryRouter>
         <App />
       </MemoryRouter>,
     );
-    const btn = getByText(/próximo pokémon/i);
-    const array = ['Bug', 'Poison', 'Normal', 'Dragon'];
-    array.forEach((element) => {
-      fireEvent.click(getByText(element));
-      expect(btn).toBeDisabled();
-    });
+    expect(getByText('All')).toBeInTheDocument();
+  });
+
+  test('Após clicá-lo, a Pokédex deve voltar a circular por todos os pokémons', () => {
+    const { getByText, getAllByText } = render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
+    const pokemons = ['Charmander', 'Caterpie', 'Ekans', 'Alakazam', 'Mew', 'Rapidash', 'Snorlax', 'Dragonair', 'Pikachu'];
+    fireEvent.click(getByText('Fire'));
+    fireEvent.click(getByText('All'));
+    for (let i = 0; i < pokemons.length; i += 1) {
+      fireEvent.click(getByText(/próximo pokémon/i));
+      expect(getByText(pokemons[i])).toBeInTheDocument();
+      expect(getAllByText(/More details/i).length).toBe(1);
+    }
+  });
+
+  test('O botão de Próximo pokémon deve ser desabilitado se a lista filtrada de pokémons tiver um só pokémon', () => {
+    const { getByText } = render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
+    fireEvent.click(getByText('Poison'));
+    expect(getByText(/próximo pokémon/i)).toBeDisabled();
   });
 });
