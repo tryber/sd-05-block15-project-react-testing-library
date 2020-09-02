@@ -11,7 +11,7 @@ describe('testes componente pokedex', () => {
     const { getByText } = render(
       <MemoryRouter>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     const btn = getByText(/próximo pokémon/i);
     expect(btn).toBeInTheDocument();
@@ -20,7 +20,7 @@ describe('testes componente pokedex', () => {
     const { getByText } = render(
       <MemoryRouter>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     const btn = getByText(/próximo pokémon/i);
     Data.forEach((element) => {
@@ -32,7 +32,7 @@ describe('testes componente pokedex', () => {
     const { getAllByText, getByText } = render(
       <MemoryRouter>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     const btn = getByText(/próximo pokémon/i);
     expect(getAllByText(/average weight/i).length).toBe(1);
@@ -43,7 +43,7 @@ describe('testes componente pokedex', () => {
     const { getByText, getAllByText } = render(
       <MemoryRouter>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     const btnFire = getByText('Fire');
     const btnPsychic = getByText('Psychic');
@@ -56,7 +56,7 @@ describe('testes componente pokedex', () => {
     const { getByText } = render(
       <MemoryRouter>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     const btnAll = getByText(/all/i);
     expect(btnAll).toBeInTheDocument();
@@ -75,7 +75,7 @@ describe('testes componente pokedex', () => {
     );
     const types = Data.map((element) => element.type);
     const result = types.filter(
-      (elem, index, self) => index === self.indexOf(elem)
+      (elem, index, self) => index === self.indexOf(elem),
     );
     result.forEach((element) => {
       expect(getAllByText(element).length).toBe(getAllByText(element).length);
@@ -85,7 +85,7 @@ describe('testes componente pokedex', () => {
     const { getByText } = render(
       <MemoryRouter>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     const btn = getByText(/próximo pokémon/i);
     const array = ['Bug', 'Poison', 'Normal', 'Dragon'];
