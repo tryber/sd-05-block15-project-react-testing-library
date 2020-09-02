@@ -32,7 +32,7 @@ describe('No topo da aplicação, deve haver um conjunto fixo de links de navega
       </MemoryRouter>,
     );
     createMemoryHistory('/');
-    const Home = getByText(/Home/i);
+    const Home = getByText(/home/i);
     expect(Home).toBeInTheDocument();
   });
   test('O segundo link deve possuir o texto About com a URL /about', () => {
@@ -42,7 +42,7 @@ describe('No topo da aplicação, deve haver um conjunto fixo de links de navega
       </MemoryRouter>,
     );
     createMemoryHistory('/about');
-    const About = getByText(/About/i);
+    const About = getByText(/about/i);
     expect(About).toBeInTheDocument();
   });
   test('O terceiro link deve possuir o texto Favorite Pokémons com a URL /favorites', () => {
@@ -52,7 +52,7 @@ describe('No topo da aplicação, deve haver um conjunto fixo de links de navega
       </MemoryRouter>,
     );
     createMemoryHistory('/favorites');
-    const Favorites = getByText(/Favorites/i);
+    const Favorites = getByText(/favorites/i);
     expect(Favorites).toBeInTheDocument();
   });
 });
@@ -63,7 +63,7 @@ test('Ao clicar no link "Home" na barra de navegação, a aplicação deve ser r
     </MemoryRouter>,
   );
   const history = createMemoryHistory('/');
-  const Home = getByText(/Home/i);
+  const Home = getByText(/home/i);
   fireEvent.click(Home);
   expect(history.location.pathname).toBe('/');
 });
@@ -74,7 +74,7 @@ test('Ao clicar no link "About" na barra de navegação, a aplicação deve ser 
     </MemoryRouter>,
   );
   const history = createMemoryHistory('/about');
-  const About = getByText(/About/i);
+  const About = getByText(/about/i);
   fireEvent.click(About);
   expect(history.location.pathname).toBe('/about');
 });
@@ -85,7 +85,7 @@ test('Ao clicar no link "Favorite Pokémons" na barra de navegação, a aplicaç
     </MemoryRouter>,
   );
   const history = createMemoryHistory('/favorites');
-  const favoritePokémons = getByText(/Favorite Pokémons/i);
+  const favoritePokémons = getByText(/favorite pokémons/i);
   fireEvent.click(favoritePokémons);
   expect(history.location.pathname).toBe('/favorites');
 });
