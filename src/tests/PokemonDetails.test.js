@@ -9,7 +9,7 @@ describe('Deve conter mais informações sobre apenas o pokémon selecionado;', 
     const { getByText } = render(
       <MemoryRouter>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     const history = createMemoryHistory();
     history.push('/pokemons/25');
@@ -20,7 +20,7 @@ describe('Deve conter mais informações sobre apenas o pokémon selecionado;', 
     const { queryByText } = render(
       <MemoryRouter>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     const history = createMemoryHistory();
     history.push('/pokemons/25');
@@ -31,7 +31,7 @@ describe('Deve conter mais informações sobre apenas o pokémon selecionado;', 
     const { container, getByText } = render(
       <MemoryRouter>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(container.innerHTML.includes('h2'));
     expect(getByText(/summary/i)).toBeInTheDocument();
@@ -41,7 +41,7 @@ describe('Deve conter mais informações sobre apenas o pokémon selecionado;', 
     const { getByText, container } = render(
       <MemoryRouter>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     const history = createMemoryHistory();
     history.push('pokemons/25');
