@@ -20,7 +20,8 @@ test('PokemonDetails page test', () => {
   const pokemonName = getByText(`${favoritoPokemon.name} Details`);
   expect(pokemonName).toBeInTheDocument();
 
-  const heading = getByText('Summary');
+  const heading = getByText(/Summary/);
+  expect(heading).toBeInTheDocument();
   expect(heading.tagName).toBe('H2');
 
   const summaryParagraph = heading.nextElementSibling;
