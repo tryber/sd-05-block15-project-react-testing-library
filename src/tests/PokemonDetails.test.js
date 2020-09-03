@@ -11,7 +11,7 @@ test('PokemonDetails page test', () => {
   const favoritoPokemon = Data.find(Boolean);
   const history = createMemoryHistory();
   history.push(`/pokemons/${favoritoPokemon.id}`);
-  const { queryByText, getByText, queryByLabelText, queryAllByRole, findByText } = render(
+  const { queryByText, getByText, queryByLabelText, queryAllByRole } = render(
     <Router history={history}>
       <App />
     </Router>,
@@ -20,7 +20,7 @@ test('PokemonDetails page test', () => {
   const pokemonName = getByText(`${favoritoPokemon.name} Details`);
   expect(pokemonName).toBeInTheDocument();
 
-  const heading = findByText(/Summary/);
+  const heading = getByText('Summary');
   expect(heading).toBeInTheDocument();
   expect(heading.tagName).toBe('H2');
 
