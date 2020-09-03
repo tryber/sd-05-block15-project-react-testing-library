@@ -27,6 +27,7 @@ test('PokemonDetails page test', () => {
   const summaryParagraph = heading.nextElementSibling;
   expect(summaryParagraph).toBeInTheDocument();
   expect(summaryParagraph.tagName).toBe('P');
+  expect(summaryParagraph.innerHTML).not.toBe('');
 
   const localInfo = getByText(`Game Locations of ${favoritoPokemon.name}`);
   expect(localInfo).toBeInTheDocument();
