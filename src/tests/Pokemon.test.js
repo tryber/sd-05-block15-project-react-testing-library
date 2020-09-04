@@ -1,6 +1,6 @@
 import React from 'react';
 import { Router } from 'react-router-dom';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, getByRole, getByTestId } from '@testing-library/react';
 
 import { createMemoryHistory } from 'history';
 
@@ -11,7 +11,7 @@ test('verificando CARD', () => {
   const novoPokemon = Data[0];
   const history = createMemoryHistory();
 
-  const { getByText, queryAllByRole, getByLabelText } = render(
+  const { getByText, queryAllByRole, getByLabelText, getByTestId } = render(
     <Router history={history}>
       <App />
     </Router>,
@@ -19,8 +19,8 @@ test('verificando CARD', () => {
 
   const pokemonName = getByText('Pikachu');
   expect(pokemonName).toBeInTheDocument();
-  const tipoPokemon = novoPokemon.type;
-  expect(tipoPokemon).toBe('Electric');
+  const tipoPokemon = getByTestId('pokemonType')
+  expect(tipoPokemon).toBeInTheDocument();
   const pesoPokemon = getByText(`Average weight:${novoPokemon.averageWeight.value}${novoPokemon.averageWeight.measurementUnit}`);
   expect(pesoPokemon).toBeInTheDocument();
   const srcImagem = queryAllByRole('img')
