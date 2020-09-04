@@ -1,6 +1,6 @@
 import React from 'react';
 import { Router } from 'react-router-dom';
-import { render, fireEvent, getByRole, getByTestId } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import { createMemoryHistory } from 'history';
 
@@ -19,7 +19,7 @@ test('verificando CARD', () => {
 
   const pokemonName = getByText('Pikachu');
   expect(pokemonName).toBeInTheDocument();
-  const tipoPokemon = getByTestId('pokemonType')
+  const tipoPokemon = getByTestId('pokemonType');
   expect(tipoPokemon).toBeInTheDocument();
   const pesoPokemon = getByText(`Average weight:${novoPokemon.averageWeight.value}${novoPokemon.averageWeight.measurementUnit}`);
   expect(pesoPokemon).toBeInTheDocument();
