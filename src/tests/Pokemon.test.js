@@ -19,6 +19,7 @@ test('verificando CARD', () => {
 
   const pokemonName = getByText('Pikachu');
   expect(pokemonName).toBeInTheDocument();
+  expect(novoPokemon.type).toBe('Electric');
   const pesoPokemon = getByText(`Average weight:${novoPokemon.averageWeight.value}${novoPokemon.averageWeight.measurementUnit}`);
   expect(pesoPokemon).toBeInTheDocument();
   const srcImagem = queryAllByRole('img')
