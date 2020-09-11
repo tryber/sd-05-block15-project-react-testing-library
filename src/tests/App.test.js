@@ -51,7 +51,7 @@ test("check links3", () => {
       <App />
     </MemoryRouter>
   );
-  const batata = getByText(/Favorites/i);
+  const batata = getByText(/Favorite Pokémons/i);
 
   expect(batata).toBeInTheDocument();
 });
