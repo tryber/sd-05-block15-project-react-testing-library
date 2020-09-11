@@ -7,7 +7,7 @@ test('Testar titulo', () => {
   const { getByText } = render(
     <MemoryRouter initialEntries={['/about']}>
       <App />
-    </MemoryRouter>
+    </MemoryRouter>,
   );
   const about = getByText(/About Pokédex/i);
 
@@ -15,15 +15,14 @@ test('Testar titulo', () => {
 });
 
 test('Testar imagem', () => {
-    const { getByRole } = render(
-      <MemoryRouter initialEntries={['/about']}>
-        <App />
-      </MemoryRouter>
-    );
-    const img = getByRole('img');
-  
-    expect(img).toBeInTheDocument();
+  const { getByRole } = render(
+    <MemoryRouter initialEntries={['/about']}>
+      <App />
+    </MemoryRouter>,
+  );
+  const img = getByRole('img');
 
-    expect(img.src).not.toBe('');
-  });
-  
+  expect(img).toBeInTheDocument();
+
+  expect(img.src).not.toBe('');
+});
