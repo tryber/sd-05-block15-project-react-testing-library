@@ -14,14 +14,14 @@ test('Mensagem Not found', () => {
 });
 
 test('Testar imagem NotFound', () => {
-    const { getByRole } = render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>,
-    );
-    const img = getByRole('img');
-  
-    expect(img).toBeInTheDocument();
-  
-    expect(img.src).not.toBe('');
-  });
+  const { getByRole } = render(
+    <MemoryRouter>
+      <NotFound />
+    </MemoryRouter>,
+  );
+  const img = getByRole('img');
+
+  expect(img).toBeInTheDocument();
+
+  expect(img.src).not.toBe('');
+});
