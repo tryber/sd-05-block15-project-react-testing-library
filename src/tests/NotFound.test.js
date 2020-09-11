@@ -5,7 +5,7 @@ import NotFound from '../components/NotFound';
 
 test('Mensagem Not found', () => {
   const { getByText } = render(
-    <MemoryRouter}>
+    <MemoryRouter>
       <NotFound />
     </MemoryRouter>,
   );
@@ -25,4 +25,3 @@ test('Testar imagem NotFound', () => {
   
     expect(img.src).not.toBe('');
   });
-  
