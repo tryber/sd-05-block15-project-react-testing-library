@@ -13,7 +13,7 @@ test('CARD', () => {
   const { getByText, queryAllByRole, getByLabelText, getByTestId } = render(
     <Router history={history}>
       <App />
-    </Router>
+    </Router>,
   );
 
   const name = getByText('Pikachu');
@@ -21,11 +21,11 @@ test('CARD', () => {
   const tipo = getByTestId('pokemonType');
   expect(tipo).toBeInTheDocument();
   const peso = getByText(
-    `Average weight:${novo.averageWeight.value}${novo.averageWeight.measurementUnit}`
+    `Average weight:${novo.averageWeight.value}${novo.averageWeight.measurementUnit}`,
   );
   expect(peso).toBeInTheDocument();
   const imgPoke = queryAllByRole('img').find((imgSrc) =>
-    imgSrc.src.includes('https://cdn.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png')
+    imgSrc.src.includes('https://cdn.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png'),
   );
   expect(imgPoke).toBeInTheDocument();
   expect(imgPoke.alt).toBe(`${novo.name} sprite`);
@@ -38,7 +38,7 @@ test('CARD', () => {
   const checkbox = getByLabelText('Pokémon favoritado?');
   fireEvent.click(checkbox);
   const checkPoke = queryAllByRole('img').find((imagemSRC) =>
-    imagemSRC.src.endsWith('star-icon.svg')
+    imagemSRC.src.endsWith('star-icon.svg'),
   );
   expect(checkPoke).toBeInTheDocument();
   expect(checkPoke.alt).toBe(`${novo.name} is marked as favorite`);
