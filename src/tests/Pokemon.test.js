@@ -1,45 +1,62 @@
-// Plantão em dupla com a Isabel, ela tirou duvidas sobre esse projeto
+// Explicação do Luca Castro
 import React from 'react';
-import { Router } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { render, fireEvent } from '@testing-library/react';
-import { createMemoryHistory } from 'history';
 import App from '../App';
-import Data from '../data';
 
-test('CARD', () => {
-  const novo = Data[0];
-  const history = createMemoryHistory();
-
-  const { getByText, queryAllByRole, getByLabelText, getByTestId } = render(
-    <Router history={history}>
+test('Card', () => {
+  const { getByTestId, getByText } = render(
+    <MemoryRouter>
       <App />
-    </Router>,
+    </MemoryRouter>,
+  );
+  const nome = getByTestId(/pokemon-name/i);
+  expect(nome).toBeInTheDocument();
+  expect(nome.innerHTML).toBe('Pikachu');
+
+  const tipo = getByTestId(/pokemonType/i);
+  expect(tipo).toBeInTheDocument();
+  expect(tipo.innerHTML).toBe('Electric');
+
+  const peso = getByTestId(/pokemon-weight/i);
+  expect(peso).toBeInTheDocument();
+  expect(peso.innerHTML).toBe('Average weight:6.0kg');
+
+  const textoPeso = getByText(/Average weight:6.0kg/i);
+  expect(textoPeso).toBeInTheDocument();
+});
+
+test('Atributo src', () => {
+  const { queryByRole, getByText } = render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>,
   );
 
-  const name = getByText('Pikachu');
-  expect(name).toBeInTheDocument();
-  const tipo = getByTestId('pokemonType');
-  expect(tipo).toBeInTheDocument();
-  const peso = getByText(
-    `Average weight:${novo.averageWeight.value}${novo.averageWeight.measurementUnit}`,
+  const verificaImg = queryByRole('img');
+  expect(verificaImg).toHaveAttribute('src', 'https://cdn.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
+  expect(verificaImg).toHaveAttribute('alt', 'Pikachu sprite');
+
+  const more = getByText(/More details/i);
+  expect(more).toHaveAttribute('href', '/pokemons/25');
+
+  fireEvent.click(more);
+  const detalhe = getByText(/Pikachu Details/i);
+  expect(detalhe).toBeInTheDocument();
+});
+
+test('Pokémons favoritados', () => {
+  const { getByAltText, getByText, getByLabelText } = render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>,
   );
-  expect(peso).toBeInTheDocument();
-  const imgPoke = queryAllByRole('img').find((imgSrc) =>
-    imgSrc.src.includes('https://cdn.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png'),
-  );
-  expect(imgPoke).toBeInTheDocument();
-  expect(imgPoke.alt).toBe(`${novo.name} sprite`);
-  const info = getByText('More details');
-  expect(info).toBeInTheDocument();
-  const linkinfo = info.href.endsWith(`/pokemons/${novo.id}`);
-  expect(linkinfo).toBe(true);
-  fireEvent.click(info);
-  expect(history.location.pathname).toBe(`/pokemons/${novo.id}`);
-  const checkbox = getByLabelText('Pokémon favoritado?');
-  fireEvent.click(checkbox);
-  const checkPoke = queryAllByRole('img').find((imagemSRC) =>
-    imagemSRC.src.endsWith('star-icon.svg'),
-  );
-  expect(checkPoke).toBeInTheDocument();
-  expect(checkPoke.alt).toBe(`${novo.name} is marked as favorite`);
+  const moreDetails = getByText(/More details/i);
+  fireEvent.click(moreDetails);
+
+  const favoritados = getByLabelText('Pokémon favoritado?');
+  fireEvent.click(favoritados);
+  const star = getByAltText('Pikachu is marked as favorite');
+  expect(star).toBeInTheDocument();
+  expect(star).toHaveAttribute('src', '/star-icon.svg');
 });
