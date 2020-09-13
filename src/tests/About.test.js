@@ -13,14 +13,15 @@
 //   const about = getByText(/About Pokedéx/i);
 //   expect(getByText(about)).toBeInTheDocument();
 // });
-
-test('Verificar se existe "About"', () => {
-    const { getBy } = render(
-      <MemoryRouter initialEntries={['/']}>
-        <App />
-      </MemoryRouter>,
-    );
-  
-    const about = getByText(/About Pokedéx/i);
-    expect(getByText(about)).toBeInTheDocument();
-  });
+// 
+// test('Verificar se existe "About"', () => {
+//     const { getBy } = render(
+//       <MemoryRouter initialEntries={['/']}>
+//         <App />
+//       </MemoryRouter>,
+//     );
+// 
+//     const about = getByText(/About Pokedéx/i);
+//     expect(getByText(about)).toBeInTheDocument();
+//   });
+//
