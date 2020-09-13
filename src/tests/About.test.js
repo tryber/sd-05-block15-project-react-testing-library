@@ -3,15 +3,19 @@ import { MemoryRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import App from '../App';
 
-test('Testando tudo no About', () => {
-  const { getByText, getByRole } = render(
+test('Tentando conjunto de links de verificação', () => {
+  const { getByText } = render(
     <MemoryRouter initialEntries={['/about']}>
       <App />
     </MemoryRouter>,
   );
-  const about = getByText(/About Pokédex/i);
-  const imagem = getByRole('img');
+  const favorito = getByText(/Pokédex/i);
+  const favorito = getByText(/Favorite Pokémons/i);
+  const home = getByText(/Home/i);
+  const about = getByText(/About/i);
+  expect(getByText('Encountered pokémons')).toBeInTheDocument();
+  expect(heading).toBeInTheDocument();
+  expect(favorito).toBeInTheDocument();
+  expect(home).toBeInTheDocument();
   expect(about).toBeInTheDocument();
-  expect(imagem).toBeInTheDocument();
-  expect(imagem.src).not.toBe('');
 });
