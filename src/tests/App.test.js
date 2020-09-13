@@ -16,7 +16,7 @@ test('Tentando conjunto de links de verificação', () => {
   const about = getByText(/About/i);
   expect(getByText('Encountered pokémons')).toBeInTheDocument();
   expect(heading).toBeInTheDocument();
-  expect(favorito)).toBeInTheDocument();
+  expect(favorito).toBeInTheDocument();
   expect(home).toBeInTheDocument();
   expect(about).toBeInTheDocument();
 });
