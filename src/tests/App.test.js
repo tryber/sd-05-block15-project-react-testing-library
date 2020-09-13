@@ -9,7 +9,6 @@ test('Tentando conjunto de links de verificação', () => {
       <App />
     </MemoryRouter>,
   );
-  
   const heading = getByText(/Pokédex/i);
   const favorito = getByText(/Favorite Pokémons/i);
   const home = getByText(/Home/i);
