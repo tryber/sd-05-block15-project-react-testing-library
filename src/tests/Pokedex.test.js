@@ -40,7 +40,7 @@ test('Testando se existe um pokemon por vez', () => {
 });
 
 test('Testando botões de filtro', () => {
-  const { getByText, getAllByTestId } = render(
+  const { getByText } = render(
     <MemoryRouter initialEntries={['/']}>
       <App />
     </MemoryRouter>,
