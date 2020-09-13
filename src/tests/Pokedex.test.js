@@ -75,7 +75,7 @@ test('Pokédex deve voltar a circular', () => {
   const { getByText, getAllByText } = render(
     <MemoryRouter>
       <App />
-    </MemoryRouter>
+    </MemoryRouter>,
   );
   const todosPokemons = [
     'Charmander',
