@@ -12,7 +12,7 @@ test('Tentando conjunto de links de verificação', () => {
 
   const heading = getByText(/Pokédex/i);
   const favorito = getByText(/Favorite Pokémons/i);
-  const Home = getByText(/Home/i);
+  const home = getByText(/Home/i);
   const about = getByText(/About/i);
   expect(getByText('Encountered pokémons')).toBeInTheDocument();
   expect(getByText(heading)).toBeInTheDocument();

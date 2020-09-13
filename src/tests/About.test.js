@@ -24,4 +24,3 @@
 //     const about = getByText(/About Pokedéx/i);
 //     expect(getByText(about)).toBeInTheDocument();
 //   });
-//
