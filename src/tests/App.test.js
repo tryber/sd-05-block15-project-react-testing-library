@@ -9,14 +9,14 @@ test('Tentando conjunto de links de verificação', () => {
       <App />
     </MemoryRouter>,
   );
-
+  
   const heading = getByText(/Pokédex/i);
   const favorito = getByText(/Favorite Pokémons/i);
   const home = getByText(/Home/i);
   const about = getByText(/About/i);
   expect(getByText('Encountered pokémons')).toBeInTheDocument();
-  expect(getByText(heading)).toBeInTheDocument();
-  expect(getByText(favorito)).toBeInTheDocument();
-  expect(getByText(home)).toBeInTheDocument();
-  expect(getByText(about)).toBeInTheDocument();
+  expect(heading)).toBeInTheDocument();
+  expect(favorito)).toBeInTheDocument();
+  expect(home).toBeInTheDocument();
+  expect(about).toBeInTheDocument();
 });
