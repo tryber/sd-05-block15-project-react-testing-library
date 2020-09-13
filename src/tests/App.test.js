@@ -1,3 +1,4 @@
+// Fiz esse projeto junto com Sidnei Ramos e Paulo Zambelli ajudou
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
@@ -51,7 +52,7 @@ test('check links3', () => {
       <App />
     </MemoryRouter>,
   );
-  const batata = getByText(/Favorite Pokémons/i);
+  const pokeFav = getByText(/Favorite Pokémons/i);
 
-  expect(batata).toBeInTheDocument();
+  expect(pokeFav).toBeInTheDocument();
 });
