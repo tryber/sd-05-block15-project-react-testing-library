@@ -5,10 +5,10 @@ import App from '../App';
 
 test('Tentando conjunto de links de verificação', () => {
   const { getByText } = render(
-    <MemoryRouter>
+    <MemoryRouter initialEntries={['/favorites']}>
       <App />
     </MemoryRouter>,
   );
   const favorito = getByText(/No favorite pokemon found/i);
-  expect(favorito).toBeInTheDocument();
+  expect(favorito).toBeInTheDocument('');
 });

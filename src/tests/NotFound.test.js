@@ -10,5 +10,5 @@ test('Tentando conjunto de links de verificação', () => {
     </MemoryRouter>,
   );
   const notFound = getByText(/Page requested not found 😭/i);
-  expect(notFound).toBeInTheDocument();
+  expect(notFound).toBeInTheDocument('');
 });
