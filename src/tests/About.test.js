@@ -5,11 +5,11 @@ import App from '../App';
 
 test('Tentando conjunto de links de verificação', () => {
   const { getByText } = render(
-    <MemoryRouter initialEntries={['/about']}>
+    <MemoryRouter initialEntries={[/about]}>
       <App />
     </MemoryRouter>,
   );
-  const favorito = getByText(/Pokédex/i);
+  const heading = getByText(/Pokédex/i);
   const favorito = getByText(/Favorite Pokémons/i);
   const home = getByText(/Home/i);
   const about = getByText(/About/i);
