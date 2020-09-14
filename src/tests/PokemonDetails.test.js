@@ -34,7 +34,7 @@ test('h2, summary, paragrafo, game location', () => {
   expect(summary.tagName).toBe('H2');
 
   const paragrafo = getByText(
-    /This intelligent Pokémon roasts hard berries with electricity to make them tender enough to eat./i
+    /This intelligent Pokémon roasts hard berries with electricity to make them tender enough to eat./i,
   );
   expect(paragrafo).toBeInTheDocument();
 
