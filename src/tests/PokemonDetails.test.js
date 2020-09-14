@@ -33,5 +33,5 @@ test('Testando o More Details', () => {
   );
   expect(getByText(/kanto viridian forest/i)).toBeInTheDocument();
   expect(getByText(/kanto power plant/i)).toBeInTheDocument();
-  expect(getByLabelText('Pokémon favoritado?')).toBeInTheDocument;
+  expect(getByLabelText('Pokémon favoritado?')).toBeInTheDocument();
 });
