@@ -1,0 +1,66 @@
+19:16:14 (29217) INFO ConfigReader No config file specified. Running with command line arguments.
+19:16:15 (29217) DEBUG BroadcastReporter Broadcasting to reporters ["clear-text","progress","html"]
+19:16:14 (29217) INFO ConfigReader Use `stryker init` command to generate your config file.
+19:16:14 (29217) DEBUG ConfigReader Loaded config: {
+  "allowConsoleColors": true,
+  "commandRunner": {
+    "command": "npm test"
+  },
+  "coverageAnalysis": "off",
+  "clearTextReporter": {
+    "allowColor": true,
+    "logTests": true,
+    "maxTestsToLog": 3
+  },
+  "dashboard": {
+    "baseUrl": "https://dashboard.stryker-mutator.io/api/reports",
+    "reportType": "full"
+  },
+  "eventReporter": {
+    "baseDir": "reports/mutation/events"
+  },
+  "fileLogLevel": "trace",
+  "logLevel": "debug",
+  "maxConcurrentTestRunners": 9007199254740991,
+  "mutate": [
+    "{src,lib}/**/*.js?(x)",
+    "!{src,lib}/**/__tests__/**/*.js?(x)",
+    "!{src,lib}/**/?(*.)+(spec|test).js?(x)",
+    "!{src,lib}/**/*+(Spec|Test).js?(x)"
+  ],
+  "mutator": "javascript",
+  "plugins": [
+    "@stryker-mutator/*"
+  ],
+  "reporters": [
+    "clear-text",
+    "progress",
+    "html"
+  ],
+  "symlinkNodeModules": true,
+  "tempDirName": ".stryker-tmp",
+  "testRunner": "command",
+  "thresholds": {
+    "high": 80,
+    "low": 60,
+    "break": null
+  },
+  "timeoutFactor": 1.5,
+  "timeoutMS": 5000,
+  "transpilers": [],
+  "warnings": true
+}
+19:16:14 (29217) DEBUG PluginLoader Loading @stryker-mutator/* from /home/sidnei/Trybe_Projects/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator
+19:16:14 (29217) DEBUG PluginLoader Loading plugin "/home/sidnei/Trybe_Projects/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator/javascript-mutator" (matched with expression @stryker-mutator/*)
+19:16:14 (29217) DEBUG PluginLoader Loading plugin "/home/sidnei/Trybe_Projects/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator/jest-runner" (matched with expression @stryker-mutator/*)
+19:16:14 (29217) DEBUG PluginLoader Loading plugins /home/sidnei/Trybe_Projects/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator/javascript-mutator
+19:16:15 (29217) DEBUG PluginLoader Loading plugins /home/sidnei/Trybe_Projects/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator/jest-runner
+19:16:15 (29217) DEBUG PluginLoader Loading plugins /home/sidnei/Trybe_Projects/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator/core/src/reporters/index.js
+19:16:15 (29217) DEBUG buildSchemaWithPluginContributions Contributing 1 schemas from plugins to options validation.
+19:16:15 (29217) ERROR StrykerCli an error occurred TypeError: Cannot read property 'readFile' of undefined
+    at InputFileResolver.readFile (/home/sidnei/Trybe_Projects/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator/core/src/input/InputFileResolver.js:118:14)
+    at Promise.all.fileNames.map (/home/sidnei/Trybe_Projects/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator/core/src/input/InputFileResolver.js:113:74)
+    at Array.map (<anonymous>)
+    at InputFileResolver.readFiles (/home/sidnei/Trybe_Projects/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator/core/src/input/InputFileResolver.js:113:51)
+    at InputFileResolver.resolve (/home/sidnei/Trybe_Projects/sd-05-block15-project-react-testing-library/node_modules/@stryker-mutator/core/src/input/InputFileResolver.js:31:34)
+    at <anonymous>
