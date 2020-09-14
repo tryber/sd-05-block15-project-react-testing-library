@@ -2,41 +2,45 @@
 
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { render, cleanup, fireEvent } from '@testing-library/react';
+import {
+  render,
+  cleanup,
+  fireEvent,
+  getAllByTestId, getAllByRole
+} from '@testing-library/react';
 import App from '../App';
 
-afterEach(cleanup);
 test('Testando botão', () => {
   const { getByText } = render(
-    <MemoryRouter initialEntries={['/']}>
+    <MemoryRouter>
       <App />
     </MemoryRouter>,
   );
 
   expect(getByText('Pikachu')).toBeInTheDocument();
-  fireEvent.click('Próximo Pokemon');
+  fireEvent.click(getByText('Próximo pokémon'));
   expect(getByText('Charmander')).toBeInTheDocument();
-  fireEvent.click('Próximo Pokemon');
+  fireEvent.click(getByText('Próximo pokémon'));
   expect(getByText('Caterpie')).toBeInTheDocument();
-  fireEvent.click('Próximo Pokemon');
+  fireEvent.click(getByText('Próximo pokémon'));
   expect(getByText('Ekans')).toBeInTheDocument();
-  fireEvent.click('Próximo Pokemon');
-  fireEvent.click('Próximo Pokemon');
-  fireEvent.click('Próximo Pokemon');
-  fireEvent.click('Próximo Pokemon');
-  fireEvent.click('Próximo Pokemon');
-  fireEvent.click('Próximo Pokemon');
+  fireEvent.click(getByText('Próximo pokémon'));
+  fireEvent.click(getByText('Próximo pokémon'));
+  fireEvent.click(getByText('Próximo pokémon'));
+  fireEvent.click(getByText('Próximo pokémon'));
+  fireEvent.click(getByText('Próximo pokémon'));
+  fireEvent.click(getByText('Próximo pokémon'));
   expect(getByText('Pikachu')).toBeInTheDocument();
 });
 
 test('Testando se existe um pokemon por vez', () => {
   const { getAllByTestId } = render(
-    <MemoryRouter initialEntries={['/']}>
+    <MemoryRouter>
       <App />
     </MemoryRouter>,
   );
 
-  expect(getAllByTestId('pokemon-name'.length)).toBe(1);
+  expect(getAllByTestId('pokemon-name').length).toBe(1);
 });
 
 test('Testando botões de filtro', () => {
@@ -46,41 +50,44 @@ test('Testando botões de filtro', () => {
     </MemoryRouter>,
   );
 
-  fireEvent.click('Psychic');
+  fireEvent.click(getByText('Psychic'));
   expect(getByText('Alakazam')).toBeInTheDocument();
-  fireEvent.click('Próximo Pokemon');
+  fireEvent.click(getByText('Próximo pokémon'));
   expect(getByText('Mew')).toBeInTheDocument();
-  fireEvent.click('Próximo Pokemon');
+  fireEvent.click(getByText('Próximo pokémon'));
   expect(getByText('Alakazam')).toBeInTheDocument();
 });
 
 test('Testando botões de reset', () => {
-  const { getByText } = render(
+  const { getByText, getAllByTestId, getByTestId } = render(
     <MemoryRouter initialEntries={['/']}>
       <App />
     </MemoryRouter>,
   );
 
-  fireEvent.click('Psychic');
+  const buttonType = getAllByTestId('pokemon-type-button');
+  const pokemonType = getByTestId('pokemonType');
+
+  fireEvent.click(getByText('Psychic'));
   expect(getByText('Alakazam')).toBeInTheDocument();
-  fireEvent.click('All');
-  expect(getByText('Electric')).toBeInTheDocument();
-  fireEvent.click('Próximo Pokemon');
-  expect(getByText('Fire')).toBeInTheDocument();
-  fireEvent.click('Próximo Pokemon');
-  expect(getByText('Bug')).toBeInTheDocument();
+  fireEvent.click(getByText('All'));
+  expect(getByText('Pikachu')).toBeInTheDocument();
+  fireEvent.click(getByText('Próximo pokémon'));
+  expect(getByText('Charmander')).toBeInTheDocument();
+  fireEvent.click(getByText('Próximo pokémon'));
+  expect(getByText('Caterpie')).toBeInTheDocument();
 });
 
 test('Testando se existe todos os botões de filtro', () => {
-  const { getByText } = render(
+  const { getByText, getAllByRole } = render(
     <MemoryRouter initialEntries={['/']}>
       <App />
     </MemoryRouter>,
   );
 
   expect(getByText('Psychic')).toBeInTheDocument();
-  expect(getByText('Electric')).toBeInTheDocument();
   expect(getByText('Fire')).toBeInTheDocument();
+  expect(getAllByRole('button')[1]).toBeInTheDocument();
   expect(getByText('Normal')).toBeInTheDocument();
   expect(getByText('All')).toBeInTheDocument();
 });
@@ -92,7 +99,7 @@ test('Testando se o botão "Próximo Pokemon" desabilita', () => {
     </MemoryRouter>,
   );
 
-  fireEvent.click('Bug');
+  fireEvent.click(getByText('Bug'));
   expect(getByText('Caterpie')).toBeInTheDocument();
-  expect(getByText('Próximo Pokemon')).toHaveAttribute('disabled');
+  expect(getByText('Próximo pokémon')).toHaveAttribute('disabled');
 });
