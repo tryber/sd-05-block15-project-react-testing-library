@@ -71,17 +71,13 @@ test('Testando botões de reset', () => {
 });
 
 test('Testando se existe todos os botões de filtro', () => {
-  const { getByText, getAllByRole } = render(
+  const { getByTestId, getAllByTestId } = render(
     <MemoryRouter initialEntries={['/']}>
       <App />
     </MemoryRouter>,
   );
 
-  expect(getByText('Psychic')).toBeInTheDocument();
-  expect(getByText('Fire')).toBeInTheDocument();
-  expect(getAllByRole('button')[1]).toBeInTheDocument();
-  expect(getByText('Normal')).toBeInTheDocument();
-  expect(getByText('All')).toBeInTheDocument();
+  expect(getAllByTestId('pokemon-type-button').length).toBe(7);
 });
 
 test('Testando se o botão "Próximo Pokemon" desabilita', () => {
