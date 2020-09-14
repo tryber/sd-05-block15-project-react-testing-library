@@ -54,7 +54,7 @@ test('Testando botões de filtro', () => {
 });
 
 test('Testando botões de reset', () => {
-  const { getByText, getAllByTestId, getByTestId } = render(
+  const { getByText } = render(
     <MemoryRouter initialEntries={['/']}>
       <App />
     </MemoryRouter>,
