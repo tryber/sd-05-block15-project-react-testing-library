@@ -71,7 +71,7 @@ test('Testando botões de reset', () => {
 });
 
 test('Testando se existe todos os botões de filtro', () => {
-  const { getByTestId, getAllByTestId } = render(
+  const { getAllByTestId } = render(
     <MemoryRouter initialEntries={['/']}>
       <App />
     </MemoryRouter>,
