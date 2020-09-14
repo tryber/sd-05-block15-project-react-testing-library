@@ -90,4 +90,5 @@ test('Testando se o botão "Próximo Pokemon" desabilita', () => {
   fireEvent.click(getByText('Bug'));
   expect(getByText('Caterpie')).toBeInTheDocument();
   expect(getByText('Próximo pokémon')).toHaveAttribute('disabled');
+  expect(getByText('Encountered pokémons')).toBeInTheDocument();
 });
