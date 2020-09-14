@@ -20,6 +20,7 @@ test('verificando CARD', () => {
   const pokemonName = getByText('Pikachu');
   expect(pokemonName).toBeInTheDocument();
   const tipoPokemon = getByTestId('pokemonType');
+  expect(tipoPokemon.innerHTML).toBe('Electric');
   expect(tipoPokemon).toBeInTheDocument();
   const pesoPokemon = getByText(`Average weight:${novoPokemon.averageWeight.value}${novoPokemon.averageWeight.measurementUnit}`);
   expect(pesoPokemon).toBeInTheDocument();
