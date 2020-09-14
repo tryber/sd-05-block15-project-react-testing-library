@@ -1,4 +1,4 @@
-// Explicação do Luca Castro
+// Explicação do Luca Castro e do Mitchell
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { render, fireEvent } from '@testing-library/react';
@@ -46,7 +46,7 @@ test('Atributo src', () => {
 });
 
 test('Pokémons favoritados', () => {
-  const { getByAltText, getByText, getByLabelText } = render(
+  const { getByAllText, getByText, getByLabelText } = render(
     <MemoryRouter>
       <App />
     </MemoryRouter>,
@@ -56,7 +56,7 @@ test('Pokémons favoritados', () => {
 
   const favoritados = getByLabelText('Pokémon favoritado?');
   fireEvent.click(favoritados);
-  const star = getByAltText('Pikachu is marked as favorite');
+  const star = getByAllText('Pikachu is marked as favorite');
   expect(star).toBeInTheDocument();
   expect(star).toHaveAttribute('src', '/star-icon.svg');
 });
