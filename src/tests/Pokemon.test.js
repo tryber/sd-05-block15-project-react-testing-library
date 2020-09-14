@@ -1,6 +1,6 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, getByTestId, render } from '@testing-library/react';
 import App from '../App';
 
 test('Ver o card se tem as coisas', () => {
@@ -22,7 +22,7 @@ test('Ver o card se tem as coisas', () => {
 });
 
 test('Ver as coisas do More Details', () => {
-  const { getByText, getByLabelText, getByAltText } = render(
+  const { getByText, getByLabelText, getByAltText, getByTestId } = render(
     <MemoryRouter>
       <App />
     </MemoryRouter>,
@@ -33,4 +33,5 @@ test('Ver as coisas do More Details', () => {
   expect(getByAltText('Pikachu is marked as favorite').src).toBe(
     'http://localhost/star-icon.svg',
   );
+  expect(getByTestId('pokemonType').innerHTML).toBe('Electric');
 });
