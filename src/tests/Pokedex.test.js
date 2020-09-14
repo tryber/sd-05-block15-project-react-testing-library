@@ -2,12 +2,7 @@
 
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import {
-  render,
-  cleanup,
-  fireEvent,
-  getAllByTestId, getAllByRole
-} from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import App from '../App';
 
 test('Testando botão', () => {
@@ -64,9 +59,6 @@ test('Testando botões de reset', () => {
       <App />
     </MemoryRouter>,
   );
-
-  const buttonType = getAllByTestId('pokemon-type-button');
-  const pokemonType = getByTestId('pokemonType');
 
   fireEvent.click(getByText('Psychic'));
   expect(getByText('Alakazam')).toBeInTheDocument();
