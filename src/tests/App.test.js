@@ -55,4 +55,4 @@ describe('teste das rotas', () => {
     history.push('/404');
     expect(getByText(/Page requested not found/i)).toBeInTheDocument();
   });
-}
+});
