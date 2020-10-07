@@ -1,7 +1,7 @@
 import React from 'react';
 import { createMemoryHistory } from 'history';
 import { MemoryRouter, Router } from 'react-router-dom';
-import { render, cleanup, fireEvent } from '@testing-library/react';
+import { render, cleanup, fireEvent, getByText } from '@testing-library/react';
 import App from '../App';
 
 test('renders a reading with the text `Pokédex`', () => {
@@ -55,4 +55,4 @@ describe('teste das rotas', () => {
     history.push('/404');
     expect(getByText(/Page requested not found/i)).toBeInTheDocument();
   });
-});
+}
