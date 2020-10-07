@@ -43,16 +43,16 @@ describe('teste das rotas', () => {
     );
     fireEvent.click(getByText(/favorite pokémons/i));
     expect(history.location.pathname).toBe('/favorites')
-  })
+  });
 
   test('not found', () => {
     const history = createMemoryHistory();
     const { getByText } = render(
       <Router history={history}>
         <App />
-      </Router>
+      </Router>,
     );
     history.push('/404');
     expect(getByText(/Page requested not found/i)).toBeInTheDocument();
-  })
-})
+  });
+});
