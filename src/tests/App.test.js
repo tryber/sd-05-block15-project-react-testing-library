@@ -29,7 +29,7 @@ describe('teste das rotas', () => {
     const { getByText } = render(
       <Router history={history}>
         <App />
-      </Router>
+      </Router>,
     );
     fireEvent.click(getByText(/about/i));
     expect(history.location.pathname).toBe('/about');
