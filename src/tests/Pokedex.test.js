@@ -20,4 +20,4 @@ describe('funcionamento da pokedex', () => {
   test('não mostra nenhuma carta não favoritada', () => {
 
   });
-})
+});
