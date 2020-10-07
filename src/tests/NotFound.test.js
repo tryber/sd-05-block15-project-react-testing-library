@@ -5,7 +5,6 @@ import { render, cleanup } from '@testing-library/react';
 import App from '../App';
 
 describe('testando a pagina de 404', () => {
-
   afterEach(cleanup);
   test('tem o texto correto e a tag correta', () => {
     const history = createMemoryHistory();
@@ -31,7 +30,7 @@ describe('testando a pagina de 404', () => {
         <App />
       </Router>,
     );
-    
+
     history.push('/404');
 
     expect(getAllByRole('img')[1].src).toBe('https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif');
